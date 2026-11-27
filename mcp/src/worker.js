@@ -8,6 +8,17 @@ const PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 const DISCLAIMER =
   "Information only, not medical, legal or immigration advice. Verify with the official source before acting. 仅供参考，以官方与执业医生意见为准。";
 const SITE = "https://skills.nxlongevity.com";
+const DATA_URL = "https://raw.githubusercontent.com/NEXALongevity/skillset/main/mcp/dist/data.json";
+// Bundled builds set globalThis.__NEXA_DATA; the lean build loads the published data file (cached 10 min).
+let DATA = globalThis.__NEXA_DATA || null;
+let loadedAt = 0;
+async function ensureData() {
+  if (globalThis.__NEXA_DATA) return;
+  if (DATA && Date.now() - loadedAt < 600000) return;
+  const r = await fetch(DATA_URL, { cf: { cacheTtl: 600, cacheEverything: true } });
+  if (!r.ok) { if (DATA) return; throw new Error("data unavailable: " + r.status); }
+  DATA = await r.json(); loadedAt = Date.now();
+}
 
 // ---------- helpers ----------
 const norm = (s) => String(s || "").trim().toLowerCase().replace(/[\s._-]+/g, " ");
@@ -240,6 +251,7 @@ function landing() {
 }
 
 export async function handle(request) {
+  try { await ensureData(); } catch (e) { return json({ error: String(e.message || e) }, 503); }
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, "") || "/";
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
