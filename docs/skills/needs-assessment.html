@@ -1,0 +1,139 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>初步需求评估 · Initial Needs Assessment · NEXA Skills</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="../index.html">NEXA <span>Skills</span></a>
+<nav><a href="../index.html#skills">Skills</a><a href="../index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap"><article><h1>初步需求评估 · Initial Needs Assessment</h1>
+<h2>用途 · Purpose</h2>
+<p>在首次接触患者时，把病情、诉求、预算、时间、语言和出行条件梳理成一份标准需求档案，并按统一规则标出"适合推进 / 需补充信息 / 不建议跨境 / 紧急情况"，帮助顾问快速决定下一步。</p>
+<p>Turn a first enquiry into a standard needs profile and flag, by fixed rules, whether to proceed, collect more information, advise against travel, or treat as urgent.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>收到新咨询（消息、表单、电话记录）时</li>
+<li>患者情况发生变化，需要重新判断是否继续推进时</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enquiry</td>
+<td>患者或家属的原始咨询内容</td>
+<td>是</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>已有的病历摘要（来自 <code>medical-record-summary</code>）</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h2>步骤 · Steps</h2>
+<ol>
+<li><strong>提取需求档案</strong>（缺失写"未知"）：</li>
+<li>方向：七个方向之一，或"其他"</li>
+<li>病情概况与当前阶段（只引用患者或病历的说法）</li>
+<li>诉求类型：第二意见 / 手术 / 系统治疗 / 检查体检 / 康复调理 / 医美 / 其他</li>
+<li>期望时间、预算范围、付费方式（自费 / 保险）</li>
+<li>语言、国籍与所在地、是否有陪同人</li>
+<li>出行条件：能否乘飞机、是否需要轮椅或医疗转运</li>
+<li><strong>按规则标记</strong>（命中任一项即标记，按优先级从高到低）：</li>
+<li><strong>紧急情况</strong>：描述中有急性症状（如胸痛、呼吸困难、意识改变、大出血、突发肢体无力或言语不清）→ 立即建议当地急诊，不进入跨境流程。</li>
+<li><strong>不建议跨境</strong>：病情不稳定无法长途飞行；预期获益明显依赖本地持续治疗；所需治疗在中国对外籍患者不可提供（如需核实，写"待核实"）。</li>
+<li><strong>需补充信息</strong>：关键病历缺失，或方向、诉求无法判断。</li>
+<li><strong>适合推进</strong>：以上都不命中。</li>
+<li><strong>列出下一步</strong>：需要补充的材料、建议使用的下一个 Skill（如 <code>medical-record-summary</code>、<code>doctor-matching</code>）。</li>
+<li><strong>双语输出</strong>：顾问用中文，患者沟通稿用患者语言（v0.1 为英文）。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>【标记 / Flag】适合推进 / 需补充信息 / 不建议跨境 / 紧急情况
+【理由 / Reason】&lt;一到两句，引用依据&gt;
+
+【需求档案 / Needs profile】
+| 项目 | 内容 |
+
+【下一步 / Next steps】
+1. …
+
+【给患者的回复草稿 / Draft reply to patient】
+&lt;患者语言&gt;
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>不判断病情轻重、不预测疗效、不推荐治疗方式。"是否适合跨境"只是流程判断，最终由医生评估。</li>
+<li>命中"紧急情况"时，回复草稿第一句必须是建议立即就近就医。</li>
+<li>不因预算低而歧视性拒绝，只说明费用构成并提供可选方向。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本评估为服务流程判断，不构成医疗建议，一切以执业医生意见为准。This is a service triage, not medical advice.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><p><a class="btn" href="https://github.com/NEXALongevity/skillset/tree/main/skills/needs-assessment">在 GitHub 查看 / View on GitHub</a></p><h2>示例 Examples</h2><h2>01-ivf-proceed</h2><h1>示例 1：试管婴儿咨询，适合推进</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<pre><code>Hi, I'm 36 and my husband is 39, we live in Singapore. We've had 2 failed IVF cycles here. A friend did IVF in China. Can you help us find a good reproductive centre? Budget around SGD 30,000. We could come in February or March. We speak English and Mandarin.
+</code></pre>
+<h2>输出 Output</h2>
+<pre><code>【标记 / Flag】适合推进
+【理由 / Reason】诉求明确（生殖方向，曾两次试管失败），时间与预算已给出，无紧急或不宜出行情况。
+
+【需求档案 / Needs profile】
+| 项目 | 内容 |
+|---|---|
+| 方向 | 生殖 |
+| 病情概况 | 女方 36 岁，男方 39 岁；在新加坡两次 IVF 未成功（患者自述） |
+| 诉求类型 | 治疗（辅助生殖） |
+| 期望时间 | 2 至 3 月（按咨询日期推断为 2027 年，待确认） |
+| 预算 | 约 3 万新元，自费 |
+| 语言 | 英语、普通话 |
+| 国籍与所在地 | 所在地新加坡，国籍待确认 |
+| 出行条件 | 未提及限制 |
+
+【下一步 / Next steps】
+1. 收集材料：两次 IVF 的周期记录、双方近期检查（激素、精液分析等）、婚姻证明（中国辅助生殖通常要求，需与医院确认）
+2. 用 medical-record-summary 整理摘要
+3. 用 doctor-matching 匹配生殖方向候选中心
+
+【给患者的回复草稿 / Draft reply to patient】
+Thank you for reaching out. We can help you explore reproductive centres in China. To match you with suitable centres, could you share the records from your two IVF cycles and any recent test results for both of you? Please also confirm your nationality, as some documents (such as a marriage certificate) are usually required by Chinese fertility clinics. Final treatment decisions will be made with the doctors.
+</code></pre><h2>02-urgent</h2><h1>示例 2：出现急性症状，紧急情况</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<pre><code>我父亲在迪拜，去年做过心脏支架。这两天说胸口很闷、喘不上气，我们想下个月带他去北京复查，能帮忙安排阜外医院吗？
+</code></pre>
+<h2>输出 Output</h2>
+<pre><code>【标记 / Flag】紧急情况
+【理由 / Reason】有心脏支架史，近两天出现胸闷、呼吸困难，属于需要立即就医的急性症状。
+
+【需求档案 / Needs profile】
+| 项目 | 内容 |
+|---|---|
+| 方向 | 心脑血管 |
+| 病情概况 | 去年行心脏支架术；近两天胸闷、气短（家属转述） |
+| 诉求类型 | 复查 |
+| 期望时间 | 下个月 |
+| 所在地 | 迪拜 |
+| 出行条件 | 当前不宜安排长途出行 |
+
+【下一步 / Next steps】
+1. 立即建议患者在迪拜就近急诊或拨打当地急救电话（998）
+2. 病情稳定、当地医生评估可以出行后，再重新评估赴华复查
+3. 不进入医生匹配流程
+
+【给患者的回复草稿 / Draft reply to patient】
+您父亲目前胸闷、喘不上气，请马上带他去迪拜最近的医院急诊，或拨打当地急救电话 998，不要等到下个月。等当地医生处理、病情稳定并确认可以乘坐长途航班后，我们再帮您安排北京的复查。
+</code></pre></article></main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>

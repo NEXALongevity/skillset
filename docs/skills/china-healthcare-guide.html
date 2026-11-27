@@ -1,0 +1,122 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>中国医疗体系导览 · China Healthcare Guide · NEXA Skills</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="../index.html">NEXA <span>Skills</span></a>
+<nav><a href="../index.html#skills">Skills</a><a href="../index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap"><article><h1>中国医疗体系导览 · China Healthcare Guide</h1>
+<h2>用途 · Purpose</h2>
+<p>用患者听得懂的语言，介绍中国的医院分级、医院类型、国际医疗部、就诊流程与付费方式，帮助第一次考虑来中国就医的患者和海外合作伙伴建立基本认识。</p>
+<p>Explain, in plain language, how China's hospitals are graded and organised, what international departments do, and how a visit and payment work, for patients and partners considering care in China for the first time.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>患者问"中国的医院怎么选""三甲是什么意思""外国人能不能去公立医院"</li>
+<li>向海外合作伙伴做中国医疗介绍</li>
+<li>为某个方向（如肿瘤、生殖）的咨询做背景铺垫</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>question</td>
+<td>患者或合作伙伴的问题</td>
+<td>是</td>
+</tr>
+<tr>
+<td>audience</td>
+<td>patient / partner</td>
+<td>是</td>
+</tr>
+<tr>
+<td>language</td>
+<td>输出语言（v0.1：zh、en）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>direction</td>
+<td>关注方向，可选七个方向之一</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h2>步骤 · Steps</h2>
+<ol>
+<li>判断问题属于以下哪一块，只讲相关部分，不要一次全部倾倒：</li>
+<li><strong>医院分级</strong>：中国医院分为一、二、三级，每级再分甲、乙、丙等；三级甲等（三甲）是最高等级，通常是大城市的大型综合或专科医院，疑难重症多集中在这里。</li>
+<li><strong>医院类型</strong>：公立医院（主体，专家资源集中）、民营医院（服务体验好、等候短，水平差异大）、外资或中外合资医院（国际化服务、英语沟通、费用较高）。</li>
+<li><strong>国际医疗部与特需门诊</strong>：许多大型公立医院设有国际医疗部或特需门诊，提供外语服务、预约和独立收费；不是所有医院都有，服务范围各不相同。</li>
+<li><strong>就诊流程</strong>：预约挂号 → 门诊就诊 → 检查 → 复诊看结果 → 住院或治疗。中国门诊量大，名专家需要提前预约。</li>
+<li><strong>付费</strong>：外籍患者通常自费，住院一般需要预交金；部分国际医疗部可对接国际商业保险的直付，需事先确认。</li>
+<li><strong>中国优势</strong>（按方向）：引用对应专科知识包或公开排名说明，不做疗效比较或承诺。</li>
+<li>按 audience 调整：对患者讲"对我意味着什么"，对合作伙伴讲"如何对接"。</li>
+<li>每个关键说法都要可核实：涉及具体医院、政策、价格时，提示"以医院或官方最新公布为准"。</li>
+<li>用 <code>shared/glossary.yaml</code> 的标准译名，首次出现的术语括注解释。</li>
+<li>结尾给出下一步建议，例如使用"初步需求评估"或"医生与机构档案查询"Skill。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>&lt;一句话直接回答&gt;
+
+&lt;分点说明，每点不超过 3 句&gt;
+
+下一步 / Next step：&lt;建议&gt;
+
+&lt;标准医学声明&gt;
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>不评价某家具体医院"最好"，只引用公开名单。</li>
+<li>不给出具体价格数字，只说明费用构成和影响因素；需要报价时转"费用预估与报价"（v0.2）。</li>
+<li>不承诺可以预约到某位专家或某个时间。</li>
+<li>政策类信息（签证、收治外籍患者规定）只说明原则，并提示核实。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本 Skill 仅提供信息介绍，不构成医疗建议，一切以执业医生意见为准。This Skill provides general information only and is not medical advice.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><p><a class="btn" href="https://github.com/NEXALongevity/skillset/tree/main/skills/china-healthcare-guide">在 GitHub 查看 / View on GitHub</a></p><h2>示例 Examples</h2><h2>01-what-is-grade-3a</h2><h1>示例 1：患者问"三甲"是什么</h1>
+<blockquote>
+<p>虚构对话 / Fictional conversation</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>audience: patient · language: en</li>
+<li>question: "My advisor keeps saying 'Grade 3A hospital'. What does that mean and should I only go to one?"</li>
+</ul>
+<h2>输出 Output</h2>
+<p>A Grade 3A hospital (三级甲等, often shortened to "san-jia") is the highest level in China's official hospital grading system.</p>
+<ul>
+<li><strong>What the grade means.</strong> Chinese hospitals are graded 1, 2 or 3 by size and capability, and each level is split into A, B and C. Grade 3A hospitals are large hospitals, usually in major cities, with the most specialists, equipment and experience in complex cases.</li>
+<li><strong>Should you only go to one?</strong> For serious or complex conditions such as cancer or heart surgery, most patients choose a Grade 3A hospital or a specialist hospital known for that field. For check-ups, dental work or aesthetic treatment, a well-run private or international hospital can be a good fit and is often easier to book.</li>
+<li><strong>What it does not tell you.</strong> The grade describes the whole hospital, not a single department. A hospital's strength in your specific condition matters more, which is why we also look at public specialty rankings.</li>
+</ul>
+<p>Next step: tell us your condition and travel plans, and we will run an initial needs assessment.</p>
+<p><em>This is general information, not medical advice. Always follow a licensed physician.</em></p><h2>02-partner-briefing</h2><h1>示例 2：向海外合作伙伴说明如何对接</h1>
+<blockquote>
+<p>虚构场景 / Fictional scenario</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>audience: partner · language: zh</li>
+<li>question: "我们是一家马来西亚的转诊机构，想了解中国医院收国际患者一般怎么对接？"</li>
+</ul>
+<h2>输出 Output</h2>
+<p>一般通过医院的国际医疗部或特需门诊对接，由跨境医疗顾问协助准备材料和预约。</p>
+<ul>
+<li><strong>对接窗口</strong>：许多大型公立医院设有国际医疗部，提供外语接待、预约和独立收费；没有国际部的医院，通常通过特需门诊或医务部门对接。具体以各医院公布为准。</li>
+<li><strong>常见流程</strong>：提交病历摘要 → 医院评估或远程会诊 → 确认就诊时间 → 患者办理签证与行程 → 到院就诊或住院。</li>
+<li><strong>材料准备</strong>：中英文病历摘要、近期检查报告与影像原件、用药清单；建议由顾问统一整理成标准格式，可以明显减少医院往返沟通。</li>
+<li><strong>付费</strong>：外籍患者通常自费，住院需预交金；如需对接国际商业保险直付，要提前与医院确认是否支持。</li>
+<li><strong>合作关系</strong>：建议在合作中向患者说明转诊机构与医院之间的关系和收费方式，这是知情同意的一部分。</li>
+</ul>
+<p>下一步：可以用"医生与机构档案查询"按方向查看候选医院。</p>
+<p>本内容仅提供信息介绍，不构成医疗建议，一切以执业医生意见为准。</p></article></main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>

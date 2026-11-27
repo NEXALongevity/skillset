@@ -1,0 +1,112 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>医生与机构档案查询 · Hospital &amp; Doctor Lookup · NEXA Skills</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="../index.html">NEXA <span>Skills</span></a>
+<nav><a href="../index.html#skills">Skills</a><a href="../index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap"><article><h1>医生与机构档案查询 · Hospital &amp; Doctor Lookup</h1>
+<h2>用途 · Purpose</h2>
+<p>从本库经核实的知识库（<code>data/hospitals/</code>）中，按方向、城市、医院类型或排名检索医疗机构，返回带来源和核实日期的档案。v0.1 收录六个方向（中医除外）各前 10 家医院，取自复旦版专科声誉排行榜；中医、医生档案、民营医院和外资医院在 v0.2 加入。</p>
+<p>Search the verified knowledge base in <code>data/hospitals/</code> and return sourced profiles. v0.1 covers the top 10 hospitals in six directions (all but TCM) from the Fudan specialty reputation rankings; TCM, doctor profiles, private and foreign-invested hospitals come in v0.2.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>"上海哪些医院的肿瘤科比较强？"</li>
+<li>"Which hospitals in China are known for orthopedics?"</li>
+<li>为 <code>doctor-matching</code> 准备候选机构池</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>direction</td>
+<td>oncology / cardio-cerebrovascular / reproductive / checkup-longevity / tcm / orthopedics / aesthetics</td>
+<td>否</td>
+</tr>
+<tr>
+<td>city / province</td>
+<td>城市或省份</td>
+<td>否</td>
+</tr>
+<tr>
+<td>type</td>
+<td>public / private / foreign</td>
+<td>否</td>
+</tr>
+<tr>
+<td>keyword</td>
+<td>专长关键词，如"质子""肝移植"</td>
+<td>否</td>
+</tr>
+<tr>
+<td>language</td>
+<td>输出语言</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>至少提供 direction、city 或 keyword 中的一项。</p>
+<h2>步骤 · Steps</h2>
+<ol>
+<li>读取 <code>data/hospitals/&lt;direction&gt;.yaml</code>（未指定方向时读取全部文件）。</li>
+<li>按条件筛选；按 <code>ranking.rank</code> 升序排列。</li>
+<li>每条结果必须带出 <code>source_list</code>、<code>source_url</code>、<code>verified_on</code>。</li>
+<li>若 <code>verified_on</code> 距今超过 12 个月，在该条后标注"信息可能过时，请复核"。</li>
+<li>知识库里查不到时，明确说"本库 v0.1 暂未收录"，可以建议用户查阅公开名单，但<strong>不得根据模型记忆补充医院或医生</strong>。</li>
+<li>按 language 输出，医院名同时给出中英文。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>共找到 &lt;n&gt; 家（数据范围：本库 v0.1，&lt;方向&gt;）
+
+| 排名 | 医院 | 城市 | 优势科室 | 国际部 | 来源与核实日期 |
+
+说明：排名引自 &lt;source_list&gt;，仅反映该名单的评价，不代表本库推荐。
+&lt;标准医学声明&gt;
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>只返回知识库中的记录，不编造、不补充。</li>
+<li>不对医院做"最好""首选"之类评价；排名一律注明出处。</li>
+<li>不提供医院内部联系方式，只给官网或公开的国际部信息。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本 Skill 仅提供公开信息检索，不构成就医推荐，一切以执业医生意见为准。This Skill returns public information only and is not a medical recommendation.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><p><a class="btn" href="https://github.com/NEXALongevity/skillset/tree/main/skills/hospital-lookup">在 GitHub 查看 / View on GitHub</a></p><h2>示例 Examples</h2><h2>01-oncology-shanghai</h2><h1>示例 1：上海的肿瘤专科医院</h1>
+<h2>输入 Input</h2>
+<ul>
+<li>direction: oncology · city: 上海 · language: zh</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>共找到 1 家（数据范围：本库 v0.1，肿瘤学）
+
+| 排名 | 医院 | 城市 | 优势科室 | 国际部 | 来源与核实日期 |
+|---|---|---|---|---|---|
+| 3 | 复旦大学附属肿瘤医院 Fudan University Shanghai Cancer Center | 上海 | 肿瘤学 | 本库暂未收录 | 复旦版 2023 年度专科声誉排行榜；2026-11-27 |
+
+说明：排名引自复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》，仅反映该名单的评价，不代表本库推荐。本库 v0.1 只收录各方向前 10 家；上海其他设有肿瘤科的综合医院暂未收录，可查阅原榜单的提名医院。
+
+本内容仅提供公开信息检索，不构成就医推荐，一切以执业医生意见为准。
+</code></pre><h2>02-not-in-database</h2><h1>示例 2：知识库未收录时</h1>
+<h2>输入 Input</h2>
+<ul>
+<li>direction: tcm · language: en</li>
+<li>keyword: "acupuncture for chronic back pain"</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>No results. Traditional Chinese medicine (TCM) hospitals are not yet included in v0.1 of this library: the public ranking used for v0.1 (Fudan specialty reputation rankings) has no TCM category, and we only list hospitals from a named public source.
+
+TCM profiles are planned for v0.2. In the meantime, an advisor can check official sources such as hospital websites and national health authority announcements, and confirm details directly with the hospital.
+
+This is public information only and not a medical recommendation.
+</code></pre></article></main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>

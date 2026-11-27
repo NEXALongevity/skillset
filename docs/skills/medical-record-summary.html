@@ -1,0 +1,182 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>病历整理与医学翻译 · Medical Record Summary &amp; Translation · NEXA Skills</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="../index.html">NEXA <span>Skills</span></a>
+<nav><a href="../index.html#skills">Skills</a><a href="../index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap"><article><h1>病历整理与医学翻译 · Medical Record Summary &amp; Translation</h1>
+<h2>用途 · Purpose</h2>
+<p>把患者提供的零散、多语言病历（诊断书、检查报告、出院小结、用药清单）整理成一页标准病历摘要，中文在前、英文在后，让中国医生几分钟内看清病情与诉求，提高"接诊前病历材料一次通过率"。</p>
+<p>Turn scattered, multilingual records into a one-page standard summary (Chinese first, then English) that a Chinese doctor can review in minutes.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>向医院国际部或医生提交会诊、转诊申请之前</li>
+<li>运行"医生与方案匹配"之前</li>
+<li>患者陆续补充材料，需要更新摘要时</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>records</td>
+<td>病历文字或文件内容（可多份、多语言）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>request</td>
+<td>患者诉求：想看哪方面、期望的治疗或第二意见</td>
+<td>是</td>
+</tr>
+<tr>
+<td>consent_status</td>
+<td>是否已取得患者同意整理和传输其健康数据</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>consent_status 不是 yes 时，先提示取得同意（参见 <code>compliance-check</code>），可以继续整理但输出中标注"未取得同意，暂不可发送"。</p>
+<h2>步骤 · Steps</h2>
+<ol>
+<li><strong>清点材料</strong>：列出每份材料的类型、日期、语言、出具机构。</li>
+<li><strong>提取信息</strong>：按模板字段提取，只用材料中写明的内容。</li>
+<li><strong>统一术语</strong>：译名以 <code>shared/glossary.yaml</code> 为准；检查数值保留原单位，必要时括注换算。</li>
+<li><strong>时间线</strong>：按日期整理诊断与治疗经过。</li>
+<li><strong>缺失项</strong>：对照"医生通常需要的材料"列出缺失项，例如肿瘤需病理报告和分期、影像需原始 DICOM 文件。</li>
+<li><strong>去标识</strong>：摘要中只保留年龄、性别、国籍；姓名、证件号、联系方式不写入摘要正文。</li>
+<li><strong>双语输出</strong>：先中文，后英文，内容一致。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code># 病历摘要 / Case Summary
+材料来源：&lt;n 份，最近日期 YYYY-MM-DD&gt;   整理日期：YYYY-MM-DD   同意状态：&lt;已取得/未取得&gt;
+
+## 一、基本信息
+年龄 / 性别 / 国籍 / 常用语言
+
+## 二、主诉与诉求
+## 三、现病史（时间线）
+| 日期 | 事件（诊断、检查、治疗） | 机构 |
+## 四、关键检查结果
+## 五、既往史、过敏史、用药史
+## 六、已有诊断（原文 + 译文，注明出具机构）
+## 七、缺失材料
+## 八、待确认
+
+---
+# Case Summary (English)
+&lt;同上结构&gt;
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>只整理和翻译，不下诊断、不推断分期、不解读影像。原文没有的结论一律不写。</li>
+<li>原文字迹不清、自相矛盾或单位不明时，写入"待确认"，不猜测。</li>
+<li>不在摘要正文中保留可识别身份的信息。</li>
+<li>示例与测试只用虚构病例。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本摘要由 AI 辅助整理，仅供医生参考，不构成诊断；请以原始病历和执业医生意见为准。This summary is AI-assisted, for clinician reference only, and is not a diagnosis.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><p><a class="btn" href="https://github.com/NEXALongevity/skillset/tree/main/skills/medical-record-summary">在 GitHub 查看 / View on GitHub</a></p><h2>示例 Examples</h2><h2>01-breast-cancer-thai</h2><h1>示例 1：泰国乳腺癌患者求第二意见</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>consent_status: yes</li>
+<li>request: "Second opinion on whether surgery or neoadjuvant therapy first; considering treatment in Guangzhou."</li>
+<li>records（节选）:</li>
+<li>Intake form: female, 47, Thai national, speaks Thai and English.</li>
+<li>Mammogram report, Bangkok, 2026-09-02 (English): left breast mass 2.8 cm, BI-RADS 5.</li>
+<li>Core biopsy pathology, 2026-09-10 (English): invasive ductal carcinoma, grade 2, ER 90%+, PR 60%+, HER2 1+, Ki-67 25%.</li>
+<li>Clinic note (Thai), 2026-09-15: axillary ultrasound, one suspicious left axillary lymph node; surgeon recommends surgery.</li>
+<li>Medications: metformin 500 mg twice daily. Allergy: penicillin (rash).</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code># 病历摘要 / Case Summary
+材料来源：4 份，最近日期 2026-09-15   整理日期：2026-11-27   同意状态：已取得
+
+## 一、基本信息
+47 岁 / 女 / 泰国 / 泰语、英语
+
+## 二、主诉与诉求
+左乳肿物，已活检确诊。希望获得第二意见：先手术还是先行新辅助治疗；考虑赴广州治疗。
+
+## 三、现病史（时间线）
+| 日期 | 事件 | 机构 |
+|---|---|---|
+| 2026-09-02 | 乳腺 X 线：左乳肿物 2.8 cm，BI-RADS 5 类 | 曼谷某医院 |
+| 2026-09-10 | 穿刺活检病理：浸润性导管癌 | 同上 |
+| 2026-09-15 | 腋窝超声：左腋窝 1 枚可疑淋巴结；外科建议手术 | 同上 |
+
+## 四、关键检查结果
+- 病理：浸润性导管癌，组织学 2 级；ER 90%+，PR 60%+，HER2 1+，Ki-67 25%
+
+## 五、既往史、过敏史、用药史
+- 用药：二甲双胍 500 mg，每日 2 次
+- 过敏：青霉素（皮疹）
+- 既往史：材料未提及
+
+## 六、已有诊断
+- Invasive ductal carcinoma, left breast（左乳浸润性导管癌）— 曼谷某医院病理科
+
+## 七、缺失材料
+- 乳腺 MRI 或超声原始影像（DICOM）
+- 腋窝淋巴结是否穿刺及结果
+- 全身分期检查（如胸部 CT、骨扫描），如已做
+- 糖尿病相关近期化验（如糖化血红蛋白）
+
+## 八、待确认
+- 泰文门诊记录中淋巴结大小未写明
+- 二甲双胍的用药原因（推测为糖尿病，需患者确认）
+
+---
+# Case Summary (English)
+&lt;结构同上，英文版略&gt;
+</code></pre>
+<p>本摘要由 AI 辅助整理，仅供医生参考，不构成诊断。</p><h2>02-no-consent</h2><h1>示例 2：未取得同意时的处理</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>consent_status: unknown</li>
+<li>request: "Knee replacement in Shanghai, please summarise."</li>
+<li>records: X-ray report (English, Sydney, 2026-10-05): severe right knee osteoarthritis, Kellgren-Lawrence grade 4.</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>⚠ 未取得患者同意，暂不可发送。请先按 compliance-check 取得书面同意，写明接收医院、用途与数据范围。
+
+# 病历摘要 / Case Summary
+材料来源：1 份，最近日期 2026-10-05   整理日期：2026-11-27   同意状态：未取得
+
+## 一、基本信息
+年龄、性别：材料未提供 / 国籍：澳大利亚（据报告出具地推测，待确认）
+
+## 二、主诉与诉求
+希望在上海行膝关节置换。
+
+## 三、现病史（时间线）
+| 日期 | 事件 | 机构 |
+|---|---|---|
+| 2026-10-05 | X 线：右膝重度骨关节炎，K-L 分级 4 级 | 悉尼某影像中心 |
+
+## 七、缺失材料
+- 年龄、性别、身高体重
+- 既往史、用药史（尤其抗凝药）、过敏史
+- 骨科门诊意见、既往保守治疗经过
+- 心肺功能等术前评估资料（如有）
+
+## 八、待确认
+- 国籍与常用语言
+</code></pre>
+<p>本摘要由 AI 辅助整理，仅供医生参考，不构成诊断。</p></article></main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>

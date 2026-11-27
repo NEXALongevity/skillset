@@ -1,0 +1,203 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>签证与行程规划 · Visa &amp; Itinerary Planning · NEXA Skills</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="../index.html">NEXA <span>Skills</span></a>
+<nav><a href="../index.html#skills">Skills</a><a href="../index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap"><article><h1>签证与行程规划 · Visa &amp; Itinerary Planning</h1>
+<h2>用途 · Purpose</h2>
+<p>在医院与就诊时间初步确定后，为患者及陪同人生成入境材料清单和按天排列的就医行程，把就诊、检查、治疗、恢复与返程衔接起来，避免因签证或行程问题耽误就医。</p>
+<p>Once the hospital and dates are set, produce an entry-document checklist and a day-by-day itinerary that links appointments, tests, treatment, recovery and the flight home.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>医院确认接收、就诊日期基本确定后</li>
+<li>治疗计划变化（如住院延长）需要调整行程时</li>
+<li>医美、牙科等需要多次往返的项目，规划分次行程时</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nationality</td>
+<td>患者及陪同人的国籍与护照类型</td>
+<td>是</td>
+</tr>
+<tr>
+<td>departure_city</td>
+<td>出发城市</td>
+<td>是</td>
+</tr>
+<tr>
+<td>hospital / city</td>
+<td>目标医院与城市</td>
+<td>是</td>
+</tr>
+<tr>
+<td>treatment_plan</td>
+<td>医院给出的就诊安排：门诊、检查、住院天数、术后复查时间</td>
+<td>是</td>
+</tr>
+<tr>
+<td>mobility</td>
+<td>行动能力：正常 / 需轮椅 / 需医疗转运</td>
+<td>是</td>
+</tr>
+<tr>
+<td>companions</td>
+<td>陪同人数</td>
+<td>否</td>
+</tr>
+<tr>
+<td>budget_level</td>
+<td>住宿档次：经济 / 舒适 / 高端</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h2>步骤 · Steps</h2>
+<ol>
+<li><strong>入境方式（必须核实）</strong>：根据国籍列出可能适用的入境方式（如申请签证、单方面免签、过境免签），并明确写"以中国驻外使领馆和国家移民管理局最新公布为准"。停留时长需覆盖整个治疗周期加上恢复缓冲；若可能超出免签停留期，建议办理签证。</li>
+<li><strong>材料清单</strong>：护照有效期（建议入境时剩余 6 个月以上）、签证申请所需材料、医院出具的就诊邀请或预约确认（如医院可提供）、病历摘要、医疗保险证明、往返机票与住宿预订。</li>
+<li><strong>行程排期</strong>：</li>
+<li>抵达日不安排就诊，留出休息与倒时差</li>
+<li>门诊和检查之间留出出报告的时间（向医院确认）</li>
+<li>手术或住院后按医院建议的恢复期加至少 1 至 2 天缓冲再安排返程</li>
+<li>需轮椅或转运时，标注航空公司特殊协助申请和医院接送</li>
+<li><strong>住宿与交通</strong>：建议住在医院附近（标注"步行或打车距离待确认"），说明支付方式准备（外卡、移动支付绑定外卡）、手机网络与常用应用。</li>
+<li><strong>紧急信息</strong>：列出中国急救电话 120、所在地使领馆（提示查询具体地址）、医院国际部联系方式（来自知识库）。</li>
+<li><strong>双语输出</strong>：给顾问的中文版和给患者的英文版。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>【入境方式 / Entry options】（以官方最新规定为准）
+【材料清单 / Document checklist】☐ …
+【行程 / Itinerary】
+| 日期 | 第几天 | 安排 | 地点 | 备注 |
+【住宿与交通 / Stay &amp; transport】
+【紧急信息 / Emergency】
+【待确认 / To confirm】
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>签证与免签政策变化快，不凭记忆断言某国一定免签或可停留多少天；只列出选项并要求核实。</li>
+<li>不代办签证、不填写官方表格中的个人信息。</li>
+<li>不安排违背医生建议的行程，如术后过早乘机；医院未给出恢复期时写入"待确认"。</li>
+<li>不推荐具体航班或酒店品牌，只给选择标准。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本行程为服务规划，不构成医疗或法律建议；出行与恢复安排以执业医生意见为准，入境政策以官方公布为准。This itinerary is a service plan, not medical or legal advice.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><p><a class="btn" href="https://github.com/NEXALongevity/skillset/tree/main/skills/visa-itinerary">在 GitHub 查看 / View on GitHub</a></p><h2>示例 Examples</h2><h2>01-knee-replacement-australia</h2><h1>示例 1：澳大利亚患者赴上海做膝关节置换</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>nationality: 患者澳大利亚护照；陪同人（配偶）澳大利亚护照</li>
+<li>departure_city: 悉尼</li>
+<li>hospital / city: 上海某三甲医院骨科（国际医疗部）</li>
+<li>treatment_plan: 3 月 9 日门诊与术前检查；3 月 10 日入院；3 月 12 日手术；术后住院约 7 天；出院后第 7 天复查伤口</li>
+<li>mobility: 正常（术后需助行器）</li>
+<li>companions: 1</li>
+<li>budget_level: 舒适</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【入境方式 / Entry options】（以中国驻澳使领馆和国家移民管理局最新公布为准）
+- 选项 A：申请签证，停留期覆盖约 4 周
+- 选项 B：若届时澳大利亚护照仍适用单方面免签，需核实单次停留上限是否覆盖全部行程（本行程约 25 天）
+- 建议：行程较长且有术后不确定性，优先考虑签证，或确认免签停留期留有余量
+
+【材料清单 / Document checklist】
+☐ 护照（入境时剩余有效期 6 个月以上）× 2
+☐ 签证申请材料（如选择签证）
+☐ 医院预约确认或邀请函（向国际医疗部申请）
+☐ 中英文病历摘要与近期影像
+☐ 旅行或医疗保险证明（确认是否覆盖境外择期手术）
+☐ 往返机票、住宿预订
+☐ 用药清单（含正在服用的抗凝药，如有）
+
+【行程 / Itinerary】
+| 日期 | 第几天 | 安排 | 地点 | 备注 |
+|---|---|---|---|---|
+| 3/7 | 1 | 悉尼飞上海，入住酒店 | 酒店 | 不安排就诊 |
+| 3/8 | 2 | 休息、熟悉医院路线、开通支付 | 医院周边 | |
+| 3/9 | 3 | 门诊 + 术前检查 | 医院国际医疗部 | 空腹要求向医院确认 |
+| 3/10 | 4 | 入院 | 医院 | 准备预交金 |
+| 3/12 | 6 | 手术 | 医院 | |
+| 3/13–3/19 | 7–13 | 住院康复 | 医院 | 陪同人住酒店或陪护（向医院确认） |
+| 3/19 | 13 | 出院，回酒店 | 酒店 | 准备助行器，确认酒店无障碍 |
+| 3/20–3/25 | 14–19 | 恢复、按医嘱康复训练 | 酒店 | |
+| 3/26 | 20 | 伤口复查 | 医院 | 出院后第 7 天 |
+| 3/26–3/30 | 20–24 | 缓冲期 | 酒店 | 由医生确认可以长途飞行 |
+| 3/31 | 25 | 返程悉尼 | | 申请航空公司特殊协助（如需要轮椅） |
+
+【住宿与交通 / Stay &amp; transport】
+- 选医院附近、有电梯和无障碍设施的酒店，距离以打车 10 分钟内为宜（待确认）
+- 支付：准备可在中国使用的国际信用卡，或在移动支付应用中绑定外卡
+- 交通：术后乘出租车或医院接送，避免地铁高峰
+
+【紧急信息 / Emergency】
+- 中国急救电话：120
+- 澳大利亚驻上海总领事馆：请查询官网获取最新地址与电话
+- 医院国际医疗部：见本库医院档案
+
+【待确认 / To confirm】
+- 术后多久可以乘坐长途航班
+- 陪同人能否在病房陪护
+</code></pre><h2>02-aesthetic-dental-multi-trip</h2><h1>示例 2：种植牙分次行程</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>nationality: 马来西亚护照</li>
+<li>departure_city: 吉隆坡</li>
+<li>hospital / city: 广州某口腔专科医院</li>
+<li>treatment_plan: 第一次：检查与种植体植入（约 3 天）；第二次：3 至 6 个月后安装牙冠（约 3 天）</li>
+<li>mobility: 正常</li>
+<li>budget_level: 经济</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【入境方式 / Entry options】（以官方最新公布为准）
+- 两次行程各约 4 至 5 天。核实马来西亚护照当前是否适用免签入境及单次停留上限；如不适用，按需申请签证
+- 两次行程间隔 3 至 6 个月，需分别核实入境时的政策
+
+【材料清单 / Document checklist】
+☐ 护照（剩余有效期 6 个月以上）
+☐ 医院预约确认
+☐ 近期口腔 X 光或 CBCT（如有）
+☐ 用药与过敏清单
+☐ 往返机票、住宿预订
+
+【行程 / Itinerary】
+第一次（植入）
+| 第几天 | 安排 | 备注 |
+|---|---|---|
+| 1 | 吉隆坡飞广州，入住 | |
+| 2 | 口腔检查、影像 | |
+| 3 | 种植体植入 | 术后饮食按医嘱 |
+| 4 | 复查 | 由医生确认可以返程 |
+| 5 | 返程 | |
+
+第二次（安装牙冠，3 至 6 个月后，以医生通知为准）
+| 第几天 | 安排 |
+|---|---|
+| 1 | 抵达广州 |
+| 2 | 取模或扫描 |
+| 3 | 戴冠、调整 |
+| 4 | 返程（若需再次调整，预留 1 天） |
+
+【待确认 / To confirm】
+- 第二次就诊的具体间隔，取决于骨结合情况
+- 牙冠制作周期，是否需要第二次行程延长
+</code></pre></article></main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>

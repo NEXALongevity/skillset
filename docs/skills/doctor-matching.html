@@ -1,0 +1,145 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>医生与方案匹配 · Doctor &amp; Treatment Matching · NEXA Skills</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="../index.html">NEXA <span>Skills</span></a>
+<nav><a href="../index.html#skills">Skills</a><a href="../index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap"><article><h1>医生与方案匹配 · Doctor &amp; Treatment Matching</h1>
+<h2>用途 · Purpose</h2>
+<p>根据患者的需求档案和病历摘要，从本库知识库中筛出 3 至 5 家候选机构，逐一说明匹配理由、需要确认的问题和信息来源，帮助顾问在 48 小时内给出有依据的候选方案。v0.1 只匹配到医院层面；医生档案在 v0.2 加入后，再细化到专家。</p>
+<p>Shortlist 3-5 candidate hospitals from the knowledge base, each with reasons, open questions and sources. v0.1 matches at hospital level; doctor-level matching arrives with doctor profiles in v0.2.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li><code>needs-assessment</code> 标记为"适合推进"之后</li>
+<li>患者要求在几家医院之间比较时</li>
+<li>首选机构无法接收，需要替补候选时</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>needs_profile</td>
+<td><code>needs-assessment</code> 输出的需求档案</td>
+<td>是</td>
+</tr>
+<tr>
+<td>case_summary</td>
+<td><code>medical-record-summary</code> 输出的摘要</td>
+<td>建议</td>
+</tr>
+<tr>
+<td>preferences</td>
+<td>城市偏好、语言、是否需要国际部、预算上限</td>
+<td>否</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>已排除的机构</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h2>步骤 · Steps</h2>
+<ol>
+<li><strong>确定方向</strong>：从需求档案取方向；跨方向时（如肿瘤合并心脏病）分别检索并标注。</li>
+<li><strong>建候选池</strong>：调用 <code>hospital-lookup</code> 取该方向全部记录，去掉 exclude。</li>
+<li><strong>逐项打分</strong>（每项 0 至 2 分，写明依据）：</li>
+<li>专科匹配：<code>strengths</code> 或 <code>ranking.specialty</code> 是否覆盖患者的具体病种或诉求</li>
+<li>公开排名：方向内排名前 3 得 2 分，4 至 10 得 1 分</li>
+<li>国际化服务：有公开的国际医疗部得 2 分，有特需门诊得 1 分，未知 0 分</li>
+<li>地理与交通：是否在患者偏好城市，或是否有直飞患者所在地的国际航班（不确定写"待确认"，给 0 分）</li>
+<li>信息新鲜度：<code>verified_on</code> 在 12 个月内得 2 分，否则 0 分</li>
+<li><strong>排序</strong>：按总分排序，取前 3 至 5 家；同分时优先排名更高者。</li>
+<li><strong>列出待确认问题</strong>：每家机构需要向医院确认的事项，如是否接收外籍患者、等待时间、大致费用区间、语言支持。</li>
+<li><strong>给出下一步</strong>：建议先向哪 1 至 2 家提交病历摘要，或安排远程会诊。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>【匹配结果 / Shortlist】基于本库 v0.1 数据（&lt;方向&gt;，共 &lt;n&gt; 家候选）
+
+| 顺序 | 医院 | 城市 | 得分 | 匹配理由 | 来源与核实日期 |
+
+【逐家说明 / Notes】
+1. &lt;医院&gt;
+   - 匹配点：…
+   - 待确认：…
+
+【下一步 / Next step】…
+
+【说明】打分规则见本 Skill，排名引自公开名单，仅作初筛参考，不代表疗效比较。
+&lt;标准医学声明&gt;
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>候选只能来自知识库；库里没有合适机构时如实说明，不凭记忆补充。</li>
+<li>不比较疗效、不承诺能约到专家或某个时间、不报具体价格。</li>
+<li>不根据机构是否付费合作调整排序；若存在合作关系，须在输出中如实披露。</li>
+<li>匹配结果须经顾问复核后才发给患者。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本结果为服务初筛，不构成就医推荐或医疗建议，最终方案以执业医生评估为准。This is a service shortlist, not a medical recommendation.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><p><a class="btn" href="https://github.com/NEXALongevity/skillset/tree/main/skills/doctor-matching">在 GitHub 查看 / View on GitHub</a></p><h2>示例 Examples</h2><h2>01-knee-replacement</h2><h1>示例 1：澳大利亚患者膝关节置换候选医院</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>needs_profile：方向 骨科；诉求 右膝关节置换；偏好城市 上海或北京；语言 英语；预算 自费，中等；时间 2027 年 3 月</li>
+<li>case_summary：右膝重度骨关节炎（K-L 4 级），既往史与用药史待补充</li>
+<li>preferences：需要英语服务</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【匹配结果 / Shortlist】基于本库 v0.1 数据（骨科，共 10 家候选，偏好城市内 7 家）
+
+| 顺序 | 医院 | 城市 | 得分 | 匹配理由 | 来源与核实日期 |
+|---|---|---|---|---|---|
+| 1 | 北京积水潭医院 | 北京 | 7 | 骨科排名第 1，在偏好城市 | 复旦版 2023 骨科；2026-11-27 |
+| 2 | 上海市第六人民医院 | 上海 | 7 | 骨科排名第 2，在偏好城市 | 同上 |
+| 3 | 中国人民解放军总医院 | 北京 | 7 | 骨科排名第 3，在偏好城市 | 同上 |
+| 4 | 北京大学第三医院 | 北京 | 6 | 骨科排名第 4，在偏好城市 | 同上 |
+| 5 | 中国医学科学院北京协和医院 | 北京 | 6 | 骨科排名第 5，在偏好城市 | 同上 |
+
+打分明细（每项 0–2，满分 10）：专科匹配 1（骨科覆盖关节置换，亚专科强项待确认）＋公开排名（前 3 得 2，第 4–10 得 1）＋国际化服务 0（本库 v0.1 未收录国际部信息）＋地理 2（在偏好城市）＋信息新鲜度 2。
+
+【逐家说明 / Notes】
+1. 北京积水潭医院
+   - 匹配点：骨科专科声誉排名第 1
+   - 待确认：是否设国际医疗部或特需门诊、英语服务、外籍患者关节置换的等待时间与费用区间
+2. 上海市第六人民医院
+   - 匹配点：骨科排名第 2，位于上海
+   - 待确认：同上
+
+【下一步 / Next step】先补全既往史与用药史，再向积水潭和上海六院各提交一份病历摘要，询问是否接收及排期。
+
+【说明】打分规则见本 Skill，排名引自公开名单，仅作初筛参考，不代表疗效比较。
+本结果为服务初筛，不构成就医推荐或医疗建议，最终方案以执业医生评估为准。
+</code></pre><h2>02-no-suitable-match</h2><h1>示例 2：库内没有合适候选</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>needs_profile：方向 中医；诉求 针灸调理失眠；偏好城市 成都</li>
+<li>exclude：无</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【匹配结果 / Shortlist】本库 v0.1 暂无中医方向的机构数据，无法给出候选。
+
+【下一步 / Next step】
+- 告知患者：本库计划在 v0.2 收录中医医院，届时可再匹配
+- 顾问可先通过医院官网等官方渠道了解成都的中医医院，并直接向医院确认是否接收外籍患者
+- 不建议凭记忆推荐具体医院或医生
+
+本结果为服务初筛，不构成就医推荐或医疗建议。
+</code></pre></article></main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>

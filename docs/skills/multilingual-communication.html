@@ -1,0 +1,160 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>多语言沟通 · Multilingual Communication · NEXA Skills</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="../style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="../index.html">NEXA <span>Skills</span></a>
+<nav><a href="../index.html#skills">Skills</a><a href="../index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap"><article><h1>多语言沟通 · Multilingual Communication</h1>
+<h2>用途 · Purpose</h2>
+<p>在中国医生、医院与国际患者之间，提供术语统一、语气得体的医学笔译与口译脚本。所有译名以 <code>shared/glossary.yaml</code> 为准，保证不同顾问、不同 Skill 的译法一致。</p>
+<p>Provide consistent medical translation and interpreting scripts between Chinese clinicians and international patients, using the shared glossary so every advisor and Skill uses the same terms.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>把患者的咨询消息译成中文，发给医院国际部或医生</li>
+<li>把医生的回复、检查要求、术前须知译给患者</li>
+<li>为远程会诊或现场就诊准备双语口译脚本与常用语</li>
+<li>检查一段已有译文的术语是否与术语表一致</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>source_text</td>
+<td>待翻译的原文</td>
+<td>是</td>
+</tr>
+<tr>
+<td>source_lang / target_lang</td>
+<td>源语言与目标语言（v0.1：zh、en）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>audience</td>
+<td>读者：patient（患者）/ clinician（医生）/ hospital-admin（医院行政）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>purpose</td>
+<td>用途：message（消息）、notice（须知）、script（口译脚本）、review（译文审校）</td>
+<td>否，默认 message</td>
+</tr>
+</tbody>
+</table>
+<h2>步骤 · Steps</h2>
+<ol>
+<li><strong>识别术语</strong>：找出原文中的医学、医院与行政术语，在 <code>shared/glossary.yaml</code> 中查找对应译名。</li>
+<li><strong>翻译</strong>：按目标读者调整语气。</li>
+<li>给患者：用平实语言，专业术语首次出现时括注解释。</li>
+<li>给医生：保留专业表达和缩写，信息简洁、按临床习惯排序。</li>
+<li>给医院行政：突出时间、材料、费用、联系人。</li>
+<li><strong>保真检查</strong>：数字、剂量、日期、检查名称、左右侧位逐项核对原文，不增删医学信息。</li>
+<li><strong>标注不确定处</strong>：原文含糊、缺字或术语表中没有的词，用 <code>[待确认: …]</code> 标出，不自行猜测。</li>
+<li><strong>新术语</strong>：列出术语表中缺少的术语及建议译名，供维护人员补充。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>【译文 / Translation】
+&lt;译文正文&gt;
+
+【术语对照 / Terms used】
+- &lt;中文&gt; = &lt;English&gt;
+
+【待确认 / To confirm】
+- &lt;不确定之处，若无写&quot;无 / None&quot;&gt;
+
+【建议新增术语 / Suggested glossary additions】
+- &lt;若无写&quot;无 / None&quot;&gt;
+</code></pre>
+<p>口译脚本（purpose = script）按"场景 → 顾问说 / 医生说 / 患者可能说"的三栏表格输出。</p>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>只翻译，不改写医学内容，不补充原文没有的诊断或建议。</li>
+<li>不翻译、不传播含患者身份信息的内容，除非已取得患者同意；示例中使用虚构信息。</li>
+<li>涉及用药剂量、手术方式、风险告知时，在输出末尾提示"请由医生或专业医学译员复核"。</li>
+<li>术语表与原文冲突时以术语表为准，并在"待确认"中说明。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本 Skill 仅提供语言支持，不构成医疗建议，医疗决定以执业医生意见为准。This Skill provides language support only and is not medical advice. Always follow a licensed physician.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><p><a class="btn" href="https://github.com/NEXALongevity/skillset/tree/main/skills/multilingual-communication">在 GitHub 查看 / View on GitHub</a></p><h2>示例 Examples</h2><h2>01-patient-message-to-hospital</h2><h1>示例 1：患者咨询译成中文发给医院国际部</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>source_lang: en → target_lang: zh</li>
+<li>audience: hospital-admin</li>
+<li>purpose: message</li>
+</ul>
+<pre><code>Hello, my father (68) was diagnosed with stage III non-small cell lung cancer in Jakarta last month. He has a CT scan and pathology report. We would like a remote consultation with a lung cancer specialist first, and if suitable, come to Shanghai for treatment in January. He only speaks Bahasa and some English. Is there an international department that can help?
+</code></pre>
+<h2>输出 Output</h2>
+<pre><code>【译文 / Translation】
+您好！我父亲（68 岁）上月在雅加达确诊为非小细胞肺癌 III 期，现有 CT 影像和病理报告。我们希望先与肺癌专科专家进行一次远程会诊，如评估适合，计划于 1 月赴上海治疗。患者仅会印尼语和少量英语。请问贵院国际医疗部能否协助安排？
+
+【术语对照 / Terms used】
+- 非小细胞肺癌 = non-small cell lung cancer
+- 分期 = staging（III 期 = stage III）
+- 病理报告 = pathology report
+- 远程会诊 = remote (tele-)consultation
+- 国际医疗部 = international medical department
+
+【待确认 / To confirm】
+- 是否需要印尼语口译，还是英语口译即可
+- CT 与病理报告的日期和语言
+
+【建议新增术语 / Suggested glossary additions】
+- 非小细胞肺癌 = non-small cell lung cancer (NSCLC)
+</code></pre><h2>02-preop-notice-to-patient</h2><h1>示例 2：术前须知译给患者</h1>
+<blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>source_lang: zh → target_lang: en</li>
+<li>audience: patient</li>
+<li>purpose: notice</li>
+</ul>
+<pre><code>患者拟于 3 月 12 日行右膝关节置换术。请于 3 月 10 日上午 8 点前空腹到国际医疗部办理住院，携带护照、既往影像资料和正在服用的药物清单。如正在服用阿司匹林等抗凝药物，请提前告知主治医师。预交金 5 万元，可刷卡。
+</code></pre>
+<h2>输出 Output</h2>
+<pre><code>【译文 / Translation】
+Your right knee replacement surgery is planned for 12 March.
+
+Please come to the International Medical Department before 8:00 a.m. on 10 March to be admitted. Do not eat or drink before you arrive (fasting).
+
+Please bring:
+- your passport
+- your previous imaging (X-ray, MRI, CT) files
+- a list of all medicines you are taking
+
+If you take aspirin or any other blood-thinning medicine, tell your attending physician before admission.
+
+An admission deposit of RMB 50,000 is required. Card payment is accepted.
+
+【术语对照 / Terms used】
+- 关节置换 = joint replacement
+- 住院 = inpatient admission
+- 国际医疗部 = international medical department
+- 主治医师 = attending physician
+- 预交金 = admission deposit
+
+【待确认 / To confirm】
+- &quot;空腹&quot;的具体时长（如术前 8 小时禁食禁水），请向医院确认
+- 可接受的银行卡类型（国际信用卡是否可用）
+
+【建议新增术语 / Suggested glossary additions】
+- 抗凝药物 = anticoagulant (blood-thinning) medicine
+
+⚠ 涉及用药与手术须知，请由医生或专业医学译员复核。
+</code></pre></article></main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>

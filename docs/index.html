@@ -1,0 +1,32 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NEXA Medical Travel Skills · 跨境医疗旅游 Skills 库</title>
+<meta name="description" content="Open-source AI Skills for cross-border medical travel to China, by NEXA Longevity.">
+<link rel="stylesheet" href="style.css"></head><body>
+<header><div class="wrap"><a class="brand" href="index.html">NEXA <span>Skills</span></a>
+<nav><a href="index.html#skills">Skills</a><a href="index.html#data">数据 Data</a><a href="https://github.com/NEXALongevity/skillset">GitHub</a></nav></div></header>
+<main class="wrap">
+<section class="hero"><span class="tag">v0.1 · Open source</span>
+<h1>跨境医疗旅游 Skills 库<br>Medical Travel Skills for China</h1>
+<p>一套开源的 AI Skills，帮助跨境医疗从业人员为国际患者找到中国合适的医生、医院与治疗方案，并精准、及时地完成赴华就医。</p>
+<p>Open-source AI Skills that help medical travel professionals guide international patients to the right hospitals and treatments in China.</p>
+<p><b>Longevity as a Choice.</b></p>
+<a class="btn" href="https://github.com/NEXALongevity/skillset">GitHub</a><a class="btn ghost" href="#skills">浏览 Skills</a></section>
+
+<h2 id="skills">Skills（8）</h2><p class="sub">按患者旅程组织：了解 → 评估 → 匹配 → 就医，另有贯穿全程的支持。</p>
+<div class="grid"><a class="card" href="skills/china-healthcare-guide.html"><div class="stage">了解 · Learn</div><h3>中国医疗体系导览 · China Healthcare Guide</h3><p>用患者听得懂的语言，介绍中国的医院分级、医院类型、国际医疗部、就诊流程与付费方式，帮助第一次考虑来中国就医的患者和海外合作伙伴建立基本认识。</p></a><a class="card" href="skills/hospital-lookup.html"><div class="stage">了解 · Learn</div><h3>医生与机构档案查询 · Hospital &amp; Doctor Lookup</h3><p>从本库经核实的知识库（data/hospitals/）中，按方向、城市、医院类型或排名检索医疗机构，返回带来源和核实日期的档案。v0.1 收录六个方向（中医除外）各前 10 家医院，取自复旦版专科声誉排行榜；中医、医生档案、民营医院和外资医院在 v0.2 加入。</p></a><a class="card" href="skills/medical-record-summary.html"><div class="stage">评估 · Assess</div><h3>病历整理与医学翻译 · Medical Record Summary &amp; Translation</h3><p>把患者提供的零散、多语言病历（诊断书、检查报告、出院小结、用药清单）整理成一页标准病历摘要，中文在前、英文在后，让中国医生几分钟内看清病情与诉求，提高&quot;接诊前病历材料一次通过率&quot;。</p></a><a class="card" href="skills/needs-assessment.html"><div class="stage">评估 · Assess</div><h3>初步需求评估 · Initial Needs Assessment</h3><p>在首次接触患者时，把病情、诉求、预算、时间、语言和出行条件梳理成一份标准需求档案，并按统一规则标出&quot;适合推进 / 需补充信息 / 不建议跨境 / 紧急情况&quot;，帮助顾问快速决定下一步。</p></a><a class="card" href="skills/doctor-matching.html"><div class="stage">匹配 · Match</div><h3>医生与方案匹配 · Doctor &amp; Treatment Matching</h3><p>根据患者的需求档案和病历摘要，从本库知识库中筛出 3 至 5 家候选机构，逐一说明匹配理由、需要确认的问题和信息来源，帮助顾问在 48 小时内给出有依据的候选方案。v0.1 只匹配到医院层面；医生档案在 v0.2 加入后，再细化到专家。</p></a><a class="card" href="skills/visa-itinerary.html"><div class="stage">就医 · Travel</div><h3>签证与行程规划 · Visa &amp; Itinerary Planning</h3><p>在医院与就诊时间初步确定后，为患者及陪同人生成入境材料清单和按天排列的就医行程，把就诊、检查、治疗、恢复与返程衔接起来，避免因签证或行程问题耽误就医。</p></a><a class="card" href="skills/compliance-check.html"><div class="stage">全程 · All stages</div><h3>合规与风险检查 · Compliance &amp; Risk Check</h3><p>在对外发送或发布之前，按统一清单检查内容与流程是否存在隐私、知情同意、医学边界和宣传用语方面的风险，并给出修改建议。它是自检工具，不替代律师或监管部门的意见。</p></a><a class="card" href="skills/multilingual-communication.html"><div class="stage">全程 · All stages</div><h3>多语言沟通 · Multilingual Communication</h3><p>在中国医生、医院与国际患者之间，提供术语统一、语气得体的医学笔译与口译脚本。所有译名以 shared/glossary.yaml 为准，保证不同顾问、不同 Skill 的译法一致。</p></a></div>
+
+<h2>如何使用 · How to use</h2>
+<p class="sub">每个 Skill 是一个包含 SKILL.md 的目录，可直接放入 Claude Code、Claude.ai 或其他支持 Agent Skills 的工具。</p>
+<pre style="background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto"><code>git clone https://github.com/NEXALongevity/skillset
+cp -r skillset/skills/doctor-matching ~/.claude/skills/</code></pre>
+
+<h2 id="data">医院知识库 · Hospital data</h2>
+<p class="sub">v0.1 共 60 条，取自复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》，每条注明来源与核实日期。中医方向在 v0.2 加入。</p>
+<div class="tablewrap"><table><tr><th>方向</th><th>数量</th><th>医院</th></tr><tr><td><b>医疗美容</b><br><span class='sub'>Medical aesthetics</span></td><td>10</td><td>上海交通大学医学院附属第九人民医院、中国医学科学院整形外科医院、南方医科大学南方医院、中国医学科学院北京协和医院、空军军医大学第一附属医院（西京医院）、华中科技大学同济医学院附属协和医院、复旦大学附属中山医院、陆军军医大学第一附属医院（西南医院）、中国医科大学附属第一医院、北京大学第三医院</td></tr><tr><td><b>心脑血管</b><br><span class='sub'>Cardio & cerebrovascular</span></td><td>10</td><td>中国医学科学院阜外医院、复旦大学附属中山医院、首都医科大学附属北京安贞医院、中国人民解放军北部战区总医院、浙江大学医学院附属第二医院、广东省人民医院、四川大学华西医院、哈尔滨医科大学附属第二医院、上海交通大学医学院附属瑞金医院、北京大学第一医院</td></tr><tr><td><b>体检与抗衰老</b><br><span class='sub'>Check-ups & longevity</span></td><td>10</td><td>中国人民解放军总医院、四川省人民医院、江苏省人民医院（南京医科大学第一附属医院）、青岛大学附属医院、浙江大学医学院附属第二医院、中南大学湘雅医院、中国科学技术大学附属第一医院（安徽省立医院）、中南大学湘雅三医院、深圳市人民医院、陆军军医大学第一附属医院（西南医院）</td></tr><tr><td><b>肿瘤</b><br><span class='sub'>Oncology</span></td><td>10</td><td>中国医学科学院肿瘤医院、中山大学肿瘤防治中心、复旦大学附属肿瘤医院、北京大学肿瘤医院、天津医科大学肿瘤医院、山东省肿瘤医院（山东省肿瘤防治研究院）、中国科学院大学附属肿瘤医院（浙江省肿瘤医院）、四川大学华西医院、江苏省肿瘤医院、四川省肿瘤医院</td></tr><tr><td><b>骨科</b><br><span class='sub'>Orthopedics</span></td><td>10</td><td>北京积水潭医院、上海市第六人民医院、中国人民解放军总医院、北京大学第三医院、中国医学科学院北京协和医院、四川大学华西医院、河北医科大学第三医院、海军军医大学第二附属医院（上海长征医院）、北京大学人民医院、天津市天津医院</td></tr><tr><td><b>生殖</b><br><span class='sub'>Reproductive medicine</span></td><td>10</td><td>北京大学第三医院、郑州大学第一附属医院、山东大学附属生殖医院、中信湘雅生殖与遗传专科医院、南京大学医学院附属鼓楼医院、中山大学附属第一医院、重庆市妇幼保健院、华中科技大学同济医学院附属同济医院、上海交通大学医学院附属仁济医院、浙江大学医学院附属妇产科医院</td></tr></table></div>
+
+<div class="note"><b>医学声明 · Disclaimer</b><br>本库仅提供信息整理、解释与流程支持，不提供诊断或治疗决策，一切以执业医生意见为准。This library provides information and workflow support only and is not medical advice.</div>
+</main>
+<footer><div class="wrap">© NEXA Longevity · <a href="https://nxlongevity.com">nxlongevity.com</a> · 代码 Apache-2.0，内容 CC BY 4.0，使用请署名 NEXA Longevity。<br>
+本站内容仅提供信息与流程支持，不构成医疗建议，一切以执业医生意见为准。Not medical advice.</div></footer>
+</body></html>
