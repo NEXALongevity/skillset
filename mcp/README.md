@@ -10,6 +10,7 @@ A free, read-only [Model Context Protocol](https://modelcontextprotocol.io) serv
 | `/mcp/visa` | `visa_entry_options`, `visa_policy_sources` |
 | `/mcp/cost` | `cost_checklist`, `cost_estimate`, `compare_quotes` |
 | `/mcp/credentials` | `credential_lookup`, `verification_guide` |
+| `/mcp/directory` | `hospital_search`, `doctor_search`, `nexa_consultation_link` |
 
 ## What each server does, and does not do
 
@@ -18,6 +19,10 @@ A free, read-only [Model Context Protocol](https://modelcontextprotocol.io) serv
 **Cost estimate & quote comparison.** Holds **no prices**. It lists the cost items to ask about per direction, computes a low/high range from amounts the user or a written quote supplies (with contingency and user-supplied FX), and compares quotes item by item to expose missing items.
 
 **Doctor & facility credential check.** Looks a hospital up in the NEXA knowledge base (public ranking source, year, verified date) and returns the official channels to verify a doctor, facility, aesthetic scope, drug or device (NHC physician registry, NHC facility lists, NMPA database). It does not perform the official lookup itself.
+
+**Hospital & doctor directory.** NEXA Care is the master database for doctors and hospitals. When the Worker has `CARE_MCP_BASE` set, `hospital_search` and `doctor_search` read Care's MCP view, which returns only published records cleared for public MCP use (public source or rights-holder permission). Until then, or if Care is unreachable, `hospital_search` falls back to the open snapshot in `data/hospitals` and `doctor_search` returns no results. Care results are covered by the [MCP Terms of Use](TERMS.md), not CC BY, and are never copied into this repository.
+
+**NEXA consultation link.** `nexa_consultation_link` returns the NEXA Care page where the patient submits their own request. This server never receives or forwards patient information.
 
 ## Connect
 
@@ -42,4 +47,4 @@ When you update data, change `as_of`, cite the official source URL, and keep the
 
 ## Licence
 
-Code Apache-2.0, data CC BY 4.0. Attribution: Based on NEXA Medical Travel Skills by NEXA Longevity (nxlongevity.com). Information only; not medical, legal or immigration advice.
+Code Apache-2.0; open knowledge-base data CC BY 4.0; NEXA Care directory results under the [MCP Terms of Use](TERMS.md). Attribution: Based on NEXA Medical Travel Skills by NEXA Longevity (nxlongevity.com). Information only; not medical, legal or immigration advice.

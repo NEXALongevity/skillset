@@ -1,13 +1,36 @@
 // NEXA Medical Travel MCP — Cloudflare Worker (Streamable HTTP, JSON responses)
-// Tools: visa & entry policy, cost estimate & quote comparison, credential verification.
+// Tools: visa & entry policy, cost estimate & quote comparison, credential verification,
+// hospital/doctor directory (NEXA Care when enabled, else the open snapshot) and a NEXA consultation link.
 // Data is bundled at build time by mcp/build.py (DATA constant). Every answer carries sources and as_of.
 // © NEXA Longevity · Apache-2.0 (code) · CC BY 4.0 (data)
 
-const SERVER = { name: "nexa-medical-travel", version: "0.2.0" };
+const SERVER = { name: "nexa-medical-travel", version: "0.3.0" };
 const PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 const DISCLAIMER =
   "Information only, not medical, legal or immigration advice. Verify with the official source before acting. 仅供参考，以官方与执业医生意见为准。";
 const SITE = "https://skills.nxlongevity.com";
+const TERMS_URL = "https://github.com/NEXALongevity/skillset/blob/main/mcp/TERMS.md";
+const CARE_ORIGIN = "https://care.nxlongevity.com";
+// NEXA Care is the master database. Its records are served only when the Worker has CARE_MCP_BASE set
+// (Care's MCP view, which returns published records explicitly cleared for MCP). Unset = open snapshot only.
+let ENV = {};
+const careCache = new Map();
+async function careGet(path, params) {
+  const base = ENV.CARE_MCP_BASE;
+  if (!base) return null;
+  const u = new URL(base.replace(/\/+$/, "") + path);
+  for (const [k, v] of Object.entries(params || {})) if (v !== undefined && v !== null && v !== "") u.searchParams.set(k, String(v));
+  const key = u.toString();
+  const hit = careCache.get(key);
+  if (hit && Date.now() - hit.at < 300000) return hit.body;
+  try {
+    const r = await fetch(key, { headers: { Accept: "application/json", "X-NEXA-Client": "nexa-mcp/" + SERVER.version }, cf: { cacheTtl: 300 } });
+    if (!r.ok) return { error: "care_unavailable", status: r.status };
+    const body = await r.json();
+    careCache.set(key, { at: Date.now(), body });
+    return body;
+  } catch (e) { return { error: "care_unavailable" }; }
+}
 const DATA_URL = "https://raw.githubusercontent.com/NEXALongevity/skillset/main/mcp/dist/data.json";
 // Bundled builds set globalThis.__NEXA_DATA; the lean build loads the published data file (cached 10 min).
 let DATA = globalThis.__NEXA_DATA || null;
@@ -187,6 +210,71 @@ function credentialLookup(a) {
   return { query: a.name, found: hits.length > 0, results: hits, coverage: "NEXA knowledge base v0.1: public hospitals from the Fudan 2023 specialty reputation rankings, 6 directions (TCM not yet included). Not found here does not mean unlicensed.", next: "Verify licences through official channels with verification_guide.", disclaimer: DISCLAIMER };
 }
 
+const DIRECTIONS = ["oncology", "cardio-cerebrovascular", "reproductive", "checkup-longevity", "tcm", "orthopedics", "aesthetics"];
+function consultLink(lang) {
+  const u = new URL("/start", CARE_ORIGIN);
+  u.searchParams.set("lang", ["en", "zh", "id", "ar", "fr", "es"].includes(lang) ? lang : "en");
+  u.searchParams.set("source", "nexa-mcp");
+  u.searchParams.set("medium", "mcp");
+  return u.toString();
+}
+function snapshotHospitals(a) {
+  const q = norm(a.query);
+  const byId = new Map();
+  for (const h of DATA.hospitals) {
+    const cur = byId.get(h.id);
+    if (!cur) { byId.set(h.id, { ...h, directions: [...h.directions], rankings: h.ranking ? [h.ranking] : [], strengths: [...(h.strengths || [])] }); continue; }
+    for (const d of h.directions) if (!cur.directions.includes(d)) cur.directions.push(d);
+    if (h.ranking) cur.rankings.push(h.ranking);
+    for (const s of h.strengths || []) if (!cur.strengths.includes(s)) cur.strengths.push(s);
+  }
+  let rows = [...byId.values()];
+  if (q) rows = rows.filter((h) => [h.name_zh, h.name_en, h.id, ...(h.strengths || [])].some((f) => norm(f).includes(q)) || q.includes(norm(h.name_zh)));
+  if (a.city) { const c = norm(a.city); rows = rows.filter((h) => norm(h.city).includes(c) || norm(h.province).includes(c)); }
+  if (a.direction) rows = rows.filter((h) => h.directions.includes(a.direction));
+  if (a.type) rows = rows.filter((h) => h.type === a.type);
+  const best = (h) => Math.min(...h.rankings.filter((r) => !a.direction || h.directions.includes(a.direction)).map((r) => r.rank || 999), 999);
+  rows.sort((x, y) => best(x) - best(y));
+  const limit = Math.min(Math.max(parseInt(a.limit, 10) || 10, 1), 50);
+  return rows.slice(0, limit).map((h) => ({ id: h.id, name_zh: h.name_zh, name_en: h.name_en, type: h.type, city: h.city, province: h.province, directions: h.directions, strengths: h.strengths, rankings: h.rankings, source: { title: h.source_list, url: h.source_url }, verified_on: h.verified_on }));
+}
+async function hospitalSearch(a) {
+  if (a.direction && !DIRECTIONS.includes(a.direction)) throw new Error("Unknown direction. Use one of: " + DIRECTIONS.join(", "));
+  const care = await careGet("/records", { kind: "institution", q: a.query, city: a.city, direction: a.direction, locale: a.locale || "en" });
+  if (care && Array.isArray(care.items)) {
+    return { data_source: "NEXA Care", count: care.items.length, results: care.items, truncated: !!care.truncated, as_of: care.asOf || null, consult: consultLink(a.locale), terms: TERMS_URL, disclaimer: DISCLAIMER };
+  }
+  const results = snapshotHospitals(a);
+  return {
+    data_source: "NEXA open knowledge base (snapshot)", count: results.length, results, as_of: DATA.hospitals_as_of,
+    coverage: "Public hospitals from the Fudan 2023 specialty reputation rankings, 6 directions (TCM not yet included). Ranking is reputation, not a guarantee of outcome or of availability for international patients.",
+    care_status: care && care.error ? "NEXA Care directory temporarily unavailable; showing the open snapshot." : undefined,
+    consult: consultLink(a.locale), terms: TERMS_URL, disclaimer: DISCLAIMER,
+  };
+}
+async function doctorSearch(a) {
+  if (a.direction && !DIRECTIONS.includes(a.direction)) throw new Error("Unknown direction. Use one of: " + DIRECTIONS.join(", "));
+  const care = await careGet("/records", { kind: "doctor", q: a.query, city: a.city, direction: a.direction, institution: a.hospital, locale: a.locale || "en" });
+  if (care && Array.isArray(care.items)) {
+    return { data_source: "NEXA Care", count: care.items.length, results: care.items, truncated: !!care.truncated, as_of: care.asOf || null, next: "Verify a doctor's licence with verification_guide (NHC physician registry) before booking.", consult: consultLink(a.locale), terms: TERMS_URL, disclaimer: DISCLAIMER };
+  }
+  return {
+    data_source: "none", count: 0, results: [],
+    note: care && care.error ? "The NEXA Care doctor directory is temporarily unavailable." : "The doctor directory is served from NEXA Care and is not yet enabled on this server. NEXA's care team can match doctors on request.",
+    next: "Use hospital_search to shortlist hospitals, verification_guide to check a doctor's licence, or nexa_consultation_link to ask NEXA for a doctor match.",
+    consult: consultLink(a.locale), terms: TERMS_URL, disclaimer: DISCLAIMER,
+  };
+}
+function nexaConsultation(a) {
+  return {
+    url: consultLink(a.language),
+    what_happens: "The patient opens this NEXA Care page and submits their own consultation and records there, with their consent. A NEXA care coordinator replies; no account is needed to start.",
+    privacy: "This MCP does not collect, store or forward any patient information. Do not paste medical records into the link or into this tool.",
+    when_to_offer: "Offer only when the user asks for help choosing a doctor or hospital, getting a quote, or arranging treatment in China.",
+    disclaimer: DISCLAIMER,
+  };
+}
+
 function verificationGuide(a) {
   const vc = DATA.channels;
   const types = String(a.target_type || "").split(/[,+\s]+/).filter(Boolean);
@@ -208,13 +296,16 @@ const TOOLS = {
   cost_estimate: { group: "cost", fn: costEstimate, description: "Compute a transparent low/high cost range from user-supplied or quoted amounts, with contingency, optional user-supplied FX, pending items and checklist gaps. Holds no price data.", inputSchema: S({ items: { type: "array", items: { type: "object", properties: { category: { type: "string", enum: ["medical", "travel", "service", "other"] }, name: { type: "string" }, amount: { type: "number" }, amount_min: { type: "number" }, amount_max: { type: "number" }, currency: { type: "string" }, source: { type: "string" } }, required: ["name"] } }, direction: { type: "string" }, stay_days: { type: "integer" }, contingency_pct: { type: "number", default: 15 }, fx: { type: "object", properties: { from: { type: "string" }, to: { type: "string" }, rate: { type: "number" }, date: { type: "string" } } } }, ["items"]) },
   compare_quotes: { group: "cost", fn: compareQuotes, description: "Compare two or more provider quotes item by item, showing gaps and different scopes.", inputSchema: S({ quotes: { type: "array", items: { type: "object", properties: { label: { type: "string" }, currency: { type: "string" }, items: { type: "array", items: { type: "object", properties: { name: { type: "string" }, amount: { type: "number" }, included: { type: "boolean" } }, required: ["name"] } } }, required: ["label", "items"] } }, direction: { type: "string" } }, ["quotes"]) },
   credential_lookup: { group: "credentials", fn: credentialLookup, description: "Look up a hospital in the NEXA knowledge base (public ranking source, year, verified date).", inputSchema: S({ name: { type: "string", description: "Hospital name, Chinese or English" }, direction: { type: "string" } }, ["name"]) },
+  hospital_search: { group: "directory", fn: hospitalSearch, description: "Search Chinese hospitals by name, city, specialty direction or type. Served from NEXA Care when enabled, otherwise from the open NEXA knowledge base. Every result carries its source and verified date.", inputSchema: S({ query: { type: "string", description: "Hospital name or specialty, Chinese or English (optional)" }, city: { type: "string", description: "City or province" }, direction: { type: "string", enum: ["oncology", "cardio-cerebrovascular", "reproductive", "checkup-longevity", "tcm", "orthopedics", "aesthetics"] }, type: { type: "string", enum: ["public", "private", "foreign"] }, locale: { type: "string", enum: ["en", "zh", "id", "ar", "fr", "es"], default: "en" }, limit: { type: "integer", minimum: 1, maximum: 50, default: 10 } }) },
+  doctor_search: { group: "directory", fn: doctorSearch, description: "Search doctors in the NEXA Care directory by name, specialty direction, city or hospital. Only doctors cleared for public MCP use are returned.", inputSchema: S({ query: { type: "string" }, direction: { type: "string", enum: ["oncology", "cardio-cerebrovascular", "reproductive", "checkup-longevity", "tcm", "orthopedics", "aesthetics"] }, city: { type: "string" }, hospital: { type: "string", description: "Hospital name or id" }, locale: { type: "string", enum: ["en", "zh", "id", "ar", "fr", "es"], default: "en" } }) },
+  nexa_consultation_link: { group: "directory", fn: nexaConsultation, description: "Return the NEXA Care page where a patient can request a doctor match, second opinion or treatment arrangement in China. Collects no patient data.", inputSchema: S({ language: { type: "string", enum: ["en", "zh", "id", "ar", "fr", "es"], default: "en" } }) },
   verification_guide: { group: "credentials", fn: verificationGuide, description: "Return official channels (NHC physician registry, facility lists, NMPA drug/device database) and steps to verify a doctor, facility, aesthetic scope, drug or device.", inputSchema: S({ target_type: { type: "string", description: "doctor, nurse, facility, aesthetic_doctor, aesthetic_facility, drug, device (comma-separate several)" } }, ["target_type"]) },
 };
-const ROUTES = { "/mcp": null, "/mcp/visa": "visa", "/mcp/cost": "cost", "/mcp/credentials": "credentials" };
+const ROUTES = { "/mcp": null, "/mcp/visa": "visa", "/mcp/cost": "cost", "/mcp/credentials": "credentials", "/mcp/directory": "directory" };
 const toolsFor = (group) => Object.entries(TOOLS).filter(([, t]) => !group || t.group === group);
 
 // ---------- JSON-RPC ----------
-function rpc(msg, group) {
+async function rpc(msg, group) {
   const { id, method, params = {} } = msg;
   const ok = (result) => ({ jsonrpc: "2.0", id, result });
   const fail = (code, message) => ({ jsonrpc: "2.0", id, error: { code, message } });
@@ -225,12 +316,12 @@ function rpc(msg, group) {
     }
     case "ping": return ok({});
     case "tools/list":
-      return ok({ tools: toolsFor(group).map(([name, t]) => ({ name, description: t.description, inputSchema: t.inputSchema, annotations: { readOnlyHint: true, openWorldHint: false } })) });
+      return ok({ tools: toolsFor(group).map(([name, t]) => ({ name, description: t.description, inputSchema: t.inputSchema, annotations: { readOnlyHint: true, openWorldHint: t.group === "directory" } })) });
     case "tools/call": {
       const entry = toolsFor(group).find(([n]) => n === params.name);
       if (!entry) return fail(-32602, `Unknown tool: ${params.name}`);
       try {
-        const result = entry[1].fn(params.arguments || {});
+        const result = await entry[1].fn(params.arguments || {});
         return ok({ content: [{ type: "text", text: JSON.stringify(result, null, 2) }], structuredContent: result, isError: false });
       } catch (e) {
         return ok({ content: [{ type: "text", text: String(e.message || e) }], isError: true });
@@ -247,10 +338,11 @@ const CORS = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Methods
 const json = (body, status = 200) => new Response(JSON.stringify(body, null, 2), { status, headers: { "Content-Type": "application/json; charset=utf-8", ...CORS } });
 
 function landing() {
-  return json({ server: SERVER, endpoints: { all: "/mcp", visa: "/mcp/visa", cost: "/mcp/cost", credentials: "/mcp/credentials" }, transport: "Streamable HTTP (POST JSON-RPC; JSON responses; stateless)", tools: Object.keys(TOOLS), data_as_of: { visa: DATA.visa.as_of, costs: DATA.costs.as_of, channels: DATA.channels.as_of, hospitals: DATA.hospitals_as_of }, docs: SITE + "/#mcp", source: "https://github.com/NEXALongevity/skillset/tree/main/mcp", license: "Code Apache-2.0; data CC BY 4.0 — attribution: NEXA Longevity", disclaimer: DISCLAIMER });
+  return json({ server: SERVER, endpoints: { all: "/mcp", visa: "/mcp/visa", cost: "/mcp/cost", credentials: "/mcp/credentials", directory: "/mcp/directory" }, transport: "Streamable HTTP (POST JSON-RPC; JSON responses; stateless)", tools: Object.keys(TOOLS), data_as_of: { visa: DATA.visa.as_of, costs: DATA.costs.as_of, channels: DATA.channels.as_of, hospitals: DATA.hospitals_as_of, care_directory: ENV.CARE_MCP_BASE ? "enabled" : "not enabled" }, docs: SITE + "/#mcp", source: "https://github.com/NEXALongevity/skillset/tree/main/mcp", license: "Code Apache-2.0. Open knowledge-base data CC BY 4.0 (attribution: NEXA Longevity). NEXA Care directory results are provided under the MCP Terms of Use, not CC BY.", terms: TERMS_URL, disclaimer: DISCLAIMER });
 }
 
-export async function handle(request) {
+export async function handle(request, env) {
+  ENV = env || {};
   try { await ensureData(); } catch (e) { return json({ error: String(e.message || e) }, 503); }
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, "") || "/";
@@ -264,10 +356,10 @@ export async function handle(request) {
   try { body = await request.json(); } catch (_) { return json({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "Parse error" } }, 400); }
   const group = ROUTES[path];
   if (Array.isArray(body)) {
-    const out = body.map((m) => rpc(m, group)).filter(Boolean);
+    const out = (await Promise.all(body.map((m) => rpc(m, group)))).filter(Boolean);
     return out.length ? json(out) : new Response(null, { status: 202, headers: CORS });
   }
-  const res = rpc(body, group);
+  const res = await rpc(body, group);
   return res ? json(res) : new Response(null, { status: 202, headers: CORS });
 }
 
