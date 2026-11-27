@@ -1,0 +1,144 @@
+# 医学术语表 v0.1 · Medical Glossary v0.1
+# 全库共用。新增术语先加到这里，再在 Skill 中使用。
+# Shared by all Skills. Add a term here before using a new translation.
+# © NEXA Longevity · CC BY 4.0
+
+hospital_system:
+  - zh: 三级甲等医院（三甲医院）
+    en: Grade 3A hospital (tertiary, highest level)
+    note: 中国医院分级中的最高等级 / Top tier in China's hospital grading system
+  - zh: 公立医院
+    en: public hospital
+  - zh: 民营医院
+    en: private hospital
+  - zh: 外资医院 / 中外合资医院
+    en: foreign-invested hospital / Sino-foreign joint-venture hospital
+  - zh: 国际医疗部（国际部）
+    en: international medical department (international clinic)
+  - zh: 特需门诊
+    en: VIP / premium outpatient clinic
+  - zh: 专家门诊
+    en: specialist outpatient clinic
+  - zh: 普通门诊
+    en: general outpatient clinic
+  - zh: 挂号
+    en: registration (booking an outpatient appointment)
+  - zh: 住院
+    en: inpatient admission
+  - zh: 多学科会诊（MDT）
+    en: multidisciplinary team consultation (MDT)
+  - zh: 远程会诊
+    en: remote (tele-)consultation
+  - zh: 医保
+    en: national medical insurance
+    note: 外籍患者通常自费 / Foreign patients usually self-pay
+  - zh: 自费
+    en: self-pay
+  - zh: 押金 / 预交金
+    en: admission deposit
+
+doctor_titles:
+  - zh: 主任医师
+    en: chief physician
+  - zh: 副主任医师
+    en: associate chief physician
+  - zh: 主治医师
+    en: attending physician
+  - zh: 住院医师
+    en: resident physician
+  - zh: 院士
+    en: academician (Chinese Academy of Sciences / Engineering)
+  - zh: 医疗美容主诊医师
+    en: certified attending physician for medical aesthetics
+
+directions:
+  - zh: 肿瘤
+    en: oncology
+    id: oncology
+  - zh: 心脑血管
+    en: cardiovascular and cerebrovascular diseases
+    id: cardio-cerebrovascular
+  - zh: 生殖
+    en: reproductive medicine
+    id: reproductive
+  - zh: 体检与抗衰老（长寿医学）
+    en: health check-ups and anti-ageing (longevity medicine)
+    id: checkup-longevity
+  - zh: 中医
+    en: traditional Chinese medicine (TCM)
+    id: tcm
+  - zh: 骨科
+    en: orthopedics
+    id: orthopedics
+  - zh: 医疗美容
+    en: medical aesthetics
+    id: aesthetics
+
+clinical:
+  - zh: 病理报告
+    en: pathology report
+  - zh: 影像学检查
+    en: imaging examination
+  - zh: 计算机断层扫描（CT）
+    en: computed tomography (CT)
+  - zh: 磁共振成像（MRI）
+    en: magnetic resonance imaging (MRI)
+  - zh: 正电子发射计算机断层显像（PET-CT）
+    en: positron emission tomography–computed tomography (PET-CT)
+  - zh: 出院小结
+    en: discharge summary
+  - zh: 既往史
+    en: past medical history
+  - zh: 现病史
+    en: history of present illness
+  - zh: 过敏史
+    en: allergy history
+  - zh: 用药史
+    en: medication history
+  - zh: 主诉
+    en: chief complaint
+  - zh: 分期
+    en: staging (e.g. TNM)
+  - zh: 靶向治疗
+    en: targeted therapy
+  - zh: 免疫治疗
+    en: immunotherapy
+  - zh: 质子重离子治疗
+    en: proton and heavy-ion therapy
+  - zh: 微创手术
+    en: minimally invasive surgery
+  - zh: 达芬奇机器人手术
+    en: da Vinci robotic-assisted surgery
+  - zh: 介入治疗
+    en: interventional therapy
+  - zh: 经皮冠状动脉介入治疗（PCI）
+    en: percutaneous coronary intervention (PCI)
+  - zh: 体外受精-胚胎移植（试管婴儿）
+    en: in vitro fertilisation and embryo transfer (IVF-ET)
+  - zh: 关节置换
+    en: joint replacement
+  - zh: 针灸
+    en: acupuncture
+  - zh: 中药
+    en: Chinese herbal medicine
+  - zh: 推拿
+    en: tuina (Chinese therapeutic massage)
+  - zh: 知情同意书
+    en: informed consent form
+  - zh: 随访
+    en: follow-up
+
+travel_admin:
+  - zh: 医疗签证
+    en: medical visa
+    note: 赴华就医适用的签证类别与材料以中国驻外使领馆最新规定为准，Skill 中不写死类别 / The visa category and documents depend on current consular rules; always verify with the Chinese embassy or consulate
+  - zh: 过境免签
+    en: visa-free transit
+  - zh: 单方面免签
+    en: unilateral visa exemption
+  - zh: 境外人员住宿登记
+    en: accommodation registration for foreigners
+  - zh: 医疗陪同
+    en: medical escort
+  - zh: 医学翻译 / 口译
+    en: medical translation / medical interpreting

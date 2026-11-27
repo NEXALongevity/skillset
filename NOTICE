@@ -1,0 +1,9 @@
+NEXA Medical Travel Skills
+Copyright 2026 NEXA Longevity (https://nxlongevity.com)
+
+Code in this repository is licensed under the Apache License, Version 2.0 (see LICENSE).
+Knowledge content (skills/**/*.md, skills/**/references/, data/, shared/) is licensed
+under Creative Commons Attribution 4.0 International (see LICENSE-CONTENT).
+
+Attribution required when using or adapting this work:
+"Based on NEXA Medical Travel Skills by NEXA Longevity (nxlongevity.com)"
