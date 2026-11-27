@@ -1,0 +1,185 @@
+# 心血管病 · cardio-cerebrovascular — v0.1
+# 来源 Source: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+# https://www.cn-healthcare.com/article/20241116/content-585244.html
+# 核实日期 Verified: 2026-11-27
+# © NEXA Longevity · CC BY 4.0
+- id: fuwai
+  name_zh: 中国医学科学院阜外医院
+  name_en: Fuwai Hospital, Chinese Academy of Medical Sciences
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 1
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: zhongshan-fudan
+  name_zh: 复旦大学附属中山医院
+  name_en: Zhongshan Hospital, Fudan University
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 2
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: anzhen
+  name_zh: 首都医科大学附属北京安贞医院
+  name_en: Beijing Anzhen Hospital, Capital Medical University
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 3
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: northern-theater
+  name_zh: 中国人民解放军北部战区总医院
+  name_en: General Hospital of Northern Theater Command, PLA
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 沈阳
+  province: 辽宁
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 4
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: zju-2nd
+  name_zh: 浙江大学医学院附属第二医院
+  name_en: Second Affiliated Hospital, Zhejiang University School of Medicine
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 杭州
+  province: 浙江
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 5
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: guangdong-provincial
+  name_zh: 广东省人民医院
+  name_en: Guangdong Provincial People's Hospital
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 广州
+  province: 广东
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 6
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: west-china
+  name_zh: 四川大学华西医院
+  name_en: West China Hospital, Sichuan University
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 成都
+  province: 四川
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 7
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: hmu-2nd
+  name_zh: 哈尔滨医科大学附属第二医院
+  name_en: Second Affiliated Hospital of Harbin Medical University
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 哈尔滨
+  province: 黑龙江
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 8
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: ruijin
+  name_zh: 上海交通大学医学院附属瑞金医院
+  name_en: Ruijin Hospital, Shanghai Jiao Tong University School of Medicine
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 9
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: pku-first
+  name_zh: 北京大学第一医院
+  name_en: Peking University First Hospital
+  directions:
+  - cardio-cerebrovascular
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 心血管病
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 心血管病
+    rank: 10
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'

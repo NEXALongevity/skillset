@@ -16,9 +16,9 @@ metadata:
 
 ## 用途 · Purpose
 
-从本库经核实的知识库（`data/hospitals/`）中，按方向、城市、医院类型或排名检索医疗机构，返回带来源和核实日期的档案。v0.1 只收录七个方向各前 10 家公立头部医院；医生档案、民营医院和外资医院在 v0.2 加入。
+从本库经核实的知识库（`data/hospitals/`）中，按方向、城市、医院类型或排名检索医疗机构，返回带来源和核实日期的档案。v0.1 收录六个方向（中医除外）各前 10 家医院，取自复旦版专科声誉排行榜；中医、医生档案、民营医院和外资医院在 v0.2 加入。
 
-Search the verified knowledge base in `data/hospitals/` and return sourced profiles. v0.1 covers the top 10 public hospitals in each of the seven directions; doctor profiles, private and foreign-invested hospitals come in v0.2.
+Search the verified knowledge base in `data/hospitals/` and return sourced profiles. v0.1 covers the top 10 hospitals in six directions (all but TCM) from the Fudan specialty reputation rankings; TCM, doctor profiles, private and foreign-invested hospitals come in v0.2.
 
 ## 何时使用 · When to use
 

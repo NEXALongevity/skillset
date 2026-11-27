@@ -1,0 +1,187 @@
+# 整形外科 · aesthetics — v0.1
+# 来源 Source: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+# https://www.cn-healthcare.com/article/20241116/content-585244.html
+# 核实日期 Verified: 2026-11-27
+# © NEXA Longevity · CC BY 4.0
+- id: ninth-sh
+  name_zh: 上海交通大学医学院附属第九人民医院
+  name_en: Shanghai Ninth People's Hospital, Shanghai Jiao Tong University School
+    of Medicine
+  directions:
+  - aesthetics
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 1
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: cams-plastic
+  name_zh: 中国医学科学院整形外科医院
+  name_en: Plastic Surgery Hospital, Chinese Academy of Medical Sciences
+  directions:
+  - aesthetics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 2
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: nanfang
+  name_zh: 南方医科大学南方医院
+  name_en: Nanfang Hospital, Southern Medical University
+  directions:
+  - aesthetics
+  type: public
+  city: 广州
+  province: 广东
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 3
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: pumch
+  name_zh: 中国医学科学院北京协和医院
+  name_en: Peking Union Medical College Hospital
+  directions:
+  - aesthetics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 4
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: xijing
+  name_zh: 空军军医大学第一附属医院（西京医院）
+  name_en: Xijing Hospital, Air Force Medical University
+  directions:
+  - aesthetics
+  type: public
+  city: 西安
+  province: 陕西
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 5
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: union-wuhan
+  name_zh: 华中科技大学同济医学院附属协和医院
+  name_en: Union Hospital, Tongji Medical College, Huazhong University of Science
+    and Technology
+  directions:
+  - aesthetics
+  type: public
+  city: 武汉
+  province: 湖北
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 6
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: zhongshan-fudan
+  name_zh: 复旦大学附属中山医院
+  name_en: Zhongshan Hospital, Fudan University
+  directions:
+  - aesthetics
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 7
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: southwest
+  name_zh: 陆军军医大学第一附属医院（西南医院）
+  name_en: First Affiliated Hospital of Army Medical University (Southwest Hospital)
+  directions:
+  - aesthetics
+  type: public
+  city: 重庆
+  province: 重庆
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 8
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: cmu-first
+  name_zh: 中国医科大学附属第一医院
+  name_en: First Hospital of China Medical University
+  directions:
+  - aesthetics
+  type: public
+  city: 沈阳
+  province: 辽宁
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 9
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: pku-third
+  name_zh: 北京大学第三医院
+  name_en: Peking University Third Hospital
+  directions:
+  - aesthetics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 整形外科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 整形外科
+    rank: 10
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'

@@ -27,7 +27,18 @@ Maintained by **[NEXA Longevity](https://nxlongevity.com)** · Site: <https://sk
 | 全程 All | 多语言沟通 Multilingual communication | `skills/multilingual-communication` |
 | 全程 All | 合规与风险检查 Compliance & risk check | `skills/compliance-check` |
 
-知识库 v0.1：七个重点方向（肿瘤、心脑血管、生殖、体检与抗衰老、中医、骨科、医疗美容）各前 10 家公立头部医院，见 `data/hospitals/`。
+知识库 v0.1：六个方向各前 10 家医院，共 60 条，取自复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》，见 `data/hospitals/`。
+
+| 方向 | 对应榜单专科 |
+|---|---|
+| 肿瘤 oncology | 肿瘤学 |
+| 心脑血管 cardio-cerebrovascular | 心血管病（脑血管相关专科 v0.2 补充） |
+| 生殖 reproductive | 生殖医学 |
+| 体检与抗衰老 checkup-longevity | 健康管理 |
+| 骨科 orthopedics | 骨科 |
+| 医疗美容 aesthetics | 整形外科 |
+
+中医方向：该榜单没有中医专科，v0.2 选定权威公开名单后加入。
 
 ## 使用方法 · How to use
 

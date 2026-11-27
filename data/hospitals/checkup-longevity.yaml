@@ -1,0 +1,186 @@
+# 健康管理 · checkup-longevity — v0.1
+# 来源 Source: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+# https://www.cn-healthcare.com/article/20241116/content-585244.html
+# 核实日期 Verified: 2026-11-27
+# © NEXA Longevity · CC BY 4.0
+- id: plagh
+  name_zh: 中国人民解放军总医院
+  name_en: Chinese PLA General Hospital
+  directions:
+  - checkup-longevity
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 1
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: sichuan-provincial
+  name_zh: 四川省人民医院
+  name_en: Sichuan Provincial People's Hospital
+  directions:
+  - checkup-longevity
+  type: public
+  city: 成都
+  province: 四川
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 2
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: jiangsu-provincial
+  name_zh: 江苏省人民医院（南京医科大学第一附属医院）
+  name_en: Jiangsu Province Hospital (First Affiliated Hospital of Nanjing Medical
+    University)
+  directions:
+  - checkup-longevity
+  type: public
+  city: 南京
+  province: 江苏
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 3
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: qdu-affiliated
+  name_zh: 青岛大学附属医院
+  name_en: Affiliated Hospital of Qingdao University
+  directions:
+  - checkup-longevity
+  type: public
+  city: 青岛
+  province: 山东
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 4
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: zju-2nd
+  name_zh: 浙江大学医学院附属第二医院
+  name_en: Second Affiliated Hospital, Zhejiang University School of Medicine
+  directions:
+  - checkup-longevity
+  type: public
+  city: 杭州
+  province: 浙江
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 5
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: xiangya
+  name_zh: 中南大学湘雅医院
+  name_en: Xiangya Hospital, Central South University
+  directions:
+  - checkup-longevity
+  type: public
+  city: 长沙
+  province: 湖南
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 6
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: anhui-provincial
+  name_zh: 中国科学技术大学附属第一医院（安徽省立医院）
+  name_en: First Affiliated Hospital of USTC (Anhui Provincial Hospital)
+  directions:
+  - checkup-longevity
+  type: public
+  city: 合肥
+  province: 安徽
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 7
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: xiangya-3rd
+  name_zh: 中南大学湘雅三医院
+  name_en: Third Xiangya Hospital, Central South University
+  directions:
+  - checkup-longevity
+  type: public
+  city: 长沙
+  province: 湖南
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 8
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: shenzhen-peoples
+  name_zh: 深圳市人民医院
+  name_en: Shenzhen People's Hospital
+  directions:
+  - checkup-longevity
+  type: public
+  city: 深圳
+  province: 广东
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 9
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: southwest
+  name_zh: 陆军军医大学第一附属医院（西南医院）
+  name_en: First Affiliated Hospital of Army Medical University (Southwest Hospital)
+  directions:
+  - checkup-longevity
+  type: public
+  city: 重庆
+  province: 重庆
+  strengths:
+  - 健康管理
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 健康管理
+    rank: 10
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'

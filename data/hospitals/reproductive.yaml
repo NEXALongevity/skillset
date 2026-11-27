@@ -1,0 +1,188 @@
+# 生殖医学 · reproductive — v0.1
+# 来源 Source: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+# https://www.cn-healthcare.com/article/20241116/content-585244.html
+# 核实日期 Verified: 2026-11-27
+# © NEXA Longevity · CC BY 4.0
+- id: pku-third
+  name_zh: 北京大学第三医院
+  name_en: Peking University Third Hospital
+  directions:
+  - reproductive
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 1
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: zzu-first
+  name_zh: 郑州大学第一附属医院
+  name_en: First Affiliated Hospital of Zhengzhou University
+  directions:
+  - reproductive
+  type: public
+  city: 郑州
+  province: 河南
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 2
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: sdu-reproductive
+  name_zh: 山东大学附属生殖医院
+  name_en: Reproductive Hospital Affiliated to Shandong University
+  directions:
+  - reproductive
+  type: public
+  city: 济南
+  province: 山东
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 3
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: citic-xiangya
+  name_zh: 中信湘雅生殖与遗传专科医院
+  name_en: Reproductive & Genetic Hospital of CITIC-Xiangya
+  directions:
+  - reproductive
+  type: private
+  city: 长沙
+  province: 湖南
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 4
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+  notes: 民营专科医院，按榜单原样收录 / Private specialty hospital, included as ranked
+- id: drum-tower
+  name_zh: 南京大学医学院附属鼓楼医院
+  name_en: Nanjing Drum Tower Hospital, Affiliated Hospital of Nanjing University
+    Medical School
+  directions:
+  - reproductive
+  type: public
+  city: 南京
+  province: 江苏
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 5
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: sysu-first
+  name_zh: 中山大学附属第一医院
+  name_en: First Affiliated Hospital, Sun Yat-sen University
+  directions:
+  - reproductive
+  type: public
+  city: 广州
+  province: 广东
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 6
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: chongqing-mch
+  name_zh: 重庆市妇幼保健院
+  name_en: Chongqing Health Center for Women and Children
+  directions:
+  - reproductive
+  type: public
+  city: 重庆
+  province: 重庆
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 7
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: tongji-wuhan
+  name_zh: 华中科技大学同济医学院附属同济医院
+  name_en: Tongji Hospital, Tongji Medical College, Huazhong University of Science
+    and Technology
+  directions:
+  - reproductive
+  type: public
+  city: 武汉
+  province: 湖北
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 8
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: renji
+  name_zh: 上海交通大学医学院附属仁济医院
+  name_en: Renji Hospital, Shanghai Jiao Tong University School of Medicine
+  directions:
+  - reproductive
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 9
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: zju-womens
+  name_zh: 浙江大学医学院附属妇产科医院
+  name_en: Women's Hospital, Zhejiang University School of Medicine
+  directions:
+  - reproductive
+  type: public
+  city: 杭州
+  province: 浙江
+  strengths:
+  - 生殖医学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 生殖医学
+    rank: 10
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'

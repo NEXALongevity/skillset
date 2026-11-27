@@ -1,0 +1,186 @@
+# 骨科 · orthopedics — v0.1
+# 来源 Source: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+# https://www.cn-healthcare.com/article/20241116/content-585244.html
+# 核实日期 Verified: 2026-11-27
+# © NEXA Longevity · CC BY 4.0
+- id: jst
+  name_zh: 北京积水潭医院
+  name_en: Beijing Jishuitan Hospital
+  directions:
+  - orthopedics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 1
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: shanghai-sixth
+  name_zh: 上海市第六人民医院
+  name_en: Shanghai Sixth People's Hospital
+  directions:
+  - orthopedics
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 2
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: plagh
+  name_zh: 中国人民解放军总医院
+  name_en: Chinese PLA General Hospital
+  directions:
+  - orthopedics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 3
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: pku-third
+  name_zh: 北京大学第三医院
+  name_en: Peking University Third Hospital
+  directions:
+  - orthopedics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 4
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: pumch
+  name_zh: 中国医学科学院北京协和医院
+  name_en: Peking Union Medical College Hospital
+  directions:
+  - orthopedics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 5
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: west-china
+  name_zh: 四川大学华西医院
+  name_en: West China Hospital, Sichuan University
+  directions:
+  - orthopedics
+  type: public
+  city: 成都
+  province: 四川
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 6
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: hebmu-third
+  name_zh: 河北医科大学第三医院
+  name_en: Third Hospital of Hebei Medical University
+  directions:
+  - orthopedics
+  type: public
+  city: 石家庄
+  province: 河北
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 7
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: changzheng
+  name_zh: 海军军医大学第二附属医院（上海长征医院）
+  name_en: Second Affiliated Hospital of Naval Medical University (Shanghai Changzheng
+    Hospital)
+  directions:
+  - orthopedics
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 8
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: pku-peoples
+  name_zh: 北京大学人民医院
+  name_en: Peking University People's Hospital
+  directions:
+  - orthopedics
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 9
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: tianjin-hospital
+  name_zh: 天津市天津医院
+  name_en: Tianjin Hospital
+  directions:
+  - orthopedics
+  type: public
+  city: 天津
+  province: 天津
+  strengths:
+  - 骨科
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 骨科
+    rank: 10
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'

@@ -1,0 +1,186 @@
+# 肿瘤学 · oncology — v0.1
+# 来源 Source: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+# https://www.cn-healthcare.com/article/20241116/content-585244.html
+# 核实日期 Verified: 2026-11-27
+# © NEXA Longevity · CC BY 4.0
+- id: cams-cancer-hospital
+  name_zh: 中国医学科学院肿瘤医院
+  name_en: Cancer Hospital, Chinese Academy of Medical Sciences
+  directions:
+  - oncology
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 1
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: sysucc
+  name_zh: 中山大学肿瘤防治中心
+  name_en: Sun Yat-sen University Cancer Center
+  directions:
+  - oncology
+  type: public
+  city: 广州
+  province: 广东
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 2
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: fudan-cancer
+  name_zh: 复旦大学附属肿瘤医院
+  name_en: Fudan University Shanghai Cancer Center
+  directions:
+  - oncology
+  type: public
+  city: 上海
+  province: 上海
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 3
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: pku-cancer
+  name_zh: 北京大学肿瘤医院
+  name_en: Peking University Cancer Hospital
+  directions:
+  - oncology
+  type: public
+  city: 北京
+  province: 北京
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 4
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: tmu-cancer
+  name_zh: 天津医科大学肿瘤医院
+  name_en: Tianjin Medical University Cancer Institute and Hospital
+  directions:
+  - oncology
+  type: public
+  city: 天津
+  province: 天津
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 5
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: shandong-cancer
+  name_zh: 山东省肿瘤医院（山东省肿瘤防治研究院）
+  name_en: Shandong Cancer Hospital and Institute
+  directions:
+  - oncology
+  type: public
+  city: 济南
+  province: 山东
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 6
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: zhejiang-cancer
+  name_zh: 中国科学院大学附属肿瘤医院（浙江省肿瘤医院）
+  name_en: Zhejiang Cancer Hospital (Cancer Hospital of the University of Chinese
+    Academy of Sciences)
+  directions:
+  - oncology
+  type: public
+  city: 杭州
+  province: 浙江
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 7
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: west-china
+  name_zh: 四川大学华西医院
+  name_en: West China Hospital, Sichuan University
+  directions:
+  - oncology
+  type: public
+  city: 成都
+  province: 四川
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 8
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: jiangsu-cancer
+  name_zh: 江苏省肿瘤医院
+  name_en: Jiangsu Cancer Hospital
+  directions:
+  - oncology
+  type: public
+  city: 南京
+  province: 江苏
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 9
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
+- id: sichuan-cancer
+  name_zh: 四川省肿瘤医院
+  name_en: Sichuan Cancer Hospital
+  directions:
+  - oncology
+  type: public
+  city: 成都
+  province: 四川
+  strengths:
+  - 肿瘤学
+  ranking:
+    list: 复旦版中国医院专科声誉排行榜
+    year: 2023
+    specialty: 肿瘤学
+    rank: 10
+  source_list: 复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》（2024-11-16 发布）
+  source_url: https://www.cn-healthcare.com/article/20241116/content-585244.html
+  verified_on: '2026-11-27'
