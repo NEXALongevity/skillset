@@ -1,0 +1,1000 @@
+{
+ "as_of": "2026-11-27",
+ "dataset": "NEXA visa & entry dataset v0.2 — curated from official sources; not exhaustive",
+ "sources": {
+  "ie-embassy-2025-11": {
+   "title": "Chinese Embassy in Ireland: extension of unilateral visa-free policy (45 countries) to 31 Dec 2026",
+   "url": "https://ie.china-embassy.gov.cn/eng/qzfw/202511/t20251104_11746287.htm",
+   "publisher": "Embassy of the PRC in Ireland",
+   "checked_on": "2026-11-27"
+  },
+  "govcn-2025-11-04": {
+   "title": "gov.cn (Xinhua): unilateral visa-free extended to 31 Dec 2026; Sweden added from 10 Nov 2025",
+   "url": "https://english.www.gov.cn/news/202511/04/content_WS690964b0c6d00ca5f9a0749d.html",
+   "publisher": "www.gov.cn",
+   "checked_on": "2026-11-27"
+  },
+  "mfa-uk-ca-2026-02-15": {
+   "title": "MFA spokesperson: visa-free for UK and Canada ordinary passports from 17 Feb 2026 to 31 Dec 2026",
+   "url": "https://cn.chinadaily.com.cn/a/202602/15/WS6991dbc3a310942cc499fe41.html",
+   "publisher": "China Daily (reprint of MFA spokesperson remarks)",
+   "checked_on": "2026-11-27"
+  },
+  "mfa-mutual-list": {
+   "title": "China Consular Service: Mutual Visa Exemption List",
+   "url": "https://cs.mfa.gov.cn/lh/lhqz_149493/list/202607/t20260713_11981384.html",
+   "publisher": "Ministry of Foreign Affairs of the PRC",
+   "checked_on": "2026-11-27"
+  },
+  "nia-2026-4": {
+   "title": "NIA Announcement No. 4 of 2026: 240-hour visa-free transit (57 countries, 65 ports) and Hainan 30-day visa-free entry (61 countries)",
+   "url": "https://en.nia.gov.cn/n147418/n147468/c217849/content.html",
+   "publisher": "National Immigration Administration",
+   "checked_on": "2026-11-27"
+  }
+ },
+ "unilateral_visa_free": [
+  {
+   "country": "Ireland",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "France",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Germany",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Italy",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Netherlands",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Spain",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Switzerland",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Hungary",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Austria",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Belgium",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Luxembourg",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Australia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "New Zealand",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Poland",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Portugal",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Greece",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Cyprus",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Slovenia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Slovakia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Norway",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Finland",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Denmark",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Iceland",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Monaco",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Liechtenstein",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Andorra",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "South Korea",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Bulgaria",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Romania",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Croatia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Montenegro",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "North Macedonia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Malta",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Estonia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Latvia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Japan",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Brazil",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Argentina",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Chile",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Peru",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Uruguay",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Saudi Arabia",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Oman",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Kuwait",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Bahrain",
+   "max_days": 30,
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "ie-embassy-2025-11"
+  },
+  {
+   "country": "Sweden",
+   "max_days": 30,
+   "valid_from": "2025-11-10",
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "govcn-2025-11-04"
+  },
+  {
+   "country": "United Kingdom",
+   "max_days": 30,
+   "valid_from": "2026-02-17",
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "mfa-uk-ca-2026-02-15"
+  },
+  {
+   "country": "Canada",
+   "max_days": 30,
+   "valid_from": "2026-02-17",
+   "valid_until": "2026-12-31",
+   "purposes": [
+    "business",
+    "tourism",
+    "family/friend visits",
+    "exchanges",
+    "transit"
+   ],
+   "source": "mfa-uk-ca-2026-02-15"
+  }
+ ],
+ "mutual_exemption_ordinary": [
+  {
+   "country": "Albania",
+   "passport": "ordinary",
+   "in_force_since": "2023-03-18",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Antigua and Barbuda",
+   "passport": "ordinary",
+   "in_force_since": "2024-05-11",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Armenia",
+   "passport": "ordinary",
+   "in_force_since": "2020-01-19",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Azerbaijan",
+   "passport": "ordinary",
+   "in_force_since": "2025-07-16",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Bahamas",
+   "passport": "ordinary",
+   "in_force_since": "2014-02-12",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Barbados",
+   "passport": "ordinary",
+   "in_force_since": "2017-06-01",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Belarus",
+   "passport": "ordinary",
+   "in_force_since": "2018-08-10",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Bosnia and Herzegovina",
+   "passport": "ordinary",
+   "in_force_since": "2018-05-29",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Dominica",
+   "passport": "ordinary",
+   "in_force_since": "2022-09-19",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Ecuador",
+   "passport": "ordinary",
+   "in_force_since": "2016-08-18",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list",
+   "note": "MFA list notes Chinese ordinary-passport holders currently need visas for Ecuador; confirm current reciprocity with the Chinese embassy before relying on it."
+  },
+  {
+   "country": "Fiji",
+   "passport": "ordinary",
+   "in_force_since": "2015-03-14",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Georgia",
+   "passport": "ordinary",
+   "in_force_since": "2024-05-28",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Grenada",
+   "passport": "ordinary",
+   "in_force_since": "2015-06-10",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Kazakhstan",
+   "passport": "ordinary",
+   "in_force_since": "2023-11-10",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Malaysia",
+   "passport": "ordinary",
+   "in_force_since": "2025-07-17",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Maldives",
+   "passport": "ordinary",
+   "in_force_since": "2022-05-20",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Mauritius",
+   "passport": "ordinary",
+   "in_force_since": "2013-10-31",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Qatar",
+   "passport": "ordinary",
+   "in_force_since": "2018-12-21",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Samoa",
+   "passport": "ordinary",
+   "in_force_since": "2025-04-02",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "San Marino",
+   "passport": "ordinary",
+   "in_force_since": "1985-07-22",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Serbia",
+   "passport": "ordinary",
+   "in_force_since": "2017-01-15",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Seychelles",
+   "passport": "ordinary",
+   "in_force_since": "2013-06-26",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Singapore",
+   "passport": "ordinary",
+   "in_force_since": "2024-02-09",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Solomon Islands",
+   "passport": "ordinary",
+   "in_force_since": "2024-12-28",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Suriname",
+   "passport": "ordinary",
+   "in_force_since": "2014-05-06",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Thailand",
+   "passport": "ordinary",
+   "in_force_since": "2024-03-01",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Tonga",
+   "passport": "ordinary",
+   "in_force_since": "2016-08-19",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "United Arab Emirates",
+   "passport": "ordinary",
+   "in_force_since": "2018-01-16",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  },
+  {
+   "country": "Uzbekistan",
+   "passport": "ordinary",
+   "in_force_since": "2025-06-01",
+   "max_days_note": "Official note: holders may stay less than 30 days per entry; longer stays require residence formalities.",
+   "source": "mfa-mutual-list"
+  }
+ ],
+ "transit_240h": {
+  "countries_count": 57,
+  "ports_count": 65,
+  "conditions": "Ordinary passport of an eligible country plus an interline ticket with confirmed date and seat to a third country or region; stay within designated areas; up to 240 hours.",
+  "activities": "Tourism, business, visits and family visits. Work, study and news reporting require a visa.",
+  "list_included": false,
+  "source": "nia-2026-4"
+ },
+ "hainan_30d": {
+  "countries_count": 61,
+  "conditions": "Ordinary passport of an eligible country, entering via Hainan open ports and staying within Hainan Province, up to 30 days.",
+  "list_included": false,
+  "source": "nia-2026-4"
+ },
+ "regional": {
+  "Hong Kong": "Residents of Hong Kong SAR normally travel to the mainland with the Mainland Travel Permit for Hong Kong and Macao Residents (回乡证), not a visa. Confirm with the issuing authority.",
+  "Macao": "Residents of Macao SAR normally use the Mainland Travel Permit for Hong Kong and Macao Residents (回乡证). Confirm with the issuing authority.",
+  "Taiwan": "Taiwan residents normally use the Mainland Travel Permit for Taiwan Residents (台胞证). Confirm current rules with the issuing authority.",
+  "China": "Holders of PRC passports, including overseas Chinese (华侨), do not need a visa to enter China. Foreign nationals of Chinese descent follow the rules for their nationality."
+ },
+ "aliases": {
+  "UK": "United Kingdom",
+  "Britain": "United Kingdom",
+  "Great Britain": "United Kingdom",
+  "England": "United Kingdom",
+  "Korea": "South Korea",
+  "Republic of Korea": "South Korea",
+  "ROK": "South Korea",
+  "UAE": "United Arab Emirates",
+  "Emirates": "United Arab Emirates",
+  "Holland": "Netherlands",
+  "Macedonia": "North Macedonia",
+  "KSA": "Saudi Arabia",
+  "Bosnia": "Bosnia and Herzegovina",
+  "爱尔兰": "Ireland",
+  "法国": "France",
+  "德国": "Germany",
+  "意大利": "Italy",
+  "荷兰": "Netherlands",
+  "西班牙": "Spain",
+  "瑞士": "Switzerland",
+  "匈牙利": "Hungary",
+  "奥地利": "Austria",
+  "比利时": "Belgium",
+  "卢森堡": "Luxembourg",
+  "澳大利亚": "Australia",
+  "新西兰": "New Zealand",
+  "波兰": "Poland",
+  "葡萄牙": "Portugal",
+  "希腊": "Greece",
+  "塞浦路斯": "Cyprus",
+  "斯洛文尼亚": "Slovenia",
+  "斯洛伐克": "Slovakia",
+  "挪威": "Norway",
+  "芬兰": "Finland",
+  "丹麦": "Denmark",
+  "冰岛": "Iceland",
+  "摩纳哥": "Monaco",
+  "列支敦士登": "Liechtenstein",
+  "安道尔": "Andorra",
+  "韩国": "South Korea",
+  "保加利亚": "Bulgaria",
+  "罗马尼亚": "Romania",
+  "克罗地亚": "Croatia",
+  "黑山": "Montenegro",
+  "北马其顿": "North Macedonia",
+  "马耳他": "Malta",
+  "爱沙尼亚": "Estonia",
+  "拉脱维亚": "Latvia",
+  "日本": "Japan",
+  "巴西": "Brazil",
+  "阿根廷": "Argentina",
+  "智利": "Chile",
+  "秘鲁": "Peru",
+  "乌拉圭": "Uruguay",
+  "沙特": "Saudi Arabia",
+  "沙特阿拉伯": "Saudi Arabia",
+  "阿曼": "Oman",
+  "科威特": "Kuwait",
+  "巴林": "Bahrain",
+  "瑞典": "Sweden",
+  "英国": "United Kingdom",
+  "加拿大": "Canada",
+  "阿尔巴尼亚": "Albania",
+  "安提瓜和巴布达": "Antigua and Barbuda",
+  "亚美尼亚": "Armenia",
+  "阿塞拜疆": "Azerbaijan",
+  "巴哈马": "Bahamas",
+  "巴巴多斯": "Barbados",
+  "白俄罗斯": "Belarus",
+  "波黑": "Bosnia and Herzegovina",
+  "多米尼克": "Dominica",
+  "厄瓜多尔": "Ecuador",
+  "斐济": "Fiji",
+  "格鲁吉亚": "Georgia",
+  "格林纳达": "Grenada",
+  "哈萨克斯坦": "Kazakhstan",
+  "马来西亚": "Malaysia",
+  "马尔代夫": "Maldives",
+  "毛里求斯": "Mauritius",
+  "卡塔尔": "Qatar",
+  "萨摩亚": "Samoa",
+  "圣马力诺": "San Marino",
+  "塞尔维亚": "Serbia",
+  "塞舌尔": "Seychelles",
+  "新加坡": "Singapore",
+  "所罗门群岛": "Solomon Islands",
+  "苏里南": "Suriname",
+  "泰国": "Thailand",
+  "汤加": "Tonga",
+  "阿联酋": "United Arab Emirates",
+  "乌兹别克斯坦": "Uzbekistan",
+  "美国": "United States",
+  "USA": "United States",
+  "US": "United States",
+  "印度尼西亚": "Indonesia",
+  "印尼": "Indonesia",
+  "越南": "Vietnam",
+  "菲律宾": "Philippines",
+  "俄罗斯": "Russia",
+  "印度": "India",
+  "文莱": "Brunei",
+  "香港": "Hong Kong",
+  "澳门": "Macao",
+  "台湾": "Taiwan",
+  "中国": "China",
+  "PRC": "China"
+ },
+ "medical_purpose_note": "Published visa-free purposes are business, tourism, family/friend visits, exchanges and transit. Medical treatment is not listed. For hospital admission, surgery or long treatment, confirm with the Chinese embassy or consulate whether visa-free entry applies, or apply for a visa."
+}

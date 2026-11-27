@@ -14,18 +14,60 @@ Maintained by **[NEXA Longevity](https://nxlongevity.com)** · Site: <https://sk
 - 国际患者及家属、中国医生与医疗机构、海外合作伙伴
 - 在 Claude、Codex 等 AI 工具中调用 Skills 的开发者
 
-## v0.1 包含的 Skills · Skills in v0.1
+## Skills（共 34 个）
 
-| 阶段 Stage | Skill | 目录 Directory |
-|---|---|---|
-| 了解 Learn | 中国医疗体系导览 China healthcare guide | `skills/china-healthcare-guide` |
-| 了解 Learn | 医生与机构档案查询 Hospital & doctor lookup | `skills/hospital-lookup` |
-| 评估 Assess | 病历整理与医学翻译 Medical record summary & translation | `skills/medical-record-summary` |
-| 评估 Assess | 初步需求评估 Initial needs assessment | `skills/needs-assessment` |
-| 匹配 Match | 医生与方案匹配 Doctor & treatment matching | `skills/doctor-matching` |
-| 就医 Travel | 签证与行程规划 Visa & itinerary planning | `skills/visa-itinerary` |
-| 全程 All | 多语言沟通 Multilingual communication | `skills/multilingual-communication` |
-| 全程 All | 合规与风险检查 Compliance & risk check | `skills/compliance-check` |
+| 阶段 Stage | Skill | 目录 Directory | 版本 | MCP |
+|---|---|---|---|---|
+| 了解 Learn | 中医康养目的地 TCM & Wellness Destinations | `skills/tcm-wellness-destinations` | v0.2 |  |
+| 了解 Learn | 中国医疗体系导览 China Healthcare Guide | `skills/china-healthcare-guide` | v0.1 |  |
+| 了解 Learn | 医生与机构档案查询 Hospital & Doctor Lookup | `skills/hospital-lookup` | v0.1 |  |
+| 了解 Learn | 治疗方案对比 Treatment Option Comparison | `skills/treatment-comparison` | v0.2 |  |
+| 评估 Assess | 中医体质辨识 TCM Body Constitution Self-Assessment | `skills/tcm-constitution` | v0.2 |  |
+| 评估 Assess | 体检报告解读 Check-up Report Explainer | `skills/checkup-report-explainer` | v0.2 |  |
+| 评估 Assess | 初步需求评估 Initial Needs Assessment | `skills/needs-assessment` | v0.1 |  |
+| 评估 Assess | 病历整理与医学翻译 Medical Record Summary & Translation | `skills/medical-record-summary` | v0.1 |  |
+| 评估 Assess | 病历翻译 Medical Record Translation | `skills/medical-record-translation` | v0.2 |  |
+| 评估 Assess | 第二诊疗意见准备 Second Opinion Preparation | `skills/second-opinion-prep` | v0.2 |  |
+| 评估 Assess | 长寿与生物年龄评估 Longevity & Biological Age Assessment | `skills/longevity-bioage` | v0.2 |  |
+| 匹配 Match | 医生与方案匹配 Doctor & Treatment Matching | `skills/doctor-matching` | v0.1 |  |
+| 匹配 Match | 医生与机构资质核验 Doctor & Facility Credential Check | `skills/credential-verification` | v0.2 | ★ MCP |
+| 匹配 Match | 医生号源查询与预约 Specialist Appointment Booking | `skills/appointment-booking` | v0.2 |  |
+| 匹配 Match | 医美项目对比与资质核验 Aesthetic Procedure Comparison & Verification | `skills/aesthetics-compare-verify` | v0.2 | ★ MCP |
+| 匹配 Match | 报价单生成 Quote Builder | `skills/quote-builder` | v0.2 |  |
+| 匹配 Match | 费用预估与比价 Cost Estimate & Quote Comparison | `skills/cost-estimate` | v0.2 | ★ MCP |
+| 匹配 Match | 远程会诊安排 Teleconsultation Coordination | `skills/teleconsult-coordination` | v0.2 |  |
+| 就医 Travel | 在华就医实用指南 Practical Guide to Care in China | `skills/china-practical-guide` | v0.2 |  |
+| 就医 Travel | 家属陪同指南 Family Companion Guide | `skills/family-companion-guide` | v0.2 |  |
+| 就医 Travel | 签证与入境政策查询 Visa & Entry Policy Lookup | `skills/visa-entry-policy` | v0.2 | ★ MCP |
+| 就医 Travel | 签证与行程规划 Visa & Itinerary Planning | `skills/visa-itinerary` | v0.1 |  |
+| 就医 Travel | 跨境支付与保险理赔 Cross-border Payment & Insurance Claims | `skills/payment-insurance-claims` | v0.2 |  |
+| 康复 Recover | 回国随访交接 Return-home Follow-up Handover | `skills/return-followup-handover` | v0.2 |  |
+| 康复 Recover | 慢病随访 Chronic Care Follow-up | `skills/chronic-care-followup` | v0.2 |  |
+| 康复 Recover | 术后康复行程 Post-operative Recovery Itinerary | `skills/post-op-recovery-itinerary` | v0.2 |  |
+| 康复 Recover | 营养与运动 Nutrition & Exercise Planning | `skills/nutrition-exercise` | v0.2 |  |
+| 全程 All | 合作医院尽职调查 Partner Hospital Due Diligence | `skills/partner-hospital-due-diligence` | v0.2 |  |
+| 全程 All | 合同风险检查 Contract Risk Check | `skills/contract-risk-check` | v0.2 |  |
+| 全程 All | 合规与风险检查 Compliance & Risk Check | `skills/compliance-check` | v0.1 |  |
+| 全程 All | 多语言沟通 Multilingual Communication | `skills/multilingual-communication` | v0.1 |  |
+| 全程 All | 多语言沟通话术 Multilingual Communication Scripts | `skills/multilingual-scripts` | v0.2 |  |
+| 全程 All | 案例记录与复盘 Case Record & Review | `skills/case-review` | v0.2 |  |
+| 全程 All | 药物与保健品相互作用 Drug & Supplement Interaction Check | `skills/drug-supplement-interactions` | v0.2 |  |
+
+睡眠管理由易见康按自身节奏推进，不在本库范围内。
+
+## MCP · 实时信息与计算
+
+Skill 引流，MCP 连接。三个只读 MCP 服务部署在 Cloudflare，免登录，每条结果附官方来源与核实日期：
+
+- 签证与入境政策查询：`https://mcp.nxlongevity.com/mcp/visa`
+- 费用预估与比价（不含任何价格数据，只做计算与漏项检查）：`https://mcp.nxlongevity.com/mcp/cost`
+- 医生与机构资质核验（知识库 + 官方核验渠道）：`https://mcp.nxlongevity.com/mcp/credentials`
+
+```bash
+claude mcp add --transport http nexa-travel https://mcp.nxlongevity.com/mcp
+```
+
+详见 [mcp/README.md](mcp/README.md)。
 
 知识库 v0.1：六个方向各前 10 家医院，共 60 条，取自复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》，见 `data/hospitals/`。
 

@@ -1,0 +1,112 @@
+{
+ "as_of": "2026-11-27",
+ "note": "Item names only. No prices: every amount must come from a written quote or the user.",
+ "common": {
+  "travel": [
+   "机票 Flights",
+   "住宿 Accommodation",
+   "市内交通 Local transport",
+   "签证费 Visa fee",
+   "口译 Medical interpreter",
+   "陪诊 Escort",
+   "餐饮 Meals",
+   "保险 Travel/medical insurance",
+   "通讯 Phone/eSIM"
+  ],
+  "service": [
+   "协调服务费 Coordination fee",
+   "病历翻译 Record translation",
+   "报告翻译 Report translation"
+  ]
+ },
+ "directions": {
+  "oncology": [
+   "门诊诊查费 Consultation",
+   "病理会诊 Pathology review",
+   "影像检查 Imaging (CT/MRI/PET-CT)",
+   "化验 Lab tests",
+   "手术费 Surgery",
+   "麻醉 Anaesthesia",
+   "住院床位与护理 Ward & nursing",
+   "药品 Medicines (incl. targeted/immunotherapy)",
+   "放疗计划与疗程 Radiotherapy planning & sessions",
+   "化疗疗程 Chemotherapy cycles",
+   "基因检测 Genetic testing",
+   "出院后复查 Post-discharge review",
+   "并发症处理 Complication management"
+  ],
+  "cardio-cerebrovascular": [
+   "门诊诊查费 Consultation",
+   "心电图与超声 ECG & echo",
+   "冠脉 CT 或造影 Coronary CTA/angiography",
+   "介入耗材（支架等） Interventional devices (stents etc.)",
+   "手术费 Surgery",
+   "监护病房 ICU/CCU",
+   "住院床位与护理 Ward & nursing",
+   "药品 Medicines",
+   "康复 Rehabilitation",
+   "出院后复查 Post-discharge review"
+  ],
+  "reproductive": [
+   "初诊与检查 Initial consult & work-up",
+   "促排药费 Stimulation medicines",
+   "监测（B 超、激素） Monitoring (ultrasound, hormones)",
+   "取卵 Egg retrieval",
+   "麻醉 Anaesthesia",
+   "胚胎培养 Embryo culture",
+   "胚胎移植 Embryo transfer",
+   "胚胎冷冻与保存（年费） Embryo freezing & storage (annual)",
+   "遗传学检测（如医生建议） Genetic testing (if advised)",
+   "取消周期退费规则 Cancelled-cycle refund terms"
+  ],
+  "checkup-longevity": [
+   "体检套餐 Check-up package",
+   "加项检查 Add-on tests",
+   "影像（CT/MRI） Imaging",
+   "胃肠镜与麻醉 Endoscopy & sedation",
+   "报告解读门诊 Report review consultation",
+   "异常项复查 Follow-up of abnormal findings",
+   "生物标志物检测 Biomarker panels"
+  ],
+  "tcm": [
+   "中医门诊诊查费 TCM consultation",
+   "中药饮片或颗粒 Herbal medicines",
+   "针灸推拿疗程 Acupuncture/tuina sessions",
+   "康养住宿 Wellness stay",
+   "特色疗法 Other TCM therapies"
+  ],
+  "orthopedics": [
+   "门诊诊查费 Consultation",
+   "术前检查 Pre-op tests",
+   "影像（X 光、MRI） Imaging",
+   "手术费 Surgery",
+   "假体或植入物 Implant/prosthesis",
+   "麻醉 Anaesthesia",
+   "住院床位与护理 Ward & nursing",
+   "康复治疗 Rehabilitation sessions",
+   "助行器具 Walking aids",
+   "出院后复查 Post-discharge review",
+   "拆线 Suture removal"
+  ],
+  "aesthetics": [
+   "面诊 Consultation",
+   "术前检查 Pre-op tests",
+   "手术或治疗费 Procedure fee",
+   "麻醉 Anaesthesia",
+   "产品或耗材（注明品牌与注册证） Products/consumables (brand & registration)",
+   "术后用品 Post-op garments/supplies",
+   "复查 Follow-up visits",
+   "修复政策 Revision policy"
+  ],
+  "dental": [
+   "口腔检查与 CBCT Exam & CBCT",
+   "种植体 Implant fixture",
+   "基台与牙冠 Abutment & crown",
+   "植骨（如需要） Bone graft (if needed)",
+   "手术费 Surgery",
+   "取模或口扫 Impressions/scan",
+   "第二次行程 Second trip",
+   "保修政策 Warranty"
+  ]
+ }
+}

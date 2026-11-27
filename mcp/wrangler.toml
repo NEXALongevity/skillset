@@ -1,0 +1,7 @@
+name = "nexa-mcp"
+main = "dist/worker.js"
+compatibility_date = "2026-11-01"
+
+[[routes]]
+pattern = "mcp.nxlongevity.com"
+custom_domain = true

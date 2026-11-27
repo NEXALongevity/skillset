@@ -1,0 +1,74 @@
+{
+ "as_of": "2026-11-27",
+ "note": "Official channels checked on as_of date. The tool never performs the lookup itself; record the result, date and a screenshot.",
+ "channels": {
+  "doctor": [
+   {
+    "what": "执业医师注册信息 Physician practising registration",
+    "where": "国家卫生健康委政务服务平台 → 查信息 → 执业医师查询",
+    "url": "https://zwfw.nhc.gov.cn/cxx/ywrycx/zyyscx/",
+    "how": "输入姓名及页面要求的信息查询；核对执业机构、执业类别与范围。"
+   }
+  ],
+  "nurse": [
+   {
+    "what": "执业护士注册信息 Nurse registration",
+    "where": "国家卫生健康委政务服务平台 → 执业护士查询",
+    "url": "https://zwfw.nhc.gov.cn/cxx/ywrycx/zyhscx/",
+    "how": "核对执业机构。"
+   }
+  ],
+  "facility": [
+   {
+    "what": "医疗机构执业许可与诊疗科目 Facility licence and approved departments",
+    "where": "所在省、市卫生健康委官网的医疗机构查询栏目；或要求机构出示《医疗机构执业许可证》正副本",
+    "url": "",
+    "how": "核对机构名称、地址、诊疗科目、有效期。省市入口各不相同，请记录实际使用的网址。"
+   },
+   {
+    "what": "国家卫健委公布的特定资质机构名单 National lists (assisted reproduction, organ transplant, prenatal diagnosis)",
+    "where": "国家卫生健康委政务服务平台 → 查信息 → 医卫机构查询",
+    "url": "https://zwfw.nhc.gov.cn/cxx/ywjgcx/fzszjg/",
+    "how": "辅助生殖：查辅助生殖机构名单；器官移植：https://zwfw.nhc.gov.cn/cxx/ywjgcx/qgyzjg/"
+   },
+   {
+    "what": "信用与行政处罚信息 Credit and penalty records",
+    "where": "国家卫生健康委政务服务平台 → 信用信息查询；民营机构另查国家企业信用信息公示系统",
+    "url": "https://zwfw.nhc.gov.cn/cxx/qtcx/xyxxcx/",
+    "how": "民营机构：https://www.gsxt.gov.cn 查询企业登记与行政处罚。查不到不等于没有。"
+   }
+  ],
+  "aesthetic_doctor": [
+   {
+    "what": "医疗美容主诊医师 Lead physician for medical aesthetics",
+    "where": "先按 doctor 渠道核验执业注册；主诊医师资格向机构索取证明，并向所在地卫生健康行政部门核实",
+    "url": "https://zwfw.nhc.gov.cn/cxx/ywrycx/zyyscx/",
+    "how": "核对执业范围与主诊医师所属专业（美容外科、美容皮肤科、美容牙科、美容中医科）是否与拟做项目一致。"
+   }
+  ],
+  "aesthetic_facility": [
+   {
+    "what": "医疗美容科目核准 Approved medical-aesthetics categories",
+    "where": "所在地卫生健康委医疗机构查询或《医疗机构执业许可证》副本",
+    "url": "",
+    "how": "确认核准了拟做项目所属科目；生活美容机构不得开展医疗美容。"
+   }
+  ],
+  "drug": [
+   {
+    "what": "药品注册信息 Drug registration",
+    "where": "国家药品监督管理局数据查询",
+    "url": "https://datasearch.nmpa.gov.cn/datasearch/home-index.html",
+    "how": "按产品名或批准文号查询，核对适应症。注意：原地址 www.nmpa.gov.cn/datasearch 已停止使用。"
+   }
+  ],
+  "device": [
+   {
+    "what": "医疗器械注册信息（含注射填充剂、光电设备） Device registration (fillers, energy devices)",
+    "where": "国家药品监督管理局数据查询",
+    "url": "https://datasearch.nmpa.gov.cn/datasearch/home-index.html",
+    "how": "按产品名或注册证号查询，核对适用范围与使用部位。"
+   }
+  ]
+ }
+}
