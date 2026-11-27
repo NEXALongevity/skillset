@@ -105,3 +105,8 @@ cp -r skills/doctor-matching ~/.claude/skills/
 ## 参与贡献 · Contributing
 
 见 [CONTRIBUTING.md](CONTRIBUTING.md)。所有 Skill 上线前须通过医学审核与合规审核。
+
+## 社区 · Community
+
+- 💬 [GitHub Discussions](https://github.com/NEXALongevity/skillset/discussions)：提问、提需求、分享用法 · Q&A, ideas and show-and-tell
+- 微信交流群筹建中，开放后会在这里贴二维码 · WeChat group coming soon
