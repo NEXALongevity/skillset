@@ -1,0 +1,163 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>慢病随访 · Chronic Care Follow-up | NEXA Skills</title><meta name="description" content="Set up and run a structured follow-up plan for chronic conditions (hypertension, diabetes, post-cancer surveillance) between a Chinese hospital and the patient&#x27;s home doctor: schedule, home readings, red flags and reports. Use after treatment or diagnosis.">
+<meta property="og:title" content="慢病随访 · Chronic Care Follow-up | NEXA Skills"><meta property="og:description" content="Set up and run a structured follow-up plan for chronic conditions (hypertension, diabetes, post-cancer surveillance) between a Chinese hospital and the patient&#x27;s home doctor: schedule, home readings, red flags and reports. Use after treatment or diagnosis.">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='a' x2='1' y2='1'%3E%3Cstop stop-color='%233d8bff'/%3E%3Cstop offset='.5' stop-color='%232ee6c8'/%3E%3Cstop offset='1' stop-color='%239b7bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23a)'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='700' text-anchor='middle' fill='%2305070d'%3ENX%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css"></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset=".5" stop-color="#2ee6c8"/><stop offset="1" stop-color="#9b7bff"/></linearGradient></defs></svg>
+<header class="nav"><div class="wrap">
+<a class="logo" href="../index.html"><span class="mark">NX</span>NEXA <small>SKILLS · v0.2</small></a>
+<nav><a href="../index.html#journey">旅程 Journey</a><a href="../index.html#skills">Skills</a><a href="../index.html#mcp">MCP</a><a href="../index.html#data">数据 Data</a><a href="../index.html#roadmap">路线 Roadmap</a>
+<a class="gh" href="https://github.com/NEXALongevity/skillset"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.67.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></nav>
+</div></header>
+
+<section class="doc-hero"><div class="wrap">
+<div class="crumb"><a href="../index.html">NEXA Skills</a> / <a href="../index.html#journey">康复 Recover</a> / chronic-care-followup</div>
+<h1>慢病随访</h1><div class="en">Chronic Care Follow-up</div>
+<p class="desc">为高血压、糖尿病、肿瘤术后监测等慢病建立结构化随访计划：随访时间表、居家监测记录、需要立即就医的警示信号、给中国医生和本地医生的定期报告。计划内容以医生医嘱为依据，本 Skill 负责执行与提醒。</p>
+</div></section>
+<div class="wrap"><div class="doc">
+<aside class="side">
+<div class="kv"><div><span>skill</span>chronic-care-followup</div><div><span>stage</span>康复 · Recover</div>
+<div><span>version</span>0.1.0</div><div><span>lang</span>zh / en</div>
+<div><span>review</span><b class="pend">待审核 Pending</b></div><div><span>license</span>CC BY 4.0</div></div>
+<a class="btn primary" href="https://github.com/NEXALongevity/skillset/tree/main/skills/chronic-care-followup">查看源码 Source</a>
+<a class="btn ghost" href="https://github.com/NEXALongevity/skillset/archive/refs/heads/main.zip">下载全部 Download</a>
+</aside>
+<article class="prose"><h1>慢病随访 · Chronic Care Follow-up</h1>
+<h2>用途 · Purpose</h2>
+<p>为高血压、糖尿病、肿瘤术后监测等慢病建立结构化随访计划：随访时间表、居家监测记录、需要立即就医的警示信号、给中国医生和本地医生的定期报告。计划内容以医生医嘱为依据，本 Skill 负责执行与提醒。</p>
+<p>Set up and run a structured follow-up plan for chronic conditions such as hypertension, diabetes and post-cancer surveillance: schedule, home readings, red flags and periodic reports to the Chinese and local doctors. The plan follows physician orders; this Skill handles execution and reminders.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>在华治疗出院、回国后需要长期随访时</li>
+<li>患者在中国确诊慢病、需要与本地医生共同管理时</li>
+<li>随访数据需要定期整理给医生看时</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>condition</td>
+<td>疾病与当前治疗</td>
+<td>是</td>
+</tr>
+<tr>
+<td>physician_orders</td>
+<td>医生给出的随访要求（项目、频率、目标值）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>home_readings</td>
+<td>居家监测数据（如血压、血糖）</td>
+<td>否</td>
+</tr>
+<tr>
+<td>local_doctor</td>
+<td>本地医生是否已对接</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<h2>步骤 · Steps</h2>
+<ol>
+<li><strong>随访表</strong>：把医嘱拆成日历：复查项目、时间、在哪里做（本地还是返华）。</li>
+<li><strong>居家监测模板</strong>：按医嘱列出监测项和记录格式，目标值只写医生给出的数值。</li>
+<li><strong>警示信号</strong>：列出医嘱或出院小结中写明的需立即就医的情况；没有写明时提示患者向医生索取。</li>
+<li><strong>定期报告</strong>：按月或按随访节点汇总数据，生成给医生的中英双语简报（趋势、超出目标的次数、用药依从、患者问题）。</li>
+<li><strong>对接</strong>：与 return-followup-handover 衔接，确保本地医生拿到完整材料。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>【随访日历 / Schedule】
+| 时间 | 项目 | 地点 | 状态 |
+【居家监测 / Home readings】
+【警示信号 / Red flags】
+【阶段报告 / Report to doctor】
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>不调整药物剂量，不设定医生没有给出的目标值。</li>
+<li>数据异常只提示"联系医生"，不给处理建议。</li>
+<li>出现警示信号时，首先提示就近就医或拨打当地急救电话。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本 Skill 仅提供信息整理与流程支持，不构成医疗建议，诊断与治疗决定以执业医生意见为准。This Skill organises information and supports workflows only; it is not medical advice. Diagnosis and treatment decisions rest with licensed physicians.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><h2>示例 · Examples</h2><details class="ex" open><summary>示例 1：高血压患者的月度随访简报</summary><div class="body prose"><blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>condition: 高血压，服用氨氯地平</li>
+<li>physician_orders: 每天早晚各测一次血压；目标 &lt;130/80 mmHg（医生给出）；3 个月后复诊</li>
+<li>home_readings: 30 天共 58 次读数，其中 9 次 ≥ 140/90</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【随访日历 / Schedule】
+| 时间 | 项目 | 地点 | 状态 |
+|---|---|---|---|
+| 每日 | 早晚血压 | 家中 | 进行中 |
+| 第 3 个月 | 复诊 | 本地医生或远程 | 待预约 |
+
+【阶段报告 / Report to doctor】
+- 30 天读数 58 次（缺 2 次）
+- 达到医生目标 &lt;130/80：31 次；130–139/80–89：18 次；≥140/90：9 次，多在早晨
+- 用药依从：患者自述 2 次漏服
+- 患者问题：早晨偏高是否需要调整服药时间？（由医生判断）
+</code></pre></div></details><details class="ex"><summary>示例 2：结肠癌术后监测计划</summary><div class="body prose"><blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>condition: 结肠癌术后，辅助化疗已结束</li>
+<li>physician_orders: 出院小结写明：术后 2 年内每 3 个月复查 CEA，每 6 个月腹盆 CT，1 年后肠镜</li>
+<li>local_doctor: 已对接</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【随访日历 / Schedule】
+| 时间 | 项目 | 地点 | 状态 |
+|---|---|---|---|
+| 每 3 个月 | CEA | 本地 | 待安排 |
+| 每 6 个月 | 腹盆 CT | 本地 | 待安排 |
+| 术后 1 年 | 肠镜 | 本地或返华 | 待安排 |
+
+【警示信号 / Red flags】以出院小结为准；出院小结未列出时，请向主治医生索取书面清单
+【阶段报告 / Report to doctor】每次检查后 1 周内，把报告译文发给在华主治医生，提醒其回复是否需要调整计划
+</code></pre></div></details></article>
+</div></div>
+<footer><div class="wrap"><div class="row">
+<div class="disc"><b style="color:var(--fg)">NEXA Longevity</b> · Longevity as a Choice<br>
+本站内容仅提供信息整理与流程支持，不构成诊断或治疗建议，一切以执业医生意见为准。<br>Information and workflow support only. Not medical advice.</div>
+<div>代码 <a href="https://github.com/NEXALongevity/skillset/blob/main/LICENSE">Apache-2.0</a> · 内容 <a href="https://github.com/NEXALongevity/skillset/blob/main/LICENSE-CONTENT">CC BY 4.0</a><br>
+使用请署名 NEXA Longevity<br><a href="https://nxlongevity.com">nxlongevity.com</a> · <a href="https://github.com/NEXALongevity/skillset">GitHub</a></div>
+</div></div></footer>
+<script>
+(()=>{
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;
+document.querySelectorAll('.grid .card').forEach(c=>{const show=f==='all'||(f==='mcp'?c.dataset.mcp==='1':c.dataset.stage===f);c.classList.toggle('hide',!show);if(show)c.classList.add('in')});}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+const cv=document.getElementById('ribbons');if(!cv)return;
+const ctx=cv.getContext('2d');let w,h,dpr=Math.min(devicePixelRatio||1,2),t=0;
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cols=[[61,139,255],[46,230,200],[155,123,255],[255,122,198]];
+function size(){w=cv.clientWidth;h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+function draw(){ctx.clearRect(0,0,w,h);ctx.globalCompositeOperation='lighter';
+ for(let r=0;r<4;r++){const c=cols[r];
+  for(let k=0;k<14;k++){ctx.beginPath();
+   const amp=h*(.07+.025*r)+k*1.6,base=h*(.52+.07*(r-1.5)),ph=t*(.35+.08*r)+r*1.7+k*.05;
+   for(let x=-20;x<=w+20;x+=14){const y=base+Math.sin(x*.0024+ph)*amp+Math.sin(x*.0011-ph*.6+r)*amp*.6+k*2.2;x<0?ctx.moveTo(x,y):ctx.lineTo(x,y)}
+   ctx.strokeStyle=`rgba(${c[0]},${c[1]},${c[2]},${.09+.05*Math.sin(k*.6)})`;ctx.lineWidth=1.1;ctx.stroke()}}
+ ctx.globalCompositeOperation='source-over';t+=.006;if(!still)requestAnimationFrame(draw)}
+addEventListener('resize',size);size();draw();
+})();
+</script></body></html>

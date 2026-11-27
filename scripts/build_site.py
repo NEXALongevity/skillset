@@ -16,7 +16,8 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "docs"
 REPO = "https://github.com/NEXALongevity/skillset"
-VERSION = "v0.1"
+VERSION = "v0.2"
+MCP_URL = "https://mcp.nxlongevity.com/mcp"
 
 STAGES = [
     ("learn", "01", "了解", "Learn"),
@@ -47,6 +48,32 @@ ICON = {  # 24px stroke icons
     "visa-itinerary": '<path d="M2 16l20-8-4 10-6-3-3 4v-5z"/>',
     "multilingual-communication": '<path d="M4 5h8M8 3v2M6 5c0 4 3 7 6 8M10 5c0 3-3 7-6 8M13 21l4-9 4 9M14.5 18h5"/>',
     "compliance-check": '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="m9 12 2 2 4-4"/>',
+    "visa-entry-policy": '<rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="10" r="3"/><path d="M9 16h6"/>',
+    "cost-estimate": '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2M8 18h8"/>',
+    "appointment-booking": '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/>',
+    "payment-insurance-claims": '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>',
+    "medical-record-translation": '<path d="M7 3h7l5 5v13H7zM14 3v5h5"/><path d="M9 13h3M10.5 12v1M10 13c0 2 1 3 2 3M15 17l1.5-4 1.5 4"/>',
+    "second-opinion-prep": '<circle cx="9" cy="9" r="5"/><circle cx="15" cy="15" r="5"/>',
+    "china-practical-guide": '<path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+    "credential-verification": '<circle cx="12" cy="9" r="6"/><path d="m9 9 2 2 4-4M8.5 14 7 21l5-3 5 3-1.5-7"/>',
+    "checkup-report-explainer": '<path d="M5 3h14v18H5z"/><path d="M8 8h8M8 12h3M8 16h5M14 13l1.5 1.5L18 12"/>',
+    "chronic-care-followup": '<path d="M3 12h4l2-5 3 10 2-5h7"/><circle cx="19" cy="5" r="2"/>',
+    "nutrition-exercise": '<path d="M12 21c-4 0-7-3-7-7 0-5 4-9 7-11 3 2 7 6 7 11 0 4-3 7-7 7z"/><path d="M12 21V10"/>',
+    "longevity-bioage": '<path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="6"/><path d="M12 9v3l2 2"/>',
+    "drug-supplement-interactions": '<rect x="3" y="9" width="11" height="6" rx="3" transform="rotate(-45 8.5 12)"/><circle cx="17" cy="17" r="4"/><path d="M14.2 19.8l5.6-5.6"/>',
+    "tcm-constitution": '<circle cx="12" cy="12" r="9"/><path d="M12 3a4.5 4.5 0 0 1 0 9 4.5 4.5 0 0 0 0 9"/><circle cx="12" cy="7.5" r="1"/><circle cx="12" cy="16.5" r="1"/>',
+    "tcm-wellness-destinations": '<path d="M3 20l6-10 4 6 3-4 5 8z"/><circle cx="17" cy="6" r="2"/>',
+    "aesthetics-compare-verify": '<path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/>',
+    "quote-builder": '<path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    "multilingual-scripts": '<path d="M4 5h11v8H8l-4 3z"/><path d="M15 9h5v8l-3-2h-6v-2"/>',
+    "contract-risk-check": '<path d="M7 3h7l5 5v13H7zM14 3v5h5"/><path d="M12 12v3M12 17.5v.5"/>',
+    "partner-hospital-due-diligence": '<path d="M3 21h18M5 21V7h9v14M14 11h5v10M8 10h3M8 14h3"/><circle cx="17" cy="5" r="2.5"/>',
+    "post-op-recovery-itinerary": '<path d="M4 18h16M6 18V9h4l3 4h5v5"/><circle cx="8" cy="6" r="2"/>',
+    "return-followup-handover": '<path d="M4 12h12M12 8l4 4-4 4M20 4v16"/>',
+    "family-companion-guide": '<circle cx="8" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 21v-2a5 5 0 0 1 10 0v2M14 21v-1.5a3.5 3.5 0 0 1 7 0V21"/>',
+    "treatment-comparison": '<path d="M12 3v18M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/>',
+    "teleconsult-coordination": '<rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 6-3v10l-6-3"/>',
+    "case-review": '<path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h4"/>',
 }
 
 CSS = r"""
@@ -138,8 +165,8 @@ h2.title{font-size:clamp(30px,4.4vw,54px);line-height:1.1;letter-spacing:-.025em
 .tag{font:11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--panel-b);padding:4px 8px;border-radius:6px}
 .card h3{margin:0 0 4px;font-size:19px}
 .card .en{font:12px var(--mono);color:var(--dim);margin-bottom:12px}
-.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.65;flex:1;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
-.card .go{margin-top:20px;font:12px var(--mono);color:var(--teal)}
+.card p{margin:0 0 20px;color:var(--muted);font-size:14px;line-height:1.65;max-height:calc(1.65em*4);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.card .go{margin-top:auto;font:12px var(--mono);color:var(--teal)}
 
 /* terminal */
 .split{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center}
@@ -192,6 +219,19 @@ h2.title{font-size:clamp(30px,4.4vw,54px);line-height:1.1;letter-spacing:-.025em
 /* roadmap */
 .road{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:760px){.road{grid-template-columns:1fr}}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 26px}
+.filters button{font:12px var(--mono);letter-spacing:.06em;color:var(--muted);background:var(--panel);border:1px solid var(--panel-b);padding:8px 14px;border-radius:999px;cursor:pointer}
+.filters button.on,.filters button:hover{color:var(--fg);border-color:var(--teal)}
+.card.hide{display:none}
+.badge{font:10px var(--mono);letter-spacing:.1em;color:#05070d;background:var(--grad);padding:3px 7px;border-radius:6px;margin-left:6px}
+.mcps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+@media(max-width:900px){.mcps{grid-template-columns:1fr}}
+.mcp{padding:26px;border-radius:20px;background:var(--panel);border:1px solid var(--panel-b);display:flex;flex-direction:column;min-width:0}
+.mcp .k{font:11px var(--mono);letter-spacing:.12em;color:var(--teal)}
+.mcp h4{margin:10px 0 6px;font-size:20px}.mcp p{color:var(--muted);font-size:14px;line-height:1.65;margin:0 0 14px;flex:1}
+.mcp code{display:block;font:12px var(--mono);color:var(--fg);background:#070b14;border:1px solid var(--panel-b);border-radius:10px;padding:10px 12px;overflow-x:auto;white-space:nowrap}
+.mcp ul{margin:0 0 14px;padding:0;list-style:none;font:12.5px var(--mono);color:var(--muted)}.mcp li{padding:3px 0}.mcp li::before{content:"→ ";color:var(--violet)}
+.road.three{grid-template-columns:repeat(3,1fr)}@media(max-width:900px){.road.three{grid-template-columns:1fr}}
 .ver{padding:30px;border-radius:20px;border:1px solid var(--panel-b);background:var(--panel)}
 .ver.now{background:linear-gradient(var(--bg2),var(--bg2)) padding-box,var(--grad) border-box;border:1px solid transparent}
 .ver .v{font:600 30px var(--mono)}.ver .st{font:12px var(--mono);color:var(--teal);letter-spacing:.1em;text-transform:uppercase;margin-left:10px}
@@ -252,6 +292,9 @@ footer a{color:var(--muted)}
 
 JS = r"""
 (()=>{
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;
+document.querySelectorAll('.grid .card').forEach(c=>{const show=f==='all'||(f==='mcp'?c.dataset.mcp==='1':c.dataset.stage===f);c.classList.toggle('hide',!show);if(show)c.classList.add('in')});}));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
@@ -292,7 +335,7 @@ def shell(title, desc, body, depth=0):
 <link rel="stylesheet" href="{up}style.css"></head><body>{SVG_DEFS}
 <header class="nav"><div class="wrap">
 <a class="logo" href="{up}index.html"><span class="mark">NX</span>NEXA <small>SKILLS · {VERSION}</small></a>
-<nav><a href="{up}index.html#journey">旅程 Journey</a><a href="{up}index.html#skills">Skills</a><a href="{up}index.html#data">数据 Data</a><a href="{up}index.html#roadmap">路线 Roadmap</a>
+<nav><a href="{up}index.html#journey">旅程 Journey</a><a href="{up}index.html#skills">Skills</a><a href="{up}index.html#mcp">MCP</a><a href="{up}index.html#data">数据 Data</a><a href="{up}index.html#roadmap">路线 Roadmap</a>
 <a class="gh" href="{REPO}"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.67.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></nav>
 </div></header>
 {body}
@@ -350,6 +393,8 @@ def skill_page(s):
         f'<details class="ex"{" open" if i == 0 else ""}><summary>{esc(re.sub(r"^#\s*", "", e.read_text(encoding="utf-8").splitlines()[0]))}</summary>'
         f'<div class="body prose">{md(chr(10).join(e.read_text(encoding="utf-8").splitlines()[1:]))}</div></details>'
         for i, e in enumerate(examples))
+    mcp_html = (f'<div class="kv"><div><span>mcp</span><a href="../index.html#mcp">{esc(str(meta["mcp"]))}</a></div></div>'
+                if meta.get("mcp") else "")
     body = f"""
 <section class="doc-hero"><div class="wrap">
 <div class="crumb"><a href="../index.html">NEXA Skills</a> / <a href="../index.html#journey">{st[2]} {st[3]}</a> / {esc(s["name"])}</div>
@@ -361,7 +406,7 @@ def skill_page(s):
 <div class="kv"><div><span>skill</span>{esc(s["name"])}</div><div><span>stage</span>{st[2]} · {st[3]}</div>
 <div><span>version</span>{esc(str(meta.get("version","")))}</div><div><span>lang</span>{" / ".join(meta.get("languages",[]))}</div>
 <div><span>review</span>{review_html}</div><div><span>license</span>CC BY 4.0</div></div>
-<a class="btn primary" href="{REPO}/tree/main/skills/{s["name"]}">查看源码 Source</a>
+{mcp_html}<a class="btn primary" href="{REPO}/tree/main/skills/{s["name"]}">查看源码 Source</a>
 <a class="btn ghost" href="{REPO}/archive/refs/heads/main.zip">下载全部 Download</a>
 </aside>
 <article class="prose">{md(s["body"])}<h2>示例 · Examples</h2>{ex}</article>
@@ -379,7 +424,7 @@ def index_page(skills, by_dir, cities, ids):
     for key, num, zh, en in STAGES:
         items = by_stage.get(key, [])
         chips = "".join(f'<a class="chip" href="skills/{s["name"]}.html">{esc(s["zh"])}</a>' for s in items) \
-            or '<span class="chip soon">出院与回国随访 · v0.2</span>'
+            or '<span class="chip soon">即将上线</span>'
         pipe.append(f'<div class="stage {"on" if items else "off"} rv"><div class="node">{num}</div>'
                     f'<h3>{zh}<small>{en.upper()}</small></h3><div class="chips">{chips}</div></div>')
     always = "".join(f'<a class="chip" href="skills/{s["name"]}.html">{esc(s["zh"])}</a>' for s in by_stage["cross-cutting"])
@@ -387,10 +432,16 @@ def index_page(skills, by_dir, cities, ids):
     cards = []
     for s in skills:
         st = STAGE_INFO[s["stage"]]
-        cards.append(f'<a class="card rv" href="skills/{s["name"]}.html"><div class="meta">'
-                     f'<svg viewBox="0 0 24 24">{ICON.get(s["name"], "")}</svg><span class="tag">{st[1]} · {st[3]}</span></div>'
+        badge = '<span class="badge">MCP</span>' if s["meta"].get("mcp") else ""
+        cards.append(f'<a class="card rv" data-stage="{s["stage"]}" data-mcp="{1 if s["meta"].get("mcp") else 0}" href="skills/{s["name"]}.html"><div class="meta">'
+                     f'<svg viewBox="0 0 24 24">{ICON.get(s["name"], "")}</svg><span class="tag">{st[1]} · {st[3]}{badge}</span></div>'
                      f'<h3>{esc(s["zh"])}</h3><div class="en">{esc(s["en"])}</div><p>{esc(s["purpose"])}</p>'
                      f'<div class="go">./skills/{s["name"]} →</div></a>')
+
+    present = [st for st in STAGES + [CROSS] if by_stage.get(st[0])]
+    filters = '<button class="on" data-f="all">全部 All · ' + str(len(skills)) + '</button>' + "".join(
+        f'<button data-f="{st[0]}">{st[2]} {st[3]} · {len(by_stage[st[0]])}</button>' for st in present) + \
+        f'<button data-f="mcp">★ MCP · {sum(1 for s in skills if s["meta"].get("mcp"))}</button>'
 
     dirs = []
     for key, zh, en, spec in DIRECTIONS:
@@ -432,7 +483,7 @@ def index_page(skills, by_dir, cities, ids):
 <div class="stats">
 <div class="stat"><b class="grad">{len(skills)}</b><span>Skills · 中英双语</span></div>
 <div class="stat"><b>{len(ids)}</b><span>家医院 · {len(cities)} 座城市</span></div>
-<div class="stat"><b>{len(by_dir)}</b><span>个重点方向</span></div>
+<div class="stat"><b>3</b><span>个 MCP 实时服务</span></div>
 <div class="stat"><b>100%</b><span>数据注明来源与核实日期</span></div>
 </div></div></section>
 
@@ -448,7 +499,31 @@ def index_page(skills, by_dir, cities, ids):
 <div class="kicker rv">Skill library</div>
 <h2 class="title rv">{len(skills)} 个 Skills，<span class="grad">即插即用</span>。</h2>
 <p class="sub rv">每个 Skill 都是一个包含 SKILL.md 的目录：用途、输入、步骤、输出格式、边界与医学声明一应俱全，附虚构病例示例，兼作测试用例。</p>
+<div class="filters" role="tablist">{filters}</div>
 <div class="grid">{''.join(cards)}</div>
+</div></section>
+
+<section class="block" id="mcp" style="padding-top:40px"><div class="wrap">
+<div class="kicker rv">Model Context Protocol</div>
+<h2 class="title rv">Skill 引流，<span class="grad">MCP 连接</span>。</h2>
+<p class="sub rv">变化快的政策、需要计算的费用、必须核实的资质，交给三个免登录的 MCP 服务。每条结果都附官方来源与核实日期，不提供任何凭记忆的数据。</p>
+<div class="mcps">
+<div class="mcp rv"><div class="k">/mcp/visa</div><h4>签证与入境政策查询</h4>
+<p>按国籍和停留天数，列出单方面免签、互免协定、240 小时过境、海南 30 天与签证等入境方式，并提示免签目的未列明就医、政策到期日等风险。</p>
+<ul><li>visa_entry_options</li><li>visa_policy_sources</li></ul><code>{MCP_URL}/visa</code></div>
+<div class="mcp rv"><div class="k">/mcp/cost</div><h4>费用预估与比价</h4>
+<p>不含任何价格数据。按方向列出该问的费用项，用书面报价和用户提供的金额算出区间，逐项对比多份报价，揪出漏项。</p>
+<ul><li>cost_checklist</li><li>cost_estimate</li><li>compare_quotes</li></ul><code>{MCP_URL}/cost</code></div>
+<div class="mcp rv"><div class="k">/mcp/credentials</div><h4>医生与机构资质核验</h4>
+<p>查 NEXA 知识库（榜单来源、年份、核实日期），并给出国家卫健委执业医师查询、机构名单、国家药监局数据查询等官方核验路径。</p>
+<ul><li>credential_lookup</li><li>verification_guide</li></ul><code>{MCP_URL}/credentials</code></div>
+</div>
+<div class="term rv" style="margin-top:24px"><div class="bar"><i></i><i></i><i></i><span>connect — 任意支持远程 MCP 的客户端</span></div><pre><span class="c-dim"># Claude Code</span>
+<span class="c-t">$</span> claude mcp add --transport http nexa-travel {MCP_URL}
+
+<span class="c-v">›</span> <span class="c-w">法国患者 12 月 10 日来上海做膝关节置换，住 28 天，入境怎么办？</span>
+<span class="c-b">●</span> visa_entry_options  <span class="c-t">✓</span> 单方面免签国籍符合，但目的未列就医、离境晚于 2026-12-31
+<span class="c-p">◆</span> 建议申请签证 · 来源：中国驻爱尔兰使馆通知、中国政府网 · as_of 2026-11-27</pre></div>
 </div></section>
 
 <section class="block"><div class="wrap split">
@@ -486,11 +561,13 @@ def index_page(skills, by_dir, cities, ids):
 <section class="block" id="roadmap" style="padding-top:40px"><div class="wrap">
 <div class="kicker rv">Roadmap</div>
 <h2 class="title rv">这只是<span class="grad">开始</span>。</h2>
-<div class="road" style="margin-top:40px">
+<div class="road three" style="margin-top:40px">
+<div class="ver rv"><span class="v">v0.1</span><span class="st" style="color:var(--muted)">Shipped</span><ul>
+<li>8 个 P0 Skills</li><li>6 个方向 {total} 条医院记录，全部注明来源</li><li>医学术语表、开发规范与自动校验</li></ul></div>
 <div class="ver now rv"><span class="v">{VERSION}</span><span class="st">● Live</span><ul>
-<li>8 个 P0 Skills，覆盖了解、评估、匹配、就医与全程支持</li><li>6 个方向 {total} 条医院记录，全部注明来源</li><li>医学术语表、开发规范与自动校验</li><li>中文、英文</li></ul></div>
-<div class="ver rv"><span class="v">v0.2</span><span class="st" style="color:var(--muted)">Next</span><ul>
-<li>中医方向、脑血管专科、专家档案</li><li>民营医院与在华外资医院</li><li>P1 Skills：方案对比、远程会诊、报价、陪同手册、随访、案例复盘</li><li>法语、西班牙语、繁体中文</li></ul></div>
+<li>{len(skills)} 个 Skills：医疗旅行、健康管理、中国特色、从业者工具、旅行与康复</li><li>3 个 MCP：签证入境、费用比价、资质核验</li><li>中文、英文</li></ul></div>
+<div class="ver rv"><span class="v">v0.3</span><span class="st" style="color:var(--muted)">Next</span><ul>
+<li>中医方向、脑血管专科、专家档案</li><li>民营医院与在华外资医院</li><li>号源预约、跨境支付 MCP</li><li>法语、西班牙语、繁体中文</li></ul></div>
 </div></div></section>
 
 <section class="block" style="padding-top:20px"><div class="wrap"><div class="band rv">

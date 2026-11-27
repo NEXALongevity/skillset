@@ -1,0 +1,181 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>医生号源查询与预约 · Specialist Appointment Booking | NEXA Skills</title><meta name="description" content="Prepare and track a specialist appointment request at a Chinese hospital through its international department or official booking channel, with documents, time options and confirmation checks. Use after a doctor or hospital is shortlisted.">
+<meta property="og:title" content="医生号源查询与预约 · Specialist Appointment Booking | NEXA Skills"><meta property="og:description" content="Prepare and track a specialist appointment request at a Chinese hospital through its international department or official booking channel, with documents, time options and confirmation checks. Use after a doctor or hospital is shortlisted.">
+<meta name="theme-color" content="#05070d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='a' x2='1' y2='1'%3E%3Cstop stop-color='%233d8bff'/%3E%3Cstop offset='.5' stop-color='%232ee6c8'/%3E%3Cstop offset='1' stop-color='%239b7bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23a)'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='700' text-anchor='middle' fill='%2305070d'%3ENX%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../style.css"></head><body><svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3d8bff"/><stop offset=".5" stop-color="#2ee6c8"/><stop offset="1" stop-color="#9b7bff"/></linearGradient></defs></svg>
+<header class="nav"><div class="wrap">
+<a class="logo" href="../index.html"><span class="mark">NX</span>NEXA <small>SKILLS · v0.2</small></a>
+<nav><a href="../index.html#journey">旅程 Journey</a><a href="../index.html#skills">Skills</a><a href="../index.html#mcp">MCP</a><a href="../index.html#data">数据 Data</a><a href="../index.html#roadmap">路线 Roadmap</a>
+<a class="gh" href="https://github.com/NEXALongevity/skillset"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.67.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a></nav>
+</div></header>
+
+<section class="doc-hero"><div class="wrap">
+<div class="crumb"><a href="../index.html">NEXA Skills</a> / <a href="../index.html#journey">匹配 Match</a> / appointment-booking</div>
+<h1>医生号源查询与预约</h1><div class="en">Specialist Appointment Booking</div>
+<p class="desc">在候选医生和医院确定后，按医院官方渠道（国际医疗部、特需门诊、官方小程序或电话）准备预约申请、跟进确认，并把确认信息交给行程规划。它不抢号、不使用非官方号贩渠道。</p>
+</div></section>
+<div class="wrap"><div class="doc">
+<aside class="side">
+<div class="kv"><div><span>skill</span>appointment-booking</div><div><span>stage</span>匹配 · Match</div>
+<div><span>version</span>0.1.0</div><div><span>lang</span>zh / en</div>
+<div><span>review</span><b class="pend">待审核 Pending</b></div><div><span>license</span>CC BY 4.0</div></div>
+<a class="btn primary" href="https://github.com/NEXALongevity/skillset/tree/main/skills/appointment-booking">查看源码 Source</a>
+<a class="btn ghost" href="https://github.com/NEXALongevity/skillset/archive/refs/heads/main.zip">下载全部 Download</a>
+</aside>
+<article class="prose"><h1>医生号源查询与预约 · Specialist Appointment Booking</h1>
+<h2>用途 · Purpose</h2>
+<p>在候选医生和医院确定后，按医院官方渠道（国际医疗部、特需门诊、官方小程序或电话）准备预约申请、跟进确认，并把确认信息交给行程规划。它不抢号、不使用非官方号贩渠道。</p>
+<p>Once a doctor or hospital is shortlisted, prepare the appointment request through the hospital's official channel (international department, VIP clinic, official app or phone), follow up and pass confirmed details to itinerary planning. No scalping or unofficial channels.</p>
+<h2>何时使用 · When to use</h2>
+<ul>
+<li>医生与方案匹配（doctor-matching）给出候选后</li>
+<li>远程会诊后医生建议来华面诊时</li>
+<li>预约被改期、需要重新安排时</li>
+</ul>
+<h2>输入 · Inputs</h2>
+<table>
+<thead>
+<tr>
+<th>字段 Field</th>
+<th>说明 Description</th>
+<th>必需 Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hospital</td>
+<td>医院名称（来自知识库）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>department_or_doctor</td>
+<td>科室或医生</td>
+<td>是</td>
+</tr>
+<tr>
+<td>preferred_dates</td>
+<td>可就诊日期范围（至少 2 个选项）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>record_summary</td>
+<td>中英文病历摘要（来自 medical-record-summary）</td>
+<td>是</td>
+</tr>
+<tr>
+<td>patient_language</td>
+<td>患者语言、是否需要口译</td>
+<td>是</td>
+</tr>
+<tr>
+<td>identity_doc_type</td>
+<td>护照等证件类型（不填号码）</td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<h2>步骤 · Steps</h2>
+<ol>
+<li><strong>确认官方渠道</strong>：从知识库读取医院国际医疗部或官网信息；没有记录时写"待查官方渠道"，不使用第三方号贩。</li>
+<li><strong>准备申请包</strong>：病历摘要、近期影像与报告清单、希望解决的问题（3 条以内）、可就诊日期、语言需求。</li>
+<li><strong>起草预约邮件或留言</strong>：中英双语，说明患者为境外患者、是否需要国际部协助缴费与口译。</li>
+<li><strong>跟进清单</strong>：记录提交时间、对方回复、预约号或确认函，48 小时未回复时按官方电话跟进。</li>
+<li><strong>确认关键事项</strong>：就诊地点（院区、楼层）、是否需空腹、需带原件、实名挂号所需证件、取消改期规则、诊查费。</li>
+<li>确认后交给 visa-itinerary 和 china-practical-guide。</li>
+</ol>
+<h2>输出格式 · Output format</h2>
+<pre><code>【预约申请 / Request】（中英双语邮件草稿）
+【跟进记录 / Tracking】
+| 日期 | 动作 | 对方回复 | 下一步 |
+【确认信息 / Confirmed】院区、日期时间、医生/科室、注意事项、取消规则
+【待确认 / To confirm】
+</code></pre>
+<h2>边界与禁止事项 · Boundaries</h2>
+<ul>
+<li>只使用医院官方渠道；不代抢号、不买卖号源。</li>
+<li>不在申请中夸大病情以求加号。</li>
+<li>患者证件号、联系方式只在发送给医院时使用，不写入记录模板与示例。</li>
+<li>医生是否接诊由医院决定，不向患者承诺。</li>
+</ul>
+<h2>医学声明 · Disclaimer</h2>
+<p>本 Skill 仅提供信息整理与流程支持，不构成医疗建议，诊断与治疗决定以执业医生意见为准。This Skill organises information and supports workflows only; it is not medical advice. Diagnosis and treatment decisions rest with licensed physicians.</p>
+<hr />
+<p>© NEXA Longevity · CC BY 4.0 · https://skills.nxlongevity.com</p><h2>示例 · Examples</h2><details class="ex" open><summary>示例 1：印尼患者预约上海肿瘤专科医院国际医疗部</summary><div class="body prose"><blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>hospital: 上海某肿瘤专科医院（知识库 id 见档案）</li>
+<li>department_or_doctor: 乳腺外科</li>
+<li>preferred_dates: 2027-01-12 至 01-16；或 01-19 至 01-23</li>
+<li>record_summary: 已完成中英文摘要</li>
+<li>patient_language: 印尼语，可用英语，需口译</li>
+<li>identity_doc_type: 护照</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【预约申请 / Request】
+Subject: Appointment request – international patient, Breast Surgery
+Dear International Medical Department,
+We are writing on behalf of an international patient from Indonesia who would like an outpatient consultation with the Breast Surgery department. A bilingual medical summary and the list of recent imaging are attached. Preferred dates: 12–16 Jan 2027, or 19–23 Jan 2027. The patient speaks English; an interpreter would be appreciated. Could you advise on availability, consultation fees and documents to bring?
+（中文版同步附上）
+
+【跟进记录 / Tracking】
+| 日期 | 动作 | 对方回复 | 下一步 |
+|---|---|---|---|
+| D0 | 邮件提交 | — | 48 小时后电话跟进 |
+
+【待确认 / To confirm】院区与楼层、是否需空腹抽血、原始影像光盘是否需带、取消规则
+</code></pre></div></details><details class="ex"><summary>示例 2：航班延误后改期</summary><div class="body prose"><blockquote>
+<p>虚构病例 / Fictional case</p>
+</blockquote>
+<h2>输入 Input</h2>
+<ul>
+<li>hospital: 北京某综合医院国际医疗部</li>
+<li>department_or_doctor: 心内科</li>
+<li>preferred_dates: 原定 3 月 4 日；航班延误后最早 3 月 6 日到院</li>
+<li>patient_language: 阿拉伯语，需口译</li>
+</ul>
+<h2>输出 Output</h2>
+<pre><code>【预约申请 / Request】
+致国际医疗部：患者原定 3 月 4 日心内科门诊，因航班延误最早 3 月 6 日到院，申请改期至 3 月 6 日或之后最近的门诊，并保留口译安排。如需重新挂号或产生改期费用，请告知。
+
+【跟进记录 / Tracking】
+| 日期 | 动作 | 对方回复 | 下一步 |
+|---|---|---|---|
+| 3/3 | 电话 + 邮件申请改期 | 待回复 | 当日下午再跟进 |
+
+【待确认 / To confirm】新日期、口译是否同步改期、原诊查费是否可转用
+【提醒】同步通知 visa-itinerary 调整后续日程与停留天数
+</code></pre></div></details></article>
+</div></div>
+<footer><div class="wrap"><div class="row">
+<div class="disc"><b style="color:var(--fg)">NEXA Longevity</b> · Longevity as a Choice<br>
+本站内容仅提供信息整理与流程支持，不构成诊断或治疗建议，一切以执业医生意见为准。<br>Information and workflow support only. Not medical advice.</div>
+<div>代码 <a href="https://github.com/NEXALongevity/skillset/blob/main/LICENSE">Apache-2.0</a> · 内容 <a href="https://github.com/NEXALongevity/skillset/blob/main/LICENSE-CONTENT">CC BY 4.0</a><br>
+使用请署名 NEXA Longevity<br><a href="https://nxlongevity.com">nxlongevity.com</a> · <a href="https://github.com/NEXALongevity/skillset">GitHub</a></div>
+</div></div></footer>
+<script>
+(()=>{
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+document.querySelectorAll('.filters button').forEach(x=>x.classList.toggle('on',x===b));const f=b.dataset.f;
+document.querySelectorAll('.grid .card').forEach(c=>{const show=f==='all'||(f==='mcp'?c.dataset.mcp==='1':c.dataset.stage===f);c.classList.toggle('hide',!show);if(show)c.classList.add('in')});}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')}));
+const cv=document.getElementById('ribbons');if(!cv)return;
+const ctx=cv.getContext('2d');let w,h,dpr=Math.min(devicePixelRatio||1,2),t=0;
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const cols=[[61,139,255],[46,230,200],[155,123,255],[255,122,198]];
+function size(){w=cv.clientWidth;h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+function draw(){ctx.clearRect(0,0,w,h);ctx.globalCompositeOperation='lighter';
+ for(let r=0;r<4;r++){const c=cols[r];
+  for(let k=0;k<14;k++){ctx.beginPath();
+   const amp=h*(.07+.025*r)+k*1.6,base=h*(.52+.07*(r-1.5)),ph=t*(.35+.08*r)+r*1.7+k*.05;
+   for(let x=-20;x<=w+20;x+=14){const y=base+Math.sin(x*.0024+ph)*amp+Math.sin(x*.0011-ph*.6+r)*amp*.6+k*2.2;x<0?ctx.moveTo(x,y):ctx.lineTo(x,y)}
+   ctx.strokeStyle=`rgba(${c[0]},${c[1]},${c[2]},${.09+.05*Math.sin(k*.6)})`;ctx.lineWidth=1.1;ctx.stroke()}}
+ ctx.globalCompositeOperation='source-over';t+=.006;if(!still)requestAnimationFrame(draw)}
+addEventListener('resize',size);size();draw();
+})();
+</script></body></html>
