@@ -19,7 +19,7 @@
 <div class="wrap"><div class="doc">
 <aside class="side">
 <div class="kv"><div><span>skill</span>second-opinion-prep</div><div><span>stage</span>评估 · Assess</div>
-<div><span>version</span>0.1.0</div><div><span>lang</span>zh / en</div>
+<div><span>version</span>0.3.0</div><div><span>lang</span>zh / en</div>
 <div><span>review</span><b class="pend">待审核 Pending</b></div><div><span>license</span>CC BY 4.0</div></div>
 <a class="btn primary" href="https://github.com/NEXALongevity/skillset/tree/main/skills/second-opinion-prep">查看源码 Source</a>
 <a class="btn ghost" href="https://github.com/NEXALongevity/skillset/archive/refs/heads/main.zip">下载全部 Download</a>
@@ -69,15 +69,25 @@
 <td>需要答复的时间（如治疗开始前）</td>
 <td>否</td>
 </tr>
+<tr>
+<td>recipient_and_channel</td>
+<td>拟接收机构及已确认的资料传输渠道 / Proposed recipient and approved records channel</td>
+<td>交接前 / Before handoff</td>
+</tr>
+<tr>
+<td>consent_status</td>
+<td>有效同意范围及核验状态 / Verified scope and status of consent</td>
+<td>交接前 / Before handoff</td>
+</tr>
 </tbody>
 </table>
 <h2>步骤 · Steps</h2>
 <ol>
-<li><strong>框定问题</strong>：把患者的担心改写成 3 到 5 个可回答的问题，例如"诊断是否成立""方案 A 与 B 的取舍""是否需要补充检查"。</li>
-<li><strong>材料清单</strong>：按专科列出必需材料（如肿瘤：病理报告与切片/蜡块是否可寄送、免疫组化、分期影像；骨科：负重位 X 光、MRI）。标出缺失项。</li>
-<li><strong>时间线</strong>：按日期列出症状、检查、诊断、治疗与疗效。</li>
-<li><strong>同意与隐私</strong>：取得患者书面同意，说明材料会发给哪家机构，用 compliance-check 检查。</li>
-<li><strong>交付</strong>：生成中英双语"会诊申请包"目录，交给 teleconsult-coordination 或 appointment-booking。</li>
+<li><strong>框定问题 / Frame the request.</strong> 将诉求整理成最多 5 个中立问题，注明需要答复的时间和来源。Turn the request into up to five neutral questions, and record the deadline and who supplied it.</li>
+<li><strong>整理材料 / Inventory records.</strong> 优先按拟接收方的材料要求整理。按语言、日期和来源记录每份材料，区分已收到、待补、待翻译与待接收方确认。缺少对方清单时，将专科材料列为建议核对项。Use the recipient's checklist when available. Track language, date and source, and separate received, missing, translation needed and recipient confirmation needed.</li>
+<li><strong>整理时间线 / Build the timeline.</strong> 逐项记录事件和原始来源。日期或结论冲突时并列保留，标为待澄清。Link each event to its source and flag conflicting dates or statements for clarification.</li>
+<li><strong>检查交接条件 / Assess handoff readiness.</strong> 确认已取得有效同意，接收机构与传输渠道已确认，且接收方要求的材料齐备。未确认时，输出「暂缓交接」和缺项、补件责任人及下一步。满足后标记「可交接」，交给人工负责人处理。Verify valid consent, recipient, approved channel and required materials. Hold the handoff when any condition is missing, and provide the action and owner. When ready, hand off to the responsible person for review.</li>
+<li><strong>生成申请包 / Prepare the package.</strong> 输出请求语言版本，缺省为中英双语；保留原文术语和未确认项。交接后才更新发送状态，收到接诊方确认后才标记已接案。Use the requested language, defaulting to Chinese and English. Retain source terms and uncertainties. Mark sent or accepted only with evidence of that event.</li>
 </ol>
 <h2>输出格式 · Output format</h2>
 <pre><code>【会诊问题 / Questions for the reviewer】1. … 2. …
@@ -85,7 +95,8 @@
 | 日期 | 事件 | 来源文件 |
 【材料清单 / Records】☐ 已有 … ☐ 缺失 …
 【同意状态 / Consent】
-【交付去向 / Next】
+【交接状态 / Handoff】暂缓 / 可交接 / 已发送 / 已接案 | 依据 / Evidence
+【缺项与下一步 / Blockers and next action】事项 / Item | 责任人 / Owner | 时间 / Due
 </code></pre>
 <h2>边界与禁止事项 · Boundaries</h2>
 <ul>
@@ -93,6 +104,7 @@
 <li>不暗示中国方案一定更好，问题表述保持中立。</li>
 <li>材料缺失时如实标注，不用推测补齐。</li>
 <li>切片、蜡块等实物寄送需遵守双方国家规定，提示向医院确认。</li>
+<li>材料保留在获准处理病历的工作环境；公共 MCP、公开社群和 MCP 准入申请均不用于传输病例。Keep records in the approved environment for clinical documents. Public MCP, community channels and MCP access applications are separate from medical-record transfer.</li>
 </ul>
 <h2>医学声明 · Disclaimer</h2>
 <p>本 Skill 仅提供信息整理与流程支持，不构成医疗建议，诊断与治疗决定以执业医生意见为准。This Skill organises information and supports workflows only; it is not medical advice. Diagnosis and treatment decisions rest with licensed physicians.</p>
@@ -123,7 +135,8 @@
 
 【材料清单 / Records】☐ 已有：病理报告、PET-CT 报告、血常规 ☐ 缺失：完整免疫组化结果、切片是否可寄送
 【同意状态 / Consent】待签署
-【交付去向 / Next】teleconsult-coordination，时间要求：3 周内
+【交接状态 / Handoff】暂缓 / On hold。书面同意和接收渠道均待确认。
+【缺项与下一步 / Blockers and next action】协调员确认接收方要求、传输渠道和书面同意，并请转介方补齐病理材料。时间要求：3 周内。
 </code></pre></div></details><details class="ex"><summary>示例 2：脊柱手术前听取第二意见</summary><div class="body prose"><blockquote>
 <p>虚构病例 / Fictional case</p>
 </blockquote>
@@ -134,6 +147,8 @@
 <li>records: MRI 报告与影像、神经电生理</li>
 <li>patient_questions: 是否一定要做融合？</li>
 <li>deadline: 无硬性期限</li>
+<li>recipient_and_channel: 拟接收骨科团队已确认其安全接收渠道，且确认可先审阅现有材料。</li>
+<li>consent_status: 已核对书面同意，覆盖该接收方和用途。</li>
 </ul>
 <h2>输出 Output</h2>
 <pre><code>【会诊问题 / Questions for the reviewer】
@@ -141,9 +156,11 @@
 2. 融合与非融合手术、继续保守治疗，各自适用条件是什么？
 3. 需要补充哪些检查（如动力位 X 光）？
 
-【材料清单 / Records】☐ 已有：MRI（含 DICOM）、神经电生理 ☐ 缺失：动力位 X 光、保守治疗记录
-【同意状态 / Consent】已签署
-【交付去向 / Next】appointment-booking（骨科脊柱专业）
+【病程时间线 / Timeline】检查日期待核实，影像与电生理以原始报告为准。
+【材料清单 / Records】已有：MRI（含 DICOM）、神经电生理。其他材料由接收方审阅后确认。
+【同意状态 / Consent】书面同意已核验。
+【交接状态 / Handoff】可交接 / Ready for handoff。接收团队、渠道及初审材料均已确认。
+【缺项与下一步 / Blockers and next action】协调员复核检查日期，通过已确认渠道交接，等待接收方确认。
 </code></pre></div></details></article>
 </div></div>
 <footer><div class="wrap"><div class="row">

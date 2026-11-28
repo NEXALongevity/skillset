@@ -5,11 +5,12 @@ globalThis.__NEXA_DATA = {"visa":{"as_of":"2026-11-27","dataset":"NEXA visa & en
 // Data is bundled at build time by mcp/build.py (DATA constant). Every answer carries sources and as_of.
 // © NEXA Longevity · Apache-2.0 (code) · CC BY 4.0 (data)
 
-const SERVER = { name: "nexa-medical-travel", version: "0.2.0" };
+const SERVER = { name: "nexa-medical-travel", version: "0.3.0" };
 const PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
 const DISCLAIMER =
   "Information only, not medical, legal or immigration advice. Verify with the official source before acting. 仅供参考，以官方与执业医生意见为准。";
 const SITE = "https://skills.nxlongevity.com";
+const CARE_ORIGIN = "https://care.nxlongevity.com";
 const DATA_URL = "https://raw.githubusercontent.com/NEXALongevity/skillset/main/mcp/dist/data.json";
 // Bundled builds set globalThis.__NEXA_DATA; the lean build loads the published data file (cached 10 min).
 let DATA = globalThis.__NEXA_DATA || null;
@@ -121,16 +122,20 @@ function costEstimate(a) {
   const items = Array.isArray(a.items) ? a.items : [];
   if (!items.length) throw new Error("items is required: [{category, name, amount | amount_min+amount_max, currency, source}]");
   const pct = a.contingency_pct === undefined ? 15 : Number(a.contingency_pct);
+  if (!Number.isFinite(pct) || pct < 0) throw new Error("contingency_pct must be a non-negative number");
   const fx = a.fx; // {from, to, rate, date}
   const byCur = {}, pending = [], unsourced = [];
   for (const it of items) {
     const lo = it.amount_min ?? it.amount, hi = it.amount_max ?? it.amount;
-    if (lo === undefined || lo === null || lo === "") { pending.push(it.name); continue; }
+    if (lo == null && hi == null) { pending.push(it.name); continue; }
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo < 0 || hi < lo) {
+      throw new Error("Invalid cost range for " + it.name + ": provide a non-negative amount or ordered minimum and maximum");
+    }
     const cur = (it.currency || "CNY").toUpperCase();
     const cat = ["medical", "travel", "service"].includes(it.category) ? it.category : "other";
     byCur[cur] ??= { medical: [0, 0], travel: [0, 0], service: [0, 0], other: [0, 0] };
-    byCur[cur][cat][0] += Number(lo); byCur[cur][cat][1] += Number(hi);
-    if (!it.source) unsourced.push(it.name);
+    byCur[cur][cat][0] += lo; byCur[cur][cat][1] += hi;
+    if (!String(it.source || "").trim()) unsourced.push(it.name);
   }
   const totals = {};
   for (const [cur, cats] of Object.entries(byCur)) {
@@ -139,8 +144,9 @@ function costEstimate(a) {
     totals[cur] = { subtotals: Object.fromEntries(Object.entries(cats).filter(([, x]) => x[1]).map(([k, x]) => [k, { low: round2(x[0]), high: round2(x[1]) }])), low: round2(low), high: round2(highBase * (1 + pct / 100)) };
   }
   let converted = null;
-  if (fx && fx.from && fx.to && fx.rate) {
+  if (fx && fx.from && fx.to && fx.rate != null) {
     const F = fx.from.toUpperCase(), T = fx.to.toUpperCase(), r = Number(fx.rate);
+    if (!Number.isFinite(r) || r <= 0 || F === T) throw new Error("fx requires distinct currencies and a positive rate");
     const t = { low: 0, high: 0 };
     for (const [cur, x] of Object.entries(totals)) {
       if (cur === T) { t.low += x.low; t.high += x.high; }
@@ -156,26 +162,47 @@ function costEstimate(a) {
       missing = costChecklist({ direction: a.direction }).medical_items.filter((m) => !names.some((n) => n && (norm(m).includes(n) || n.includes(norm(m).split(" ")[0]))));
     } catch (_) {}
   }
-  return { method: `low = sum of minimums; high = sum of maximums × (1 + ${pct}% contingency)`, totals_by_currency: totals, converted, pending_quote: pending, without_source: unsourced, checklist_items_not_in_quote: missing, stay_days: a.stay_days || null, notes: ["All amounts were supplied by the user or a written quote; this tool holds no price data.", "Final charges are settled by the hospital; deposits are refunded or topped up at discharge."], disclaimer: DISCLAIMER };
+  return { method: `low = sum of minimums; high = sum of maximums × (1 + ${pct}% contingency)`, totals_by_currency: totals, converted, pending_quote: pending, without_source: unsourced, checklist_items_not_in_quote: missing, stay_days: a.stay_days || null, notes: ["All amounts were supplied by the user or a written quote; this tool holds no price data.", "Pending items are excluded from totals. Confirm deposits, refunds and final settlement with the provider."], disclaimer: DISCLAIMER };
 }
 
 function compareQuotes(a) {
   const quotes = Array.isArray(a.quotes) ? a.quotes : [];
   if (quotes.length < 2) throw new Error("quotes needs at least two entries: [{label, currency, items:[{name, amount, included?}]}]");
   const rows = new Map();
-  quotes.forEach((q, qi) => (q.items || []).forEach((it) => {
-    const key = norm(it.name);
-    if (!rows.has(key)) rows.set(key, { item: it.name, values: Array(quotes.length).fill(null) });
-    rows.get(key).values[qi] = it.amount ?? (it.included ? "included" : "listed, no amount");
-  }));
+  const totals = quotes.map((q, qi) => {
+    if (!Array.isArray(q.items)) throw new Error("Each quote needs an items array");
+    let total = 0;
+    for (const it of q.items) {
+      const key = norm(it.name);
+      if (!key) throw new Error("Every quote item needs a name");
+      if (!rows.has(key)) rows.set(key, { item: it.name, values: Array(quotes.length).fill(null), statuses: Array(quotes.length).fill("missing") });
+      const row = rows.get(key);
+      if (row.statuses[qi] !== "missing") throw new Error("Duplicate item in quote " + (qi + 1) + ": " + it.name);
+      if (it.amount != null && (!Number.isFinite(it.amount) || it.amount < 0)) throw new Error("Invalid amount for " + it.name);
+      if (it.included === false) {
+        row.statuses[qi] = "excluded";
+        row.values[qi] = it.amount ?? "excluded";
+      } else if (it.amount != null) {
+        row.statuses[qi] = "priced";
+        row.values[qi] = it.amount;
+        total += it.amount;
+      } else {
+        row.statuses[qi] = it.included ? "included" : "unpriced";
+        row.values[qi] = it.included ? "included" : "listed, no amount";
+      }
+    }
+    return { quote: q.label, currency: (q.currency || "CNY").toUpperCase(), listed_total: round2(total) };
+  });
   const table = [...rows.values()];
-  const gaps = quotes.map((q, qi) => ({ quote: q.label, missing_items: table.filter((r) => r.values[qi] === null).map((r) => r.item) }));
-  const totals = quotes.map((q) => ({ quote: q.label, currency: q.currency || "CNY", listed_total: round2((q.items || []).reduce((s, i) => s + (typeof i.amount === "number" ? i.amount : 0), 0)) }));
+  const gaps = quotes.map((q, qi) => {
+    const itemsWithStatus = (status) => table.filter((row) => row.statuses[qi] === status).map((row) => row.item);
+    return { quote: q.label, missing_items: itemsWithStatus("missing"), excluded_items: itemsWithStatus("excluded"), unpriced_items: itemsWithStatus("unpriced") };
+  });
   let not_in_any = [];
   if (a.direction) {
     try { not_in_any = costChecklist({ direction: a.direction }).medical_items.filter((m) => !table.some((r) => norm(m).includes(norm(r.item)) || norm(r.item).includes(norm(m).split(" ")[0]))); } catch (_) {}
   }
-  return { table, gaps, listed_totals: totals, checklist_items_not_in_any_quote: not_in_any, caution: "Totals are only comparable when scopes match. Ask each provider to quote the missing items before comparing.", disclaimer: DISCLAIMER };
+  return { table, gaps, listed_totals: totals, checklist_items_not_in_any_quote: not_in_any, mixed_currencies: new Set(totals.map((item) => item.currency)).size > 1, caution: "Check scope and currency before comparing. Listed totals exclude missing, unpriced and explicitly excluded items.", disclaimer: DISCLAIMER };
 }
 
 // ---------- credentials ----------
@@ -201,6 +228,28 @@ function verificationGuide(a) {
   return { as_of: vc.as_of, channels: out, record_template: { item: "", channel_url: "", checked_on: "YYYY-MM-DD", result: "match | mismatch | not found", evidence: "screenshot path" }, rules: ["Only mark verified when you saw the official record.", "Not found ≠ unlicensed; record as unverified.", "Re-verify every 12 months."], note: vc.note, disclaimer: DISCLAIMER };
 }
 
+// ---------- access application ----------
+function applicationUrl(configuredUrl) {
+  if (!configuredUrl) return null;
+  try {
+    const url = new URL(configuredUrl);
+    if (url.origin !== CARE_ORIGIN || url.username || url.password) return null;
+    url.searchParams.set("source", "skillset");
+    url.searchParams.set("medium", "mcp");
+    return url.toString();
+  } catch (_) {
+    return null;
+  }
+}
+
+function accessApplication(args, env) {
+  if (Object.keys(args).length) throw new Error("This tool takes no arguments. Enter application details only in the NEXA Care form.");
+  const url = applicationUrl(env.MCP_ACCESS_APPLICATION_URL);
+  return url
+    ? { status: "available", application_url: url, next: "Submit the application in NEXA Care. NEXA reviews requests before granting access." }
+    : { status: "unavailable", application_url: null, next: "Applications are not currently available. Contact NEXA to discuss access." };
+}
+
 // ---------- tool registry ----------
 const S = (props, required = []) => ({ type: "object", properties: props, required, additionalProperties: false });
 const TOOLS = {
@@ -211,12 +260,13 @@ const TOOLS = {
   compare_quotes: { group: "cost", fn: compareQuotes, description: "Compare two or more provider quotes item by item, showing gaps and different scopes.", inputSchema: S({ quotes: { type: "array", items: { type: "object", properties: { label: { type: "string" }, currency: { type: "string" }, items: { type: "array", items: { type: "object", properties: { name: { type: "string" }, amount: { type: "number" }, included: { type: "boolean" } }, required: ["name"] } } }, required: ["label", "items"] } }, direction: { type: "string" } }, ["quotes"]) },
   credential_lookup: { group: "credentials", fn: credentialLookup, description: "Look up a hospital in the NEXA knowledge base (public ranking source, year, verified date).", inputSchema: S({ name: { type: "string", description: "Hospital name, Chinese or English" }, direction: { type: "string" } }, ["name"]) },
   verification_guide: { group: "credentials", fn: verificationGuide, description: "Return official channels (NHC physician registry, facility lists, NMPA drug/device database) and steps to verify a doctor, facility, aesthetic scope, drug or device.", inputSchema: S({ target_type: { type: "string", description: "doctor, nurse, facility, aesthetic_doctor, aesthetic_facility, drug, device (comma-separate several)" } }, ["target_type"]) },
+  mcp_access_application: { group: "access", fn: accessApplication, description: "Get the NEXA Care application link for reviewed MCP access. Call only when the user wants to apply. Takes no applicant or patient information.", inputSchema: S({}) },
 };
 const ROUTES = { "/mcp": null, "/mcp/visa": "visa", "/mcp/cost": "cost", "/mcp/credentials": "credentials" };
 const toolsFor = (group) => Object.entries(TOOLS).filter(([, t]) => !group || t.group === group);
 
 // ---------- JSON-RPC ----------
-function rpc(msg, group) {
+function rpc(msg, group, env) {
   const { id, method, params = {} } = msg;
   const ok = (result) => ({ jsonrpc: "2.0", id, result });
   const fail = (code, message) => ({ jsonrpc: "2.0", id, error: { code, message } });
@@ -232,7 +282,7 @@ function rpc(msg, group) {
       const entry = toolsFor(group).find(([n]) => n === params.name);
       if (!entry) return fail(-32602, `Unknown tool: ${params.name}`);
       try {
-        const result = entry[1].fn(params.arguments || {});
+        const result = entry[1].fn(params.arguments || {}, env);
         return ok({ content: [{ type: "text", text: JSON.stringify(result, null, 2) }], structuredContent: result, isError: false });
       } catch (e) {
         return ok({ content: [{ type: "text", text: String(e.message || e) }], isError: true });
@@ -252,11 +302,20 @@ function landing() {
   return json({ server: SERVER, endpoints: { all: "/mcp", visa: "/mcp/visa", cost: "/mcp/cost", credentials: "/mcp/credentials" }, transport: "Streamable HTTP (POST JSON-RPC; JSON responses; stateless)", tools: Object.keys(TOOLS), data_as_of: { visa: DATA.visa.as_of, costs: DATA.costs.as_of, channels: DATA.channels.as_of, hospitals: DATA.hospitals_as_of }, docs: SITE + "/#mcp", source: "https://github.com/NEXALongevity/skillset/tree/main/mcp", license: "Code Apache-2.0; data CC BY 4.0 — attribution: NEXA Longevity", disclaimer: DISCLAIMER });
 }
 
-export async function handle(request) {
-  try { await ensureData(); } catch (e) { return json({ error: String(e.message || e) }, 503); }
+export async function handle(request, env = {}) {
   const url = new URL(request.url);
   const path = url.pathname.replace(/\/+$/, "") || "/";
   if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: CORS });
+  if (path === "/apply") {
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      return new Response(null, { status: 405, headers: { Allow: "GET, HEAD" } });
+    }
+    const target = applicationUrl(env.MCP_ACCESS_APPLICATION_URL);
+    return target
+      ? new Response(null, { status: 302, headers: { Location: target, "Cache-Control": "no-store" } })
+      : json(accessApplication({}, env), 503);
+  }
+  try { await ensureData(); } catch (e) { return json({ error: String(e.message || e) }, 503); }
   if (path === "/" || path === "/health") return landing();
   if (!(path in ROUTES)) return json({ error: "Not found" }, 404);
   if (request.method === "GET") return new Response("This MCP endpoint does not offer an SSE stream. POST JSON-RPC messages.", { status: 405, headers: { Allow: "POST", ...CORS } });
@@ -266,10 +325,10 @@ export async function handle(request) {
   try { body = await request.json(); } catch (_) { return json({ jsonrpc: "2.0", id: null, error: { code: -32700, message: "Parse error" } }, 400); }
   const group = ROUTES[path];
   if (Array.isArray(body)) {
-    const out = body.map((m) => rpc(m, group)).filter(Boolean);
+    const out = body.map((m) => rpc(m, group, env)).filter(Boolean);
     return out.length ? json(out) : new Response(null, { status: 202, headers: CORS });
   }
-  const res = rpc(body, group);
+  const res = rpc(body, group, env);
   return res ? json(res) : new Response(null, { status: 202, headers: CORS });
 }
 
