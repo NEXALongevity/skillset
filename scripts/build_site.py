@@ -505,7 +505,7 @@ def index_page(skills, by_dir, cities, ids):
 
 <section class="block" id="mcp" style="padding-top:40px"><div class="wrap">
 <div class="kicker rv">Model Context Protocol</div>
-<h2 class="title rv">Skill 引流，<span class="grad">MCP 连接</span>。</h2>
+<h2 class="title rv">最新数据，<span class="grad">MCP连接</span></h2>
 <p class="sub rv">变化快的政策、需要计算的费用、必须核实的资质，交给三个免登录的 MCP 服务。每条结果都附官方来源与核实日期，不提供任何凭记忆的数据。</p>
 <div class="mcps">
 <div class="mcp rv"><div class="k">/mcp/visa</div><h4>签证与入境政策查询</h4>
