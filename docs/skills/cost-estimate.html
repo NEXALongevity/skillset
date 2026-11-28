@@ -19,7 +19,7 @@
 <div class="wrap"><div class="doc">
 <aside class="side">
 <div class="kv"><div><span>skill</span>cost-estimate</div><div><span>stage</span>匹配 · Match</div>
-<div><span>version</span>0.1.0</div><div><span>lang</span>zh / en</div>
+<div><span>version</span>0.3.0</div><div><span>lang</span>zh / en</div>
 <div><span>review</span><b class="pend">待审核 Pending</b></div><div><span>license</span>CC BY 4.0</div></div>
 <div class="kv"><div><span>mcp</span><a href="../index.html#mcp">nexa-travel-mcp/cost_estimate</a></div></div><a class="btn primary" href="https://github.com/NEXALongevity/skillset/tree/main/skills/cost-estimate">查看源码 Source</a>
 <a class="btn ghost" href="https://github.com/NEXALongevity/skillset/archive/refs/heads/main.zip">下载全部 Download</a>
@@ -47,44 +47,43 @@
 <tbody>
 <tr>
 <td>direction</td>
-<td>七大方向之一或具体项目</td>
-<td>是</td>
+<td>医疗方向 / Specialty direction</td>
+<td>清单需要 / For checklist</td>
 </tr>
 <tr>
 <td>quotes</td>
-<td>医院书面报价，含项目、金额、币种、是否含税、有效期</td>
-<td>是</td>
+<td>书面报价、项目、金额、币种、含税范围及有效期 / Written quotes, line items, amounts, currencies, tax scope and validity</td>
+<td>计算需要 / For calculation</td>
 </tr>
 <tr>
 <td>stay_days</td>
-<td>在华停留天数</td>
-<td>是</td>
+<td>停留天数 / Stay length</td>
+<td>涉及行程时 / For travel</td>
 </tr>
 <tr>
 <td>travel_prices</td>
-<td>机票、住宿每晚、口译每天等，由用户提供</td>
-<td>否</td>
+<td>用户提供的数量、单位和单价 / User-supplied quantities, units and prices</td>
+<td>否 / No</td>
 </tr>
 <tr>
 <td>contingency_pct</td>
-<td>不可预见费比例，默认 15%</td>
-<td>否</td>
+<td>预算缓冲比例，默认 15% / Budget buffer percentage, default 15%</td>
+<td>否 / No</td>
 </tr>
 <tr>
-<td>fx_rate</td>
-<td>换算汇率与日期（用户提供）</td>
-<td>否</td>
+<td>fx</td>
+<td>用户提供的 <code>from</code>、<code>to</code>、<code>rate</code>、<code>date</code> / User-supplied FX pair, rate and date</td>
+<td>涉及换算时 / For conversion</td>
 </tr>
 </tbody>
 </table>
 <h2>步骤 · Steps</h2>
 <ol>
-<li><strong>调用 MCP 取费用项清单</strong>：<code>cost_checklist(direction)</code>，得到该方向常见费用项，用于检查漏项（只有项目名，没有金额）。</li>
-<li><strong>录入报价</strong>：逐项登记金额、币种、来源（报价单名称与日期）。没有书面来源的金额标记"口头/待确认"。</li>
-<li><strong>调用 MCP 计算</strong>：<code>cost_estimate(items, stay_days, contingency_pct, fx_rate)</code>，得到医疗、行程、服务三类小计，以及低/高区间（高位 = 小计 × (1+不可预见费)）。</li>
-<li><strong>比价</strong>：两份以上报价时调用 <code>compare_quotes(quotes)</code>，输出逐项对照、漏项、口径差异（如是否含术前检查、植入物、住院床位、术后复查、口译）。</li>
-<li><strong>写清假设</strong>：汇率日期、未包含项、预交金与最终结算的关系（多退少补）。</li>
-<li>结果交给 quote-builder 生成正式报价单，交付前用 compliance-check 检查费用表述。</li>
+<li><strong>先核对范围 / Establish scope.</strong> 调用 <code>cost_checklist</code> 查可能漏项，核对每份书面报价的币种、日期、有效期、数量、是否含税及费用边界。无可确认金额时，只给费用清单和询价问题。Use the checklist to spot gaps, then verify currency, date, validity, quantities, tax and quote scope. With no confirmed figures, return a checklist and questions.</li>
+<li><strong>对齐明细 / Align line items.</strong> 同名但范围不同的项目分开列，只有确认范围相同，才用统一名称比较。将每项标为已报价、已包含但未单列、明确不含、已列待报价、未列明。只有书面明确为零才填 0。Match items only when scope agrees. Keep priced, bundled, excluded, listed without a price, and absent items distinct. Use zero only if documented.</li>
+<li><strong>计算已知部分 / Calculate known costs.</strong> 调用 <code>cost_estimate</code>，传入项目、金额或上下限、币种和不含身份信息的来源标识，按需加 <code>direction</code>、<code>stay_days</code>、<code>contingency_pct</code> 和 <code>fx</code>。分别列出已知费用、缓冲和待报价项。缺少带日期的汇率时保留原币，换算未覆盖的币种单列。Send item data without identifiers. Show known costs, contingency and pending items separately. Keep original currencies when no dated rate is supplied, and disclose any currency omitted by conversion.</li>
+<li><strong>同范围比价 / Compare like for like.</strong> 至少两份报价时调用 <code>compare_quotes</code>。只在范围与币种对齐后比较总额。已包含但未单列的项目避免重复计费，定金单列为付款节点并核对抵扣及退款条款。Call the comparison tool for two or more quotes. Compare totals only after aligning scope and currency, avoid counting bundled amounts twice, and confirm how deposits are applied or refunded.</li>
+<li><strong>无 MCP 时 / Without MCP.</strong> 使用相同分项表，按币种列计算式并复核。无法确认的数字留待核实。Use the same table, show and verify the arithmetic by currency, and flag unavailable figures. 交付正式报价前走 <code>quote-builder</code> 和 <code>compliance-check</code>。</li>
 </ol>
 <h2>输出格式 · Output format</h2>
 <pre><code>【费用区间 / Range】低 … – 高 …（币种，汇率日期）
@@ -93,14 +92,16 @@
 【比价 / Comparison】（多份报价时）
 | 项目 | 报价 A | 报价 B | 差异说明 |
 【漏项 / Missing items】
+【待询价与付款节点 / Follow-up questions and payment milestones】
 【假设与说明 / Assumptions】
 </code></pre>
 <h2>边界与禁止事项 · Boundaries</h2>
 <ul>
 <li>不编造、不估算任何医疗价格；没有报价的项目写"待报价"。</li>
-<li>不承诺最终费用；说明实际以医院结算为准，预交金多退少补。</li>
+<li>实际费用及定金安排以服务方书面条款与结算为准。</li>
 <li>汇率由用户提供或注明"待换算"，不凭记忆给汇率。</li>
 <li>不评价医院定价是否合理，只指出口径差异。</li>
+<li>调用远程 MCP 时，只发计算所需的去标识化明细。不要发送原始报价文件、病历、姓名或联系方式。Send only de-identified calculation fields to the remote MCP. Keep original files and personal details in the approved workflow.</li>
 </ul>
 <h2>医学声明 · Disclaimer</h2>
 <p>费用整理基于用户提供的报价，不构成价格承诺或医疗建议；治疗方案与实际费用以医疗机构为准。Cost summaries rely on quotes supplied by the user and are not a price guarantee or medical advice.</p>
@@ -142,6 +143,7 @@
 | 遗传学检测 | 未列 | 未列 | 是否需要由医生决定 |
 
 【漏项 / Missing items】药费、胚胎冷冻与年保存费、术前检查、取消周期的退费规则
+【待询价与付款节点 / Follow-up questions and payment milestones】分别请两家机构补报药费、明确优惠套用条件及取消后的退款安排。
 【假设与说明 / Assumptions】住宿与口译为用户估计；实际以医院结算为准
 </code></pre></div></details><details class="ex"><summary>示例 2：膝关节置换：在华费用区间，供患者与本国自费价对比</summary><div class="body prose"><blockquote>
 <p>虚构病例 / Fictional case</p>
@@ -153,7 +155,7 @@
 <li>医院国际医疗部报价（2026-11-20）：手术及住院 7 天 95,000–120,000 CNY（含假体，按假体品牌浮动）</li>
 <li>stay_days: 25</li>
 <li>travel_prices: 机票往返 2 人 AUD 3,200；住宿 600 CNY/晚 × 18 晚；口译 3 天 × 900 CNY</li>
-<li>fx_rate: 用户提供 1 AUD = 4.7 CNY（2026-11-26）</li>
+<li>fx: 用户提供 <code>{from: AUD, to: CNY, rate: 4.7, date: "2026-11-26"}</code></li>
 <li>contingency_pct: 15</li>
 </ul>
 <h2>输出 Output</h2>
@@ -171,6 +173,7 @@
 低位 = 95,000 + 28,540；高位 =(120,000 + 28,540) × 1.15 + 未含项
 
 【漏项 / Missing items】出院后复查、康复治疗、助行器、术前检查是否在报价内
+【待询价与付款节点 / Follow-up questions and payment milestones】请医院书面确认上述项目、定金抵扣和退款条件。
 【假设与说明 / Assumptions】本国自费价请患者向当地医院索取书面报价后再对比，本 Skill 不提供他国价格
 </code></pre></div></details></article>
 </div></div>

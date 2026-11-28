@@ -2,7 +2,7 @@
 name: second-opinion-prep
 description: "Prepare a complete, well-framed package for a second opinion from a Chinese specialist: questions, records checklist, timeline and consent. Use when a patient already has a diagnosis or plan and wants an independent review."
 metadata:
-  version: 0.1.0
+  version: 0.3.0
   stage: assess
   owner: NEXA Longevity
   reviewed_by: ""
@@ -35,14 +35,16 @@ When a patient already has a diagnosis or plan and wants an independent review f
 | records | 病理、影像、化验、既往治疗记录 | 是 |
 | patient_questions | 患者最想问的问题 | 是 |
 | deadline | 需要答复的时间（如治疗开始前） | 否 |
+| recipient_and_channel | 拟接收机构及已确认的资料传输渠道 / Proposed recipient and approved records channel | 交接前 / Before handoff |
+| consent_status | 有效同意范围及核验状态 / Verified scope and status of consent | 交接前 / Before handoff |
 
 ## 步骤 · Steps
 
-1. **框定问题**：把患者的担心改写成 3 到 5 个可回答的问题，例如"诊断是否成立""方案 A 与 B 的取舍""是否需要补充检查"。
-2. **材料清单**：按专科列出必需材料（如肿瘤：病理报告与切片/蜡块是否可寄送、免疫组化、分期影像；骨科：负重位 X 光、MRI）。标出缺失项。
-3. **时间线**：按日期列出症状、检查、诊断、治疗与疗效。
-4. **同意与隐私**：取得患者书面同意，说明材料会发给哪家机构，用 compliance-check 检查。
-5. **交付**：生成中英双语"会诊申请包"目录，交给 teleconsult-coordination 或 appointment-booking。
+1. **框定问题 / Frame the request.** 将诉求整理成最多 5 个中立问题，注明需要答复的时间和来源。Turn the request into up to five neutral questions, and record the deadline and who supplied it.
+2. **整理材料 / Inventory records.** 优先按拟接收方的材料要求整理。按语言、日期和来源记录每份材料，区分已收到、待补、待翻译与待接收方确认。缺少对方清单时，将专科材料列为建议核对项。Use the recipient's checklist when available. Track language, date and source, and separate received, missing, translation needed and recipient confirmation needed.
+3. **整理时间线 / Build the timeline.** 逐项记录事件和原始来源。日期或结论冲突时并列保留，标为待澄清。Link each event to its source and flag conflicting dates or statements for clarification.
+4. **检查交接条件 / Assess handoff readiness.** 确认已取得有效同意，接收机构与传输渠道已确认，且接收方要求的材料齐备。未确认时，输出「暂缓交接」和缺项、补件责任人及下一步。满足后标记「可交接」，交给人工负责人处理。Verify valid consent, recipient, approved channel and required materials. Hold the handoff when any condition is missing, and provide the action and owner. When ready, hand off to the responsible person for review.
+5. **生成申请包 / Prepare the package.** 输出请求语言版本，缺省为中英双语；保留原文术语和未确认项。交接后才更新发送状态，收到接诊方确认后才标记已接案。Use the requested language, defaulting to Chinese and English. Retain source terms and uncertainties. Mark sent or accepted only with evidence of that event.
 
 ## 输出格式 · Output format
 
@@ -52,7 +54,8 @@ When a patient already has a diagnosis or plan and wants an independent review f
 | 日期 | 事件 | 来源文件 |
 【材料清单 / Records】☐ 已有 … ☐ 缺失 …
 【同意状态 / Consent】
-【交付去向 / Next】
+【交接状态 / Handoff】暂缓 / 可交接 / 已发送 / 已接案 | 依据 / Evidence
+【缺项与下一步 / Blockers and next action】事项 / Item | 责任人 / Owner | 时间 / Due
 ```
 
 ## 边界与禁止事项 · Boundaries
@@ -61,6 +64,7 @@ When a patient already has a diagnosis or plan and wants an independent review f
 - 不暗示中国方案一定更好，问题表述保持中立。
 - 材料缺失时如实标注，不用推测补齐。
 - 切片、蜡块等实物寄送需遵守双方国家规定，提示向医院确认。
+- 材料保留在获准处理病历的工作环境；公共 MCP、公开社群和 MCP 准入申请均不用于传输病例。Keep records in the approved environment for clinical documents. Public MCP, community channels and MCP access applications are separate from medical-record transfer.
 
 ## 医学声明 · Disclaimer
 

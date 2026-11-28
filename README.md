@@ -69,6 +69,8 @@ claude mcp add --transport http nexa-travel https://mcp.nxlongevity.com/mcp
 
 详见 [mcp/README.md](mcp/README.md)。
 
+基础 MCP 可直接使用。需要审核的 MCP 接入由 NEXA Care 接收申请，入口启用状态由 MCP 服务返回。申请仅用于评估业务用途与接入需求，使用 [MCP 申请说明](mcp/README.md#applications-for-reviewed-mcp-access)。
+
 知识库 v0.1：六个方向各前 10 家医院，共 60 条，取自复旦大学医院管理研究所《2023年度中国医院专科声誉排行榜》，见 `data/hospitals/`。
 
 | 方向 | 对应榜单专科 |

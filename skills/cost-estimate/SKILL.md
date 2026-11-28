@@ -2,7 +2,7 @@
 name: cost-estimate
 description: Build a transparent cost range for a medical trip from hospital quotes and user-supplied travel prices, and compare quotes item by item. Never invents prices. Use before sending a quote or when a patient compares options.
 metadata:
-  version: 0.1.0
+  version: 0.3.0
   stage: match
   owner: NEXA Longevity
   reviewed_by: ""
@@ -32,21 +32,20 @@ Turn hospital quotes and user-supplied travel prices into a checkable cost range
 
 | 字段 Field | 说明 Description | 必需 Required |
 |---|---|---|
-| direction | 七大方向之一或具体项目 | 是 |
-| quotes | 医院书面报价，含项目、金额、币种、是否含税、有效期 | 是 |
-| stay_days | 在华停留天数 | 是 |
-| travel_prices | 机票、住宿每晚、口译每天等，由用户提供 | 否 |
-| contingency_pct | 不可预见费比例，默认 15% | 否 |
-| fx_rate | 换算汇率与日期（用户提供） | 否 |
+| direction | 医疗方向 / Specialty direction | 清单需要 / For checklist |
+| quotes | 书面报价、项目、金额、币种、含税范围及有效期 / Written quotes, line items, amounts, currencies, tax scope and validity | 计算需要 / For calculation |
+| stay_days | 停留天数 / Stay length | 涉及行程时 / For travel |
+| travel_prices | 用户提供的数量、单位和单价 / User-supplied quantities, units and prices | 否 / No |
+| contingency_pct | 预算缓冲比例，默认 15% / Budget buffer percentage, default 15% | 否 / No |
+| fx | 用户提供的 `from`、`to`、`rate`、`date` / User-supplied FX pair, rate and date | 涉及换算时 / For conversion |
 
 ## 步骤 · Steps
 
-1. **调用 MCP 取费用项清单**：`cost_checklist(direction)`，得到该方向常见费用项，用于检查漏项（只有项目名，没有金额）。
-2. **录入报价**：逐项登记金额、币种、来源（报价单名称与日期）。没有书面来源的金额标记"口头/待确认"。
-3. **调用 MCP 计算**：`cost_estimate(items, stay_days, contingency_pct, fx_rate)`，得到医疗、行程、服务三类小计，以及低/高区间（高位 = 小计 × (1+不可预见费)）。
-4. **比价**：两份以上报价时调用 `compare_quotes(quotes)`，输出逐项对照、漏项、口径差异（如是否含术前检查、植入物、住院床位、术后复查、口译）。
-5. **写清假设**：汇率日期、未包含项、预交金与最终结算的关系（多退少补）。
-6. 结果交给 quote-builder 生成正式报价单，交付前用 compliance-check 检查费用表述。
+1. **先核对范围 / Establish scope.** 调用 `cost_checklist` 查可能漏项，核对每份书面报价的币种、日期、有效期、数量、是否含税及费用边界。无可确认金额时，只给费用清单和询价问题。Use the checklist to spot gaps, then verify currency, date, validity, quantities, tax and quote scope. With no confirmed figures, return a checklist and questions.
+2. **对齐明细 / Align line items.** 同名但范围不同的项目分开列，只有确认范围相同，才用统一名称比较。将每项标为已报价、已包含但未单列、明确不含、已列待报价、未列明。只有书面明确为零才填 0。Match items only when scope agrees. Keep priced, bundled, excluded, listed without a price, and absent items distinct. Use zero only if documented.
+3. **计算已知部分 / Calculate known costs.** 调用 `cost_estimate`，传入项目、金额或上下限、币种和不含身份信息的来源标识，按需加 `direction`、`stay_days`、`contingency_pct` 和 `fx`。分别列出已知费用、缓冲和待报价项。缺少带日期的汇率时保留原币，换算未覆盖的币种单列。Send item data without identifiers. Show known costs, contingency and pending items separately. Keep original currencies when no dated rate is supplied, and disclose any currency omitted by conversion.
+4. **同范围比价 / Compare like for like.** 至少两份报价时调用 `compare_quotes`。只在范围与币种对齐后比较总额。已包含但未单列的项目避免重复计费，定金单列为付款节点并核对抵扣及退款条款。Call the comparison tool for two or more quotes. Compare totals only after aligning scope and currency, avoid counting bundled amounts twice, and confirm how deposits are applied or refunded.
+5. **无 MCP 时 / Without MCP.** 使用相同分项表，按币种列计算式并复核。无法确认的数字留待核实。Use the same table, show and verify the arithmetic by currency, and flag unavailable figures. 交付正式报价前走 `quote-builder` 和 `compliance-check`。
 
 ## 输出格式 · Output format
 
@@ -57,15 +56,17 @@ Turn hospital quotes and user-supplied travel prices into a checkable cost range
 【比价 / Comparison】（多份报价时）
 | 项目 | 报价 A | 报价 B | 差异说明 |
 【漏项 / Missing items】
+【待询价与付款节点 / Follow-up questions and payment milestones】
 【假设与说明 / Assumptions】
 ```
 
 ## 边界与禁止事项 · Boundaries
 
 - 不编造、不估算任何医疗价格；没有报价的项目写"待报价"。
-- 不承诺最终费用；说明实际以医院结算为准，预交金多退少补。
+- 实际费用及定金安排以服务方书面条款与结算为准。
 - 汇率由用户提供或注明"待换算"，不凭记忆给汇率。
 - 不评价医院定价是否合理，只指出口径差异。
+- 调用远程 MCP 时，只发计算所需的去标识化明细。不要发送原始报价文件、病历、姓名或联系方式。Send only de-identified calculation fields to the remote MCP. Keep original files and personal details in the approved workflow.
 
 ## 医学声明 · Disclaimer
 

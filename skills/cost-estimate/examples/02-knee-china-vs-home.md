@@ -9,7 +9,7 @@
   - 医院国际医疗部报价（2026-11-20）：手术及住院 7 天 95,000–120,000 CNY（含假体，按假体品牌浮动）
 - stay_days: 25
 - travel_prices: 机票往返 2 人 AUD 3,200；住宿 600 CNY/晚 × 18 晚；口译 3 天 × 900 CNY
-- fx_rate: 用户提供 1 AUD = 4.7 CNY（2026-11-26）
+- fx: 用户提供 `{from: AUD, to: CNY, rate: 4.7, date: "2026-11-26"}`
 - contingency_pct: 15
 
 ## 输出 Output
@@ -29,5 +29,6 @@
 低位 = 95,000 + 28,540；高位 =(120,000 + 28,540) × 1.15 + 未含项
 
 【漏项 / Missing items】出院后复查、康复治疗、助行器、术前检查是否在报价内
+【待询价与付款节点 / Follow-up questions and payment milestones】请医院书面确认上述项目、定金抵扣和退款条件。
 【假设与说明 / Assumptions】本国自费价请患者向当地医院索取书面报价后再对比，本 Skill 不提供他国价格
 ```

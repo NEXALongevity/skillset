@@ -27,5 +27,6 @@
 
 【材料清单 / Records】☐ 已有：病理报告、PET-CT 报告、血常规 ☐ 缺失：完整免疫组化结果、切片是否可寄送
 【同意状态 / Consent】待签署
-【交付去向 / Next】teleconsult-coordination，时间要求：3 周内
+【交接状态 / Handoff】暂缓 / On hold。书面同意和接收渠道均待确认。
+【缺项与下一步 / Blockers and next action】协调员确认接收方要求、传输渠道和书面同意，并请转介方补齐病理材料。时间要求：3 周内。
 ```
