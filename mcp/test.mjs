@@ -11,7 +11,7 @@ const init = await call("/mcp", { jsonrpc: "2.0", id: 0, method: "initialize", p
 assert.equal(init.result.serverInfo.name, "nexa-medical-travel");
 assert.equal(await call("/mcp", { jsonrpc: "2.0", method: "notifications/initialized" }), null);
 const all = await call("/mcp", { jsonrpc: "2.0", id: 2, method: "tools/list" });
-assert.equal(all.result.tools.length, 7);
+assert.equal(all.result.tools.length, 10);
 const visaOnly = await call("/mcp/visa", { jsonrpc: "2.0", id: 3, method: "tools/list" });
 assert.deepEqual(visaOnly.result.tools.map((t) => t.name), ["visa_entry_options", "visa_policy_sources"]);
 
@@ -49,4 +49,37 @@ const g = (await tool("verification_guide", { target_type: "aesthetic_doctor,dev
 assert.ok(g.channels.device[0].url.includes("datasearch.nmpa.gov.cn"));
 const bad = await tool("cost_checklist", { direction: "unknown" });
 assert.equal(bad.isError, true);
+
+// directory: open snapshot (Care not enabled)
+let h = (await tool("hospital_search", { direction: "orthopedics", limit: 3 })).structuredContent;
+assert.equal(h.data_source, "NEXA open knowledge base (snapshot)");
+assert.equal(h.results.length, 3);
+assert.equal(Math.min(...h.results[0].rankings.map((r) => r.rank)), 1);
+h = (await tool("hospital_search", { query: "zhongshan-fudan" })).structuredContent;
+assert.equal(h.count, 1);
+assert.ok(h.results[0].directions.length >= 2, "merged across directions");
+assert.ok(h.consult.startsWith("https://care.nxlongevity.com/start?lang=en"));
+const dirOnly = await call("/mcp/directory", { jsonrpc: "2.0", id: 9, method: "tools/list" });
+assert.deepEqual(dirOnly.result.tools.map((t) => t.name), ["hospital_search", "doctor_search", "nexa_consultation_link"]);
+let d = (await tool("doctor_search", { direction: "oncology" })).structuredContent;
+assert.equal(d.count, 0);
+assert.ok(d.note.includes("not yet enabled"));
+const link = (await tool("nexa_consultation_link", { language: "fr" })).structuredContent;
+assert.ok(link.url.includes("lang=fr") && link.privacy.includes("does not collect"));
+assert.equal((await tool("hospital_search", { direction: "dental" })).isError, true);
+
+// directory: NEXA Care enabled (mocked)
+const realFetch = globalThis.fetch;
+const seen = [];
+globalThis.fetch = async (u) => { seen.push(String(u)); return new Response(JSON.stringify({ items: [{ id: "c1", kind: "doctor", title: "Dr Test", exposure: "public_source" }], truncated: false, asOf: "2026-11-27" }), { status: 200 }); };
+const callEnv = async (body) => (await (await worker.fetch(new Request("https://x/mcp", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }), { CARE_MCP_BASE: "https://care.example/api/mcp/" })).json()).result;
+d = (await callEnv({ jsonrpc: "2.0", id: 10, method: "tools/call", params: { name: "doctor_search", arguments: { query: "test", direction: "oncology" } } })).structuredContent;
+assert.equal(d.data_source, "NEXA Care");
+assert.equal(d.results[0].title, "Dr Test");
+assert.ok(seen[0].startsWith("https://care.example/api/mcp/records?kind=doctor"));
+globalThis.fetch = async () => new Response("down", { status: 503 });
+h = (await callEnv({ jsonrpc: "2.0", id: 11, method: "tools/call", params: { name: "hospital_search", arguments: { city: "上海" } } })).structuredContent;
+assert.equal(h.data_source, "NEXA open knowledge base (snapshot)");
+assert.ok(h.care_status.includes("unavailable"));
+globalThis.fetch = realFetch;
 console.log("all MCP smoke tests passed");
